@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+# Amaral include
+bin/
+*_tmp
+*-swp
+~*
+
