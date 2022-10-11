@@ -164,10 +164,10 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
    7.11. Reparando migrações com erros :feet:\
    7.12 Desafio: Criando migrações e mapeando as entidades Pedido e ItemPedido :feet:
 
-8. Tratamento e modelagem de erros da API   
-    8.1. Introdução ao tratamento e modelagem de erros \
-    8.2. Lançando exceções customizadas anotadas com @ResponseStatus \
-    8.3. Lançando exceções do tipo ResponseStatusException \
+8. Tratamento e modelagem de erros da API :triangular_flag_on_post:  
+    8.1. Introdução ao tratamento e modelagem de erros :feet:\
+    8.2. Lançando exceções customizadas anotadas com @ResponseStatus :feet:\
+    8.3. Lançando exceções do tipo ResponseStatusException :feet:\
     8.4. Estendendo ResponseStatusException \
     8.5. Simplificando o código com o uso de @ResponseStatus em exceptions \
     8.6. Desafio: refatorando os serviços REST \
