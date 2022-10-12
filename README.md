@@ -169,7 +169,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.2. Lançando exceções customizadas anotadas com @ResponseStatus :feet:\
     8.3. Lançando exceções do tipo ResponseStatusException :feet:\
     8.4. Estendendo ResponseStatusException :feet:\
-    8.5. Simplificando o código com o uso de @ResponseStatus em exceptions \
+    8.5. Simplificando o código com o uso de @ResponseStatus em exceptions :feet:\
     8.6. Desafio: refatorando os serviços REST \
     8.7. Analisando os impactos da refatoração \
     8.8. Criando a exception NegocioException \
