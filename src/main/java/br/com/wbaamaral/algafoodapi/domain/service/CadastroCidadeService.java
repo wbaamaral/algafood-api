@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cidade;
-import br.com.wbaamaral.algafoodapi.domain.model.Estado;
 import br.com.wbaamaral.algafoodapi.domain.repository.CidadeRepository;
-import br.com.wbaamaral.algafoodapi.domain.repository.EstadoRepository;
 
 @Service
 public class CadastroCidadeService {
@@ -21,30 +19,32 @@ public class CadastroCidadeService {
 
 	@Autowired
 	private CidadeRepository cidadeRepository;
-	
+
 	@Autowired
 	private CadastroEstadoService cadastroEstado;
-	
+
 	public Cidade salvar(Cidade cidade) {
 		Long estadoId = cidade.getEstado().getId();
-		
+
 		cidade.setEstado(cadastroEstado.buscarOuFalhar(estadoId));
-		
+
 		return cidadeRepository.save(cidade);
 	}
-	
+
 	public void excluir(Long cidadeId) {
 		try {
 			cidadeRepository.deleteById(cidadeId);
-			
+
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(
-				String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId));
-		
+			throw new EntidadeNaoEncontradaException(String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId));
+
 		} catch (DataIntegrityViolationException e) {
-			throw new EntidadeEmUsoException(
-				String.format(MSG_CIDADE_EM_USO, cidadeId));
+			throw new EntidadeEmUsoException(String.format(MSG_CIDADE_EM_USO, cidadeId));
 		}
 	}
-	
+
+	public Cidade buscarOuFalhar(Long cidadeId) {
+		return cidadeRepository.findById(cidadeId).orElseThrow(
+				() -> new EntidadeNaoEncontradaException(String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId)));
+	}
 }

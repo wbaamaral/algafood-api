@@ -11,7 +11,7 @@ import br.com.wbaamaral.algafoodapi.domain.repository.RestauranteRepository;
 public class CadastroRestauranteService {
 
 	private static final String MSG_RESTAURANTE_NAO_ENCONTRADO = "Não existe um restaurante com o código %d";
-	
+
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 
