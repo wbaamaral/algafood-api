@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
+import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cidade;
 import br.com.wbaamaral.algafoodapi.domain.repository.CidadeRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroCidadeService;
@@ -50,8 +52,13 @@ public class CidadeController {
 
 		Cidade cidadeAtual = cadastroCidade.buscarOuFalhar(cidadeId);
 		BeanUtils.copyProperties(cidade, cidadeAtual, "id");
+		try {
 
-		return cadastroCidade.salvar(cidadeAtual);
+			return cadastroCidade.salvar(cidadeAtual);
+
+		} catch (EntidadeNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage());
+		}
 	}
 
 	@DeleteMapping("/{cidadeId}")

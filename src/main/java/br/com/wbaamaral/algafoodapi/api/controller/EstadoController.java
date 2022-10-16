@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
+import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import br.com.wbaamaral.algafoodapi.domain.model.Estado;
 import br.com.wbaamaral.algafoodapi.domain.repository.EstadoRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroEstadoService;
@@ -53,8 +55,12 @@ public class EstadoController {
 		Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
 
 		BeanUtils.copyProperties(estado, estadoAtual, "id");
+		try {
 
-		return ResponseEntity.ok(cadastroEstado.salvar(estadoAtual));
+			return ResponseEntity.ok(cadastroEstado.salvar(estadoAtual));
+		} catch (EntidadeNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage());
+		}
 	}
 
 	@DeleteMapping("/{estadoId}")
