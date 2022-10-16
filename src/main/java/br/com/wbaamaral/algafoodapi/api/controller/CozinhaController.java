@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
-import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
 import br.com.wbaamaral.algafoodapi.domain.repository.CozinhaRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
@@ -54,11 +52,9 @@ public class CozinhaController {
 
 		Cozinha cozinhaAtual = cadastroCozinha.buscarOuFalhar(cozinhaId);
 		BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
-		try {
-			return cadastroCozinha.salvar(cozinhaAtual);
-		} catch (EntidadeNaoEncontradaException e) {
-			throw new NegocioException(e.getMessage());
-		}
+
+		return cadastroCozinha.salvar(cozinhaAtual);
+
 	}
 
 	@DeleteMapping("/{cozinhaId}")

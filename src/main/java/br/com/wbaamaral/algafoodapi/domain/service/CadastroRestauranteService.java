@@ -10,8 +10,6 @@ import br.com.wbaamaral.algafoodapi.domain.repository.RestauranteRepository;
 @Service
 public class CadastroRestauranteService {
 
-	private static final String MSG_RESTAURANTE_NAO_ENCONTRADO = "Não existe um restaurante com o código %d";
-
 	@Autowired
 	private RestauranteRepository restauranteRepository;
 
@@ -26,7 +24,7 @@ public class CadastroRestauranteService {
 	}
 
 	public Restaurante buscarOuFalhar(Long restauranteId) {
-		return restauranteRepository.findById(restauranteId).orElseThrow(
-				() -> new RestauranteNaoEncontradaException(String.format(MSG_RESTAURANTE_NAO_ENCONTRADO, restauranteId)));
+		return restauranteRepository.findById(restauranteId)
+				.orElseThrow(() -> new RestauranteNaoEncontradaException(restauranteId));
 	}
 }
