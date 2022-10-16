@@ -51,8 +51,12 @@ public class RestauranteController {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Restaurante adicionar(@RequestBody Restaurante restaurante) {
-
-		return cadastroRestaurante.salvar(restaurante);
+		try {
+			
+			return cadastroRestaurante.salvar(restaurante);
+		} catch (EntidadeNaoEncontradaException e) {
+			throw new NegocioException(e.getLocalizedMessage());
+		}
 	}
 
 	@PutMapping("/{restauranteId}")
@@ -75,8 +79,12 @@ public class RestauranteController {
 		Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
 
 		merge(campos, restauranteAtual);
-
-		return atualizar(restauranteId, restauranteAtual);
+		try {
+			
+			return atualizar(restauranteId, restauranteAtual);
+		} catch (EntidadeNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage());
+		}
 	}
 
 	private void merge(Map<String, Object> dadosOrigem, Restaurante restauranteDestino) {
