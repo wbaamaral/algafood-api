@@ -5,8 +5,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import br.com.wbaamaral.algafoodapi.domain.exception.CidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
-import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cidade;
 import br.com.wbaamaral.algafoodapi.domain.repository.CidadeRepository;
 
@@ -36,7 +36,7 @@ public class CadastroCidadeService {
 			cidadeRepository.deleteById(cidadeId);
 
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId));
+			throw new CidadeNaoEncontradaException(String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId));
 
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(String.format(MSG_CIDADE_EM_USO, cidadeId));
@@ -45,6 +45,6 @@ public class CadastroCidadeService {
 
 	public Cidade buscarOuFalhar(Long cidadeId) {
 		return cidadeRepository.findById(cidadeId).orElseThrow(
-				() -> new EntidadeNaoEncontradaException(String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId)));
+				() -> new CidadeNaoEncontradaException(String.format(MSG_CIDADE_NAO_ENCONTRADA, cidadeId)));
 	}
 }

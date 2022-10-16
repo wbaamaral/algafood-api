@@ -5,8 +5,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import br.com.wbaamaral.algafoodapi.domain.exception.CozinhaNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
-import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
 import br.com.wbaamaral.algafoodapi.domain.repository.CozinhaRepository;
 
@@ -29,7 +29,7 @@ public class CadastroCozinhaService {
 			cozinhaRepository.deleteById(cozinhaId);
 
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoEncontradaException(String.format(MSG_COZINHA_NAO_EXISTE, cozinhaId));
+			throw new CozinhaNaoEncontradaException(String.format(MSG_COZINHA_NAO_EXISTE, cozinhaId));
 
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(String.format(MSG_COZINHA_EM_USO, cozinhaId));
@@ -38,6 +38,6 @@ public class CadastroCozinhaService {
 
 	public Cozinha buscarOuFalhar(Long cozinhaId) {
 		return cozinhaRepository.findById(cozinhaId).orElseThrow(
-				() -> new EntidadeNaoEncontradaException(String.format(MSG_COZINHA_NAO_EXISTE, cozinhaId)));
+				() -> new CozinhaNaoEncontradaException(String.format(MSG_COZINHA_NAO_EXISTE, cozinhaId)));
 	}
 }
