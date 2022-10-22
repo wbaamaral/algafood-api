@@ -186,7 +186,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.19. Desafio: usando o formato de problemas no corpo de respostas :feet:\
     8.20. Customizando exception handlers de ResponseEntityExceptionHandler :feet:\
     8.21. Tratando a exception InvalidFormatException na desserialização :feet:\
-    8.22. Habilitando erros na desserialização de propriedades inexistentes ou ignoradas \
+    8.22. Habilitando erros na desserialização de propriedades inexistentes ou ignoradas :feet:\
     8.23. Desafio: tratando a PropertyBindingException na desserialização   \
     8.24. Lançando exception de desserialização na atualização parcial (PATCH) \
     8.25. Desafio: tratando exception de parâmetro de URL inválido \
