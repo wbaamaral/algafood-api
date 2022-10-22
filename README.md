@@ -181,19 +181,19 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.14. Desafio: implementando exception handler :feet:\
     8.15. Criando um exception handler global com ResponseEntityExceptionHandler \
     8.16. Customizando o corpo da resposta padrão de ResponseEntityExceptionHandler \
-    8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs)
-    8.18. Padronizando o formato de problemas no corpo de respostas com a RFC 7807
-    8.19. Desafio: usando o formato de problemas no corpo de respostas
-    8.20. Customizando exception handlers de ResponseEntityExceptionHandler
-    8.21. Tratando a exception InvalidFormatException na desserialização
-    8.22. Habilitando erros na desserialização de propriedades inexistentes ou ignoradas
-    8.23. Desafio: tratando a PropertyBindingException na desserialização
-    8.24. Lançando exception de desserialização na atualização parcial (PATCH)
-    8.25. Desafio: tratando exception de parâmetro de URL inválido
-    8.26. Desafio: tratando a exceção NoHandlerFoundException
-    8.27. Desafio: tratando outras exceções não capturadas
-    8.28. Estendendo o formato do problema para adicionar novas propriedades
-    8.29. Desafio: estendendo o formato do problema
+    8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs) \
+    8.18. Padronizando o formato de problemas no corpo de respostas com a RFC 7807 \
+    8.19. Desafio: usando o formato de problemas no corpo de respostas \
+    8.20. Customizando exception handlers de ResponseEntityExceptionHandler \
+    8.21. Tratando a exception InvalidFormatException na desserialização \
+    8.22. Habilitando erros na desserialização de propriedades inexistentes ou ignoradas \
+    8.23. Desafio: tratando a PropertyBindingException na desserialização   \
+    8.24. Lançando exception de desserialização na atualização parcial (PATCH) \
+    8.25. Desafio: tratando exception de parâmetro de URL inválido \
+    8.26. Desafio: tratando a exceção NoHandlerFoundException \
+    8.27. Desafio: tratando outras exceções não capturadas \
+    8.28. Estendendo o formato do problema para adicionar novas propriedades \
+    8.29. Desafio: estendendo o formato do problema 
 
 9.  Validações com Bean Validation    
     9.1. Validação do modelo com Bean Validation \
