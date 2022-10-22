@@ -170,15 +170,15 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.3. Lançando exceções do tipo ResponseStatusException :feet:\
     8.4. Estendendo ResponseStatusException :feet:\
     8.5. Simplificando o código com o uso de @ResponseStatus em exceptions :feet:\
-    8.6. Desafio: refatorando os serviços REST \
-    8.7. Analisando os impactos da refatoração \
-    8.8. Criando a exception NegocioException \
-    8.9. Desafio: usando a exception NegocioException \
-    8.10. Afinando a granularidade e definindo a hierarquia das exceptions de negócios \
-    8.11. Desafio: lançando exceptions de granularidade fina \
-    8.12. Tratando exceções em nível de controlador com @ExceptionHandler \
-    8.13. Tratando exceções globais com @ExceptionHandler e @ControllerAdvice \
-    8.14. Desafio: implementando exception handler \
+    8.6. Desafio: refatorando os serviços REST :feet:\
+    8.7. Analisando os impactos da refatoração :feet:\
+    8.8. Criando a exception NegocioException :feet:\
+    8.9. Desafio: usando a exception NegocioException :feet:\
+    8.10. Afinando a granularidade e definindo a hierarquia das exceptions de negócios :feet:\
+    8.11. Desafio: lançando exceptions de granularidade fina :feet:\
+    8.12. Tratando exceções em nível de controlador com @ExceptionHandler :feet:\
+    8.13. Tratando exceções globais com @ExceptionHandler e @ControllerAdvice :feet:\
+    8.14. Desafio: implementando exception handler :feet:\
     8.15. Criando um exception handler global com ResponseEntityExceptionHandler \
     8.16. Customizando o corpo da resposta padrão de ResponseEntityExceptionHandler \
     8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs)
