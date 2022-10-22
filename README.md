@@ -181,8 +181,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.14. Desafio: implementando exception handler :feet:\
     8.15. Criando um exception handler global com ResponseEntityExceptionHandler :feet:\
     8.16. Customizando o corpo da resposta padrão de ResponseEntityExceptionHandler :feet:\
-    8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs) \
-    8.18. Padronizando o formato de problemas no corpo de respostas com a RFC 7807 \
+    8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs) :feet:\
+    8.18. Padronizando o formato de problemas no corpo de respostas com a RFC 7807 :feet:\
     8.19. Desafio: usando o formato de problemas no corpo de respostas \
     8.20. Customizando exception handlers de ResponseEntityExceptionHandler \
     8.21. Tratando a exception InvalidFormatException na desserialização \
