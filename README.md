@@ -179,8 +179,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.12. Tratando exceções em nível de controlador com @ExceptionHandler :feet:\
     8.13. Tratando exceções globais com @ExceptionHandler e @ControllerAdvice :feet:\
     8.14. Desafio: implementando exception handler :feet:\
-    8.15. Criando um exception handler global com ResponseEntityExceptionHandler \
-    8.16. Customizando o corpo da resposta padrão de ResponseEntityExceptionHandler \
+    8.15. Criando um exception handler global com ResponseEntityExceptionHandler :feet:\
+    8.16. Customizando o corpo da resposta padrão de ResponseEntityExceptionHandler :feet:\
     8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs) \
     8.18. Padronizando o formato de problemas no corpo de respostas com a RFC 7807 \
     8.19. Desafio: usando o formato de problemas no corpo de respostas \
