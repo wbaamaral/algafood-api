@@ -18,7 +18,7 @@
 	
 	<dependencies>
 	
-	  <!-- Starters -->
+	        <!-- Starters -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -54,7 +54,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-        <!-- Lombok -->
+                <!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
