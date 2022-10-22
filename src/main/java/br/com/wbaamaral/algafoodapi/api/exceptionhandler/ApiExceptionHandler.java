@@ -3,6 +3,7 @@ package br.com.wbaamaral.algafoodapi.api.exceptionhandler;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -69,6 +70,25 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		}
 
 		return super.handleExceptionInternal(ex, body, headers, status, request);
+	}
+
+		
+	@Override
+	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
+		String detail = "O corpo da requisição está inválido. Verifique erro de sintaxe.";
+		
+		Problem problem = createProblemBuilder(status, problemType, detail).build();
+		
+		/*
+		 *  Na aula ficou passando uma nova instância de HttpHeaders, mas o ideal
+		 *  é repassar o "headers" que recebemos como argumento do método
+		 *  return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
+		 *  
+		 */ 
+		
+		return handleExceptionInternal(ex, problem, headers, status, request);
 	}
 
 	private Problem.ProblemBuilder createProblemBuilder (HttpStatus status, ProblemType problemType, String detail){

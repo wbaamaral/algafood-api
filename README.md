@@ -184,7 +184,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs) :feet:\
     8.18. Padronizando o formato de problemas no corpo de respostas com a RFC 7807 :feet:\
     8.19. Desafio: usando o formato de problemas no corpo de respostas :feet:\
-    8.20. Customizando exception handlers de ResponseEntityExceptionHandler \
+    8.20. Customizando exception handlers de ResponseEntityExceptionHandler :feet:\
     8.21. Tratando a exception InvalidFormatException na desserialização \
     8.22. Habilitando erros na desserialização de propriedades inexistentes ou ignoradas \
     8.23. Desafio: tratando a PropertyBindingException na desserialização   \
