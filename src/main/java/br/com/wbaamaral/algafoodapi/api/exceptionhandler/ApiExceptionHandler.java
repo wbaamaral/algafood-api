@@ -1,5 +1,6 @@
 package br.com.wbaamaral.algafoodapi.api.exceptionhandler;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -12,12 +13,18 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.fasterxml.jackson.databind.JsonMappingException.Reference;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.fasterxml.jackson.databind.exc.PropertyBindingException;
 
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 
+/**
+ * @author wbaamaral
+ *
+ */
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -81,7 +88,9 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 		if (rootCause instanceof InvalidFormatException) {
 			return handleIvalidFormatException((InvalidFormatException) rootCause, headers, status, request);
-		}
+		} else if (rootCause instanceof PropertyBindingException) {
+	        return handlePropertyBindingException((PropertyBindingException) rootCause, headers, status, request); 
+	    }
 
 		ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
 		
@@ -92,6 +101,30 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, problem, headers, status, request);
 	}
 
+	private ResponseEntity<Object> handlePropertyBindingException(PropertyBindingException ex,
+	        HttpHeaders headers, HttpStatus status, WebRequest request) {
+		String path = joinPath(ex.getPath());
+	    
+	    ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
+	    
+	    String detail = String.format("A propriedade '%s' não existe. "
+	            + "Corrija ou remova essa propriedade e tente novamente.", path);
+	    
+	    Problem problem = createProblemBuilder(status, problemType, detail).build();
+	    
+	    return handleExceptionInternal(ex, problem, headers, status, request);
+	}
+
+	/**
+	 * <h1>Criador de problemas</h1> <br>
+	 * 
+	 * <p>Ajuda formatar um problema retornan um tipo ProblemBuilder</p>
+	 * 
+	 * @param status 
+	 * @param problemType
+	 * @param detail
+	 * @return Problem.ProblemBuilder
+	 */
 	private Problem.ProblemBuilder createProblemBuilder(HttpStatus status, ProblemType problemType, String detail) {
 
 		return Problem.builder().status(status.value()).type(problemType.getUri()).title(problemType.getTitle())
@@ -102,7 +135,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 			HttpStatus status, WebRequest request) {
 
 		// buscar nome da propriedade
-		String path = ex.getPath().stream().map(ref -> ref.getFieldName()).collect(Collectors.joining("."));
+		String path = joinPath(ex.getPath());
 
 		ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
 		
@@ -114,6 +147,24 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		
 		return handleExceptionInternal(ex, problem, headers, status, request);
 		
+	}
+
+	
+	/**
+	 * 
+	 * Criei o método <b>joinPath</b> para reaproveitar em todos os métodos que precisam
+	 * concatenar os nomes das propriedades (separando por ".")
+	 * 
+	 * Informe a referência (lista de fileds) do pacote:
+	 * 
+	 * <em>com.fasterxml.jackson.databind.JsonMappingException.Reference</em>
+	 * @param references
+	 * @return String
+	 */
+	private String joinPath(List<Reference> references) {
+		return references.stream()
+				.map(ref -> ref.getFieldName())
+				.collect(Collectors.joining("."));
 	}
 
 }
