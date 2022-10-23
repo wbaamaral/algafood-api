@@ -164,38 +164,38 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
    7.11. Reparando migrações com erros :feet:\
    7.12 Desafio: Criando migrações e mapeando as entidades Pedido e ItemPedido :feet:
 
-8. Tratamento e modelagem de erros da API   
-    8.1. Introdução ao tratamento e modelagem de erros \
-    8.2. Lançando exceções customizadas anotadas com @ResponseStatus \
-    8.3. Lançando exceções do tipo ResponseStatusException \
-    8.4. Estendendo ResponseStatusException \
-    8.5. Simplificando o código com o uso de @ResponseStatus em exceptions \
-    8.6. Desafio: refatorando os serviços REST \
-    8.7. Analisando os impactos da refatoração \
-    8.8. Criando a exception NegocioException \
-    8.9. Desafio: usando a exception NegocioException \
-    8.10. Afinando a granularidade e definindo a hierarquia das exceptions de negócios \
-    8.11. Desafio: lançando exceptions de granularidade fina \
-    8.12. Tratando exceções em nível de controlador com @ExceptionHandler \
-    8.13. Tratando exceções globais com @ExceptionHandler e @ControllerAdvice \
-    8.14. Desafio: implementando exception handler \
-    8.15. Criando um exception handler global com ResponseEntityExceptionHandler \
-    8.16. Customizando o corpo da resposta padrão de ResponseEntityExceptionHandler \
-    8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs)
-    8.18. Padronizando o formato de problemas no corpo de respostas com a RFC 7807
-    8.19. Desafio: usando o formato de problemas no corpo de respostas
-    8.20. Customizando exception handlers de ResponseEntityExceptionHandler
-    8.21. Tratando a exception InvalidFormatException na desserialização
-    8.22. Habilitando erros na desserialização de propriedades inexistentes ou ignoradas
-    8.23. Desafio: tratando a PropertyBindingException na desserialização
-    8.24. Lançando exception de desserialização na atualização parcial (PATCH)
-    8.25. Desafio: tratando exception de parâmetro de URL inválido
-    8.26. Desafio: tratando a exceção NoHandlerFoundException
-    8.27. Desafio: tratando outras exceções não capturadas
-    8.28. Estendendo o formato do problema para adicionar novas propriedades
-    8.29. Desafio: estendendo o formato do problema
+8. Tratamento e modelagem de erros da API :white_check_mark:   
+    8.1. Introdução ao tratamento e modelagem de erros :feet:\
+    8.2. Lançando exceções customizadas anotadas com @ResponseStatus :feet:\
+    8.3. Lançando exceções do tipo ResponseStatusException :feet:\
+    8.4. Estendendo ResponseStatusException :feet:\
+    8.5. Simplificando o código com o uso de @ResponseStatus em exceptions :feet:\
+    8.6. Desafio: refatorando os serviços REST :feet:\
+    8.7. Analisando os impactos da refatoração :feet:\
+    8.8. Criando a exception NegocioException :feet:\
+    8.9. Desafio: usando a exception NegocioException :feet:\
+    8.10. Afinando a granularidade e definindo a hierarquia das exceptions de negócios :feet:\
+    8.11. Desafio: lançando exceptions de granularidade fina :feet:\
+    8.12. Tratando exceções em nível de controlador com @ExceptionHandler :feet:\
+    8.13. Tratando exceções globais com @ExceptionHandler e @ControllerAdvice :feet:\
+    8.14. Desafio: implementando exception handler :feet:\
+    8.15. Criando um exception handler global com ResponseEntityExceptionHandler :feet:\
+    8.16. Customizando o corpo da resposta padrão de ResponseEntityExceptionHandler :feet:\
+    8.17. Conhecendo a RFC 7807 (Problem Details for HTTP APIs) :feet:\
+    8.18. Padronizando o formato de problemas no corpo de respostas com a RFC 7807 :feet:\
+    8.19. Desafio: usando o formato de problemas no corpo de respostas :feet:\
+    8.20. Customizando exception handlers de ResponseEntityExceptionHandler :feet:\
+    8.21. Tratando a exception InvalidFormatException na desserialização :feet:\
+    8.22. Habilitando erros na desserialização de propriedades inexistentes ou ignoradas :feet:\
+    8.23. Desafio: tratando a PropertyBindingException na desserialização   :feet:\
+    8.24. Lançando exception de desserialização na atualização parcial (PATCH) :feet:\
+    8.25. Desafio: tratando exception de parâmetro de URL inválido :feet:\
+    8.26. Desafio: tratando a exceção NoHandlerFoundException :feet:\
+    8.27. Desafio: tratando outras exceções não capturadas :feet:\
+    8.28. Estendendo o formato do problema para adicionar novas propriedades :feet:\
+    8.29. Desafio: estendendo o formato do problema :feet:
 
-9.  Validações com Bean Validation    
+9.  Validações com Bean Validation  :triangular_flag_on_post:  
     9.1. Validação do modelo com Bean Validation \
     9.2. Adicionando constraints e validando no controller com @Valid \
     9.3. Desafio: tratando exception de violação de constraints de validação \
