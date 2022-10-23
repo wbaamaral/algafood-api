@@ -196,7 +196,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.29. Desafio: estendendo o formato do problema :feet:
 
 9.  Validações com Bean Validation  :triangular_flag_on_post:  
-    9.1. Validação do modelo com Bean Validation \
+    9.1. Validação do modelo com Bean Validation :feet:\
     9.2. Adicionando constraints e validando no controller com @Valid \
     9.3. Desafio: tratando exception de violação de constraints de validação \
     9.3. Estendendo o Problem Details para adicionar as propriedades com constraints violadas \
