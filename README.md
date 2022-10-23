@@ -192,8 +192,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.25. Desafio: tratando exception de parâmetro de URL inválido :feet:\
     8.26. Desafio: tratando a exceção NoHandlerFoundException :feet:\
     8.27. Desafio: tratando outras exceções não capturadas :feet:\
-    8.28. Estendendo o formato do problema para adicionar novas propriedades \
-    8.29. Desafio: estendendo o formato do problema 
+    8.28. Estendendo o formato do problema para adicionar novas propriedades :feet:\
+    8.29. Desafio: estendendo o formato do problema :feet:
 
 9.  Validações com Bean Validation    
     9.1. Validação do modelo com Bean Validation \
