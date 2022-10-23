@@ -188,7 +188,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.21. Tratando a exception InvalidFormatException na desserialização :feet:\
     8.22. Habilitando erros na desserialização de propriedades inexistentes ou ignoradas :feet:\
     8.23. Desafio: tratando a PropertyBindingException na desserialização   :feet:\
-    8.24. Lançando exception de desserialização na atualização parcial (PATCH) \
+    8.24. Lançando exception de desserialização na atualização parcial (PATCH) :feet:\
     8.25. Desafio: tratando exception de parâmetro de URL inválido \
     8.26. Desafio: tratando a exceção NoHandlerFoundException \
     8.27. Desafio: tratando outras exceções não capturadas \
