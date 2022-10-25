@@ -26,6 +26,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.wbaamaral.algafoodapi.Groups;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -39,18 +40,21 @@ public class Restaurante {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(groups = {Groups.CadastroRestaurante.class})
+	@EqualsAndHashCode.Include
 	@Column(nullable = false)
 	private String nome;
 
 	//@DecimalMin("0")
-	@PositiveOrZero
+	@PositiveOrZero(groups = {Groups.CadastroRestaurante.class})
+	@EqualsAndHashCode.Include
 	@Column(name = "taxa_frete", nullable = false)
 	private BigDecimal taxaFrete;
 
 //	@JsonIgnore
 	@Valid
-	@NotNull
+	@NotNull(groups = {Groups.CadastroRestaurante.class})
+	@EqualsAndHashCode.Include
 	@ManyToOne // (fetch = FetchType.LAZY)
 	@JoinColumn(name = "cozinha_id", nullable = false)
 	private Cozinha cozinha;
