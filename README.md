@@ -198,7 +198,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
 9.  Validações com Bean Validation  :triangular_flag_on_post:  
     9.1. Validação do modelo com Bean Validation :feet:\
     9.2. Adicionando constraints e validando no controller com @Valid :feet:\
-    9.3. Desafio: tratando exception de violação de constraints de validação \
+    9.3. Desafio: tratando exception de violação de constraints de validação :feet:\
     9.3. Estendendo o Problem Details para adicionar as propriedades com constraints violadas \
     9.4. Conhecendo e adicionando mais constraints de validação no modelo \
     9.5. Validando as associações de uma entidade em cascata \
