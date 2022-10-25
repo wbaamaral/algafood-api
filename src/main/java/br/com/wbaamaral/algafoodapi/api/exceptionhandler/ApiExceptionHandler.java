@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.databind.exc.PropertyBindingException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
+import net.bytebuddy.implementation.bind.MethodDelegationBinder.BindingResolver;
 
 /**
  * @author wbaamaral
@@ -179,8 +181,13 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		ProblemType problemType = ProblemType.DADOS_INVALIDOS;
 	    String detail = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.";
 	    
+	    BindingResult  bindingResult = ex.getBindingResult();
+
+	    List<Problem.Field> problemFields = null;
+	
 	    Problem problem = createProblemBuilder(status, problemType, detail)
 	    		.userMessage(detail)
+	    		.fields(problemFields)
 	    		.build();
 	    
 	    ex.printStackTrace();
