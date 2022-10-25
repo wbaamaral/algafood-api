@@ -12,10 +12,11 @@ public interface Groups {
 
 	/**
 	 * <b>Validar restaurante</b>
+	 * 
 	 * @author wbaamaral
 	 *
 	 */
-	public interface CadastroRestaurante {
+	public interface CozinhaId {
 	}
 
 }

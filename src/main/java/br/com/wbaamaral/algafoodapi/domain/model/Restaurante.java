@@ -20,6 +20,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
+import javax.validation.groups.ConvertGroup;
+import javax.validation.groups.Default;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -39,21 +41,22 @@ public class Restaurante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotBlank(groups = {Groups.CadastroRestaurante.class})
+
+	@NotBlank
 	@EqualsAndHashCode.Include
 	@Column(nullable = false)
 	private String nome;
 
-	//@DecimalMin("0")
-	@PositiveOrZero(groups = {Groups.CadastroRestaurante.class})
+	// @DecimalMin("0")
+	@PositiveOrZero
 	@EqualsAndHashCode.Include
 	@Column(name = "taxa_frete", nullable = false)
 	private BigDecimal taxaFrete;
 
 //	@JsonIgnore
 	@Valid
-	@NotNull(groups = {Groups.CadastroRestaurante.class})
+	@NotNull
+	@ConvertGroup(from = Default.class, to = Groups.CozinhaId.class)
 	@EqualsAndHashCode.Include
 	@ManyToOne // (fetch = FetchType.LAZY)
 	@JoinColumn(name = "cozinha_id", nullable = false)
