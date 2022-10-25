@@ -201,7 +201,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.3. Desafio: tratando exception de violação de constraints de validação :feet:\
     9.3. Estendendo o Problem Details para adicionar as propriedades com constraints violadas :feet:\
     9.4. Conhecendo e adicionando mais constraints de validação no modelo :feet:\
-    9.5. Validando as associações de uma entidade em cascata \
+    9.5. Validando as associações de uma entidade em cascata :feet:\
     9.6. Agrupando e restringindo constraints que devem ser usadas na validação \
     9.7. Convertendo grupos de constraints para validação em cascata com @ConvertGroup \
     9.8. Desafio: adicionando constraints de validação no modelo \
