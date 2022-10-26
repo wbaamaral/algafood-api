@@ -205,7 +205,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.6. Agrupando e restringindo constraints que devem ser usadas na validação :feet:\
     9.7. Convertendo grupos de constraints para validação em cascata com @ConvertGroup :feet:\
     9.8. Desafio: adicionando constraints de validação no modelo :feet:\
-    9.9. Customizando mensagens de validação na anotação da constraint \
+    9.9. Customizando mensagens de validação na anotação da constraint :feet:\
     9.10. Customizando e resolvendo mensagens de validação globais em Resource Bundle \
     9.11. Desafio: customizando mensagens de validação \
     9.12. Resolvendo mensagens de validação com Resource Bundle do Bean Validation \

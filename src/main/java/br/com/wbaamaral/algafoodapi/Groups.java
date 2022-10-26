@@ -11,7 +11,7 @@ package br.com.wbaamaral.algafoodapi;
 public interface Groups {
 
 	/**
-	 * <b>Validar restaurante</b>
+	 * Grupo de validação para restaurantes
 	 * 
 	 * @author wbaamaral
 	 *
@@ -19,4 +19,12 @@ public interface Groups {
 	public interface CozinhaId {
 	}
 
+	/**
+	 * Grupo de validação para estados
+	 * 
+	 * @author wbaamaral
+	 *
+	 */
+	public interface EstadoId {
+	}
 }
