@@ -206,7 +206,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.7. Convertendo grupos de constraints para validação em cascata com @ConvertGroup :feet:\
     9.8. Desafio: adicionando constraints de validação no modelo :feet:\
     9.9. Customizando mensagens de validação na anotação da constraint :feet:\
-    9.10. Customizando e resolvendo mensagens de validação globais em Resource Bundle \
+    9.10. Customizando e resolvendo mensagens de validação globais em Resource Bundle :feet:\
     9.11. Desafio: customizando mensagens de validação \
     9.12. Resolvendo mensagens de validação com Resource Bundle do Bean Validation \
     9.13. Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation \
@@ -217,7 +217,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.18. Executando processo de validação programaticamente \
     9.19. Desafio: tratando a exception customizada de validações programáticas 
 
-10. Testes de integração
+10. Testes de integração \
     10.1. Introdução aos Testes de Integração e Testes de APIs \
     10.2. Preparando o projeto para testes de integração \
     10.3. Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ \
