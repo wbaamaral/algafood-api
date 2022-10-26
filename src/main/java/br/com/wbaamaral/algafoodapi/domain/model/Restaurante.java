@@ -42,12 +42,12 @@ public class Restaurante {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "Nome é obrigatório")
+	@NotBlank
 	@EqualsAndHashCode.Include
 	@Column(nullable = false)
 	private String nome;
 
-	// @DecimalMin("0")
+	@NotNull
 	@PositiveOrZero
 	@EqualsAndHashCode.Include
 	@Column(name = "taxa_frete", nullable = false)
