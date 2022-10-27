@@ -209,7 +209,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.10. Customizando e resolvendo mensagens de validação globais em Resource Bundle :feet:\
     9.11. Desafio: customizando mensagens de validação :feet:\
     9.12. Resolvendo mensagens de validação com Resource Bundle do Bean Validation :feet:\
-    9.13. Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation \
+    9.13. Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation :feet:\
     9.14. Criando constraints de validação  customizadas usando composição \
     9.15. Criando constraints de validação customizadas com implementação de ConstraintValidator \
     9.16. Criando constraints de validação customizadas em nível de classe \
