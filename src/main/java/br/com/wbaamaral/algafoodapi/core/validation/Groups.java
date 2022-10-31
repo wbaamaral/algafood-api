@@ -1,4 +1,4 @@
-package br.com.wbaamaral.algafoodapi;
+package br.com.wbaamaral.algafoodapi.core.validation;
 
 /**
  * <h1>Interface de marcação</h1>
