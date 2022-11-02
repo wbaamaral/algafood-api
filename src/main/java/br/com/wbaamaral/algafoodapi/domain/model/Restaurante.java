@@ -19,7 +19,6 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
 import javax.validation.groups.ConvertGroup;
 import javax.validation.groups.Default;
 
@@ -31,9 +30,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import br.com.wbaamaral.algafoodapi.core.validation.Groups;
 import br.com.wbaamaral.algafoodapi.core.validation.Multiplo;
 import br.com.wbaamaral.algafoodapi.core.validation.TaxaFrete;
+import br.com.wbaamaral.algafoodapi.core.validation.ValorZeroIncluiDescricao;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+@ValorZeroIncluiDescricao(valorField = "taxaFrete", descricaoField = "nome", descricaoObrigatoria = "Frete Grátis")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -51,7 +52,7 @@ public class Restaurante {
 
 	@NotNull
 	@TaxaFrete
-	@Multiplo( numero = 5)
+	@Multiplo(numero = 5)
 	@EqualsAndHashCode.Include
 	@Column(name = "taxa_frete", nullable = false)
 	private BigDecimal taxaFrete;
