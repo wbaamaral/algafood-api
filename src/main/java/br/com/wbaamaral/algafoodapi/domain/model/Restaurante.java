@@ -16,15 +16,25 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.groups.ConvertGroup;
+import javax.validation.groups.Default;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.wbaamaral.algafoodapi.core.validation.Groups;
+import br.com.wbaamaral.algafoodapi.core.validation.Multiplo;
+import br.com.wbaamaral.algafoodapi.core.validation.TaxaFrete;
+import br.com.wbaamaral.algafoodapi.core.validation.ValorZeroIncluiDescricao;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+@ValorZeroIncluiDescricao(valorField = "taxaFrete", descricaoField = "nome", descricaoObrigatoria = "Frete Grátis")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -35,13 +45,23 @@ public class Restaurante {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotBlank
+	@EqualsAndHashCode.Include
 	@Column(nullable = false)
 	private String nome;
 
+	@NotNull
+	@TaxaFrete
+	//@Multiplo(numero = 5)
+	@EqualsAndHashCode.Include
 	@Column(name = "taxa_frete", nullable = false)
 	private BigDecimal taxaFrete;
 
 //	@JsonIgnore
+	@Valid
+	@NotNull
+	@ConvertGroup(from = Default.class, to = Groups.CozinhaId.class)
+	@EqualsAndHashCode.Include
 	@ManyToOne // (fetch = FetchType.LAZY)
 	@JoinColumn(name = "cozinha_id", nullable = false)
 	private Cozinha cozinha;

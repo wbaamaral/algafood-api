@@ -195,29 +195,29 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.28. Estendendo o formato do problema para adicionar novas propriedades :feet:\
     8.29. Desafio: estendendo o formato do problema :feet:
 
-9.  Validações com Bean Validation  :triangular_flag_on_post:  
-    9.1. Validação do modelo com Bean Validation \
-    9.2. Adicionando constraints e validando no controller com @Valid \
-    9.3. Desafio: tratando exception de violação de constraints de validação \
-    9.3. Estendendo o Problem Details para adicionar as propriedades com constraints violadas \
-    9.4. Conhecendo e adicionando mais constraints de validação no modelo \
-    9.5. Validando as associações de uma entidade em cascata \
-    9.6. Agrupando e restringindo constraints que devem ser usadas na validação \
-    9.7. Convertendo grupos de constraints para validação em cascata com @ConvertGroup \
-    9.8. Desafio: adicionando constraints de validação no modelo \
-    9.9. Customizando mensagens de validação na anotação da constraint \
-    9.10. Customizando e resolvendo mensagens de validação globais em Resource Bundle \
-    9.11. Desafio: customizando mensagens de validação \
-    9.12. Resolvendo mensagens de validação com Resource Bundle do Bean Validation \
-    9.13. Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation \
-    9.14. Criando constraints de validação  customizadas usando composição \
-    9.15. Criando constraints de validação customizadas com implementação de ConstraintValidator \
-    9.16. Criando constraints de validação customizadas em nível de classe \
-    9.17. Ajustando Exception Handler para adicionar mensagens de validação em nível de classe \
-    9.18. Executando processo de validação programaticamente \
-    9.19. Desafio: tratando a exception customizada de validações programáticas 
+9.  Validações com Bean Validation  :white_check_mark:  
+    9.1. Validação do modelo com Bean Validation :feet:\
+    9.2. Adicionando constraints e validando no controller com @Valid :feet:\
+    9.3. Desafio: tratando exception de violação de constraints de validação :feet:\
+    9.4. Estendendo o Problem Details para adicionar as propriedades com constraints violadas :feet:\
+    9.5. Conhecendo e adicionando mais constraints de validação no modelo :feet:\
+    9.6. Validando as associações de uma entidade em cascata :feet:\
+    9.7. Agrupando e restringindo constraints que devem ser usadas na validação :feet:\
+    9.8. Convertendo grupos de constraints para validação em cascata com @ConvertGroup :feet:\
+    9.9. Desafio: adicionando constraints de validação no modelo :feet:\
+    9.10. Customizando mensagens de validação na anotação da constraint :feet:\
+    9.11. Customizando e resolvendo mensagens de validação globais em Resource Bundle :feet:\
+    9.12. Desafio: customizando mensagens de validação :feet:\
+    9.13. Resolvendo mensagens de validação com Resource Bundle do Bean Validation :feet:\
+    9.14. Usando o Resource Bundle do Spring como Resource Bundle do Bean Validation :feet:\
+    9.15. Criando constraints de validação  customizadas usando composição :feet:\
+    9.16. Criando constraints de validação customizadas com implementação de ConstraintValidator :feet:\
+    9.17. Criando constraints de validação customizadas em nível de classe :feet:\
+    9.18. Ajustando Exception Handler para adicionar mensagens de validação em nível de classe :feet:\
+    9.19. Executando processo de validação programaticamente :feet:\
+    9.20. Desafio: tratando a exception customizada de validações programáticas :feet:
 
-10. Testes de integração
+10. Testes de integração :triangular_flag_on_post:\
     10.1. Introdução aos Testes de Integração e Testes de APIs \
     10.2. Preparando o projeto para testes de integração \
     10.3. Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ \
