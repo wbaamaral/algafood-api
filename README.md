@@ -214,7 +214,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.15. Criando constraints de validação customizadas com implementação de ConstraintValidator :feet:\
     9.16. Criando constraints de validação customizadas em nível de classe :feet:\
     9.17. Ajustando Exception Handler para adicionar mensagens de validação em nível de classe :feet:\
-    9.18. Executando processo de validação programaticamente \
+    9.18. Executando processo de validação programaticamente :feet:\
     9.19. Desafio: tratando a exception customizada de validações programáticas 
 
 10. Testes de integração \

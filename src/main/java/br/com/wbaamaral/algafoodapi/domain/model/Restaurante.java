@@ -52,7 +52,7 @@ public class Restaurante {
 
 	@NotNull
 	@TaxaFrete
-	@Multiplo(numero = 5)
+	//@Multiplo(numero = 5)
 	@EqualsAndHashCode.Include
 	@Column(name = "taxa_frete", nullable = false)
 	private BigDecimal taxaFrete;
