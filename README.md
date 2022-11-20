@@ -195,7 +195,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     8.28. Estendendo o formato do problema para adicionar novas propriedades :feet:\
     8.29. Desafio: estendendo o formato do problema :feet:
 
-9.  Validações com Bean Validation  :triangular_flag_on_post:  
+9.  Validações com Bean Validation  :white_check_mark:  
     9.1. Validação do modelo com Bean Validation :feet:\
     9.2. Adicionando constraints e validando no controller com @Valid :feet:\
     9.3. Desafio: tratando exception de violação de constraints de validação :feet:\
@@ -215,9 +215,9 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.17. Criando constraints de validação customizadas em nível de classe :feet:\
     9.18. Ajustando Exception Handler para adicionar mensagens de validação em nível de classe :feet:\
     9.19. Executando processo de validação programaticamente :feet:\
-    9.20. Desafio: tratando a exception customizada de validações programáticas 
+    9.20. Desafio: tratando a exception customizada de validações programáticas :feet:
 
-10. Testes de integração \
+10. Testes de integração :triangular_flag_on_post:\
     10.1. Introdução aos Testes de Integração e Testes de APIs \
     10.2. Preparando o projeto para testes de integração \
     10.3. Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ \
