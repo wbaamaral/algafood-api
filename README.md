@@ -218,9 +218,9 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.20. Desafio: tratando a exception customizada de validações programáticas :feet:
 
 10. Testes de integração :triangular_flag_on_post:\
-    10.1. Introdução aos Testes de Integração e Testes de APIs \
-    10.2. Preparando o projeto para testes de integração \
-    10.3. Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ \
+    10.1. Introdução aos Testes de Integração e Testes de APIs :feet:\
+    10.2. Preparando o projeto para testes de integração :feet:\
+    10.3. Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ :feet:\
     10.4. Escrevendo bons nomes de testes \
     10.5. Desafio: escrevendo testes de integração \
     10.6. Rodando os testes pelo Maven \

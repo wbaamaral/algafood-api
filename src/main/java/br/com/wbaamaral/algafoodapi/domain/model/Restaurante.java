@@ -28,7 +28,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.wbaamaral.algafoodapi.core.validation.Groups;
-import br.com.wbaamaral.algafoodapi.core.validation.Multiplo;
 import br.com.wbaamaral.algafoodapi.core.validation.TaxaFrete;
 import br.com.wbaamaral.algafoodapi.core.validation.ValorZeroIncluiDescricao;
 import lombok.Data;
