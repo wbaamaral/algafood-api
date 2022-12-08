@@ -6,53 +6,52 @@ import javax.validation.ConstraintViolationException;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class CadastroCozinhaIntegrationTests {
 
-	@Autowired
-	private CadastroCozinhaService cadastroCozinha;
+   @Autowired
+   private CadastroCozinhaService cadastroCozinha;
 
-	/*
-	 * Caminho feliz
-	 */
-	@Test
-	public void testarCadastroCozinhaComSucesso() {
-		// cenário
-		Cozinha novaCozinha = new Cozinha();
-		novaCozinha.setNome("Chinesa");
+   /*
+    * Caminho feliz
+    */
+   @Test
+   public void testarCadastroCozinhaComSucesso() {
 
-		// ação
-		novaCozinha = cadastroCozinha.salvar(novaCozinha);
+      // cenário
+      Cozinha novaCozinha = new Cozinha();
+      novaCozinha.setNome("Chinesa");
 
-		// validação
-		assertThat(novaCozinha).isNotNull();
-		assertThat(novaCozinha.getId()).isNotNull();
-	}
+      // ação
+      novaCozinha = cadastroCozinha.salvar(novaCozinha);
 
-	/*
-	 * Caminho infeliz
-	 */
-	@Test
-	public void testarCadastroCozinhaSemNome() {
-		Cozinha novaCozinha = new Cozinha();
-		novaCozinha.setNome(null);
+      // validação
+      assertThat(novaCozinha).isNotNull();
+      assertThat(novaCozinha.getId()).isNotNull();
+   }
 
-		ConstraintViolationException erroEsperado = Assertions.assertThrows(ConstraintViolationException.class, () -> {
-			cadastroCozinha.salvar(novaCozinha);
-		});
+   /*
+    * Caminho infeliz
+    */
+   @Test
+   public void testarCadastroCozinhaSemNome() {
 
-		System.out.println(erroEsperado.toString());
+      Cozinha novaCozinha = new Cozinha();
+      novaCozinha.setNome(null);
 
-		assertThat(erroEsperado).isNotNull();
-	}
+      ConstraintViolationException erroEsperado = Assertions.assertThrows(ConstraintViolationException.class, () -> {
+         cadastroCozinha.salvar(novaCozinha);
+      });
+
+      System.out.println(erroEsperado.toString());
+
+      assertThat(erroEsperado).isNotNull();
+   }
 
 }
