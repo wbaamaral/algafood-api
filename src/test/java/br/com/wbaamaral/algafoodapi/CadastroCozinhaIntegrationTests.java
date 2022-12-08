@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
 
@@ -50,6 +51,16 @@ public class CadastroCozinhaIntegrationTests {
       });
 
       System.out.println(erroEsperado.toString());
+
+      assertThat(erroEsperado).isNotNull();
+   }
+
+   @Test
+   public void deveFalhar_QuandoExcluirCozinhaEmUso() {
+
+      EntidadeEmUsoException erroEsperado = Assertions.assertThrows(EntidadeEmUsoException.class, () -> {
+         cadastroCozinha.excluir(1L);
+      });
 
       assertThat(erroEsperado).isNotNull();
    }
