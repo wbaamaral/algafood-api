@@ -1,6 +1,8 @@
 package br.com.wbaamaral.algafoodapi;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,5 +37,24 @@ public class CadastroCozinhaIntegrationTestsIT {
          .statusCode(HttpStatus.OK.value());
 
       // @formatter:on
+   }
+
+   @Test
+   public void deveConter4Cozinhas_QaundoConsultarCozinhas() {
+
+   // @formatter:off
+      RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+      
+      given()
+         .basePath(BASE_URI)
+         .port(port)
+         .accept(ContentType.JSON)
+       .when()
+         .get()
+       .then()
+         .body("", hasSize(5))
+         .body("nome", hasItems("Indiana", "Tailandesa"));
+   // @formatter:on
+
    }
 }
