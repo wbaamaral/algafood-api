@@ -15,7 +15,7 @@ import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
 
 @SpringBootTest
-public class CadastroCozinhaIntegrationTests {
+public class CadastroCozinhaIntegrationTestsIT {
 
 	private static final Long COZINHA_EXISTENTE_EM_USO = 1L;
 	private static final Long COZINHA_INESISTENTE = 1_000_000_000L;
