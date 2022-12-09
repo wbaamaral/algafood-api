@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import br.com.wbaamaral.algafoodapi.domain.exception.CozinhaNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
@@ -16,6 +17,9 @@ import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
 @SpringBootTest
 public class CadastroCozinhaIntegrationTests {
 
+	private static final Long COZINHA_EXISTENTE_EM_USO = 1L;
+	private static final Long COZINHA_INESISTENTE = 1_000_000_000L;
+	
 	@Autowired
 	private CadastroCozinhaService cadastroCozinha;
 
@@ -59,10 +63,19 @@ public class CadastroCozinhaIntegrationTests {
 	public void deveFalharAoExcluirCozinhaEmUso() {
 
 		EntidadeEmUsoException erroEsperado = Assertions.assertThrows(EntidadeEmUsoException.class, () -> {
-			cadastroCozinha.excluir(1L);
+			cadastroCozinha.excluir(COZINHA_EXISTENTE_EM_USO);
 		});
 
 		assertThat(erroEsperado).isNotNull();
 	}
 
+	@Test
+	public void deveFalharAoExcluirCozinhaInesistente() {
+		
+		CozinhaNaoEncontradaException erroesperado = Assertions.assertThrows(CozinhaNaoEncontradaException.class, () -> {
+			cadastroCozinha.excluir(COZINHA_INESISTENTE);
+		});
+		
+		assertThat(erroesperado).isNotNull();
+	}
 }
