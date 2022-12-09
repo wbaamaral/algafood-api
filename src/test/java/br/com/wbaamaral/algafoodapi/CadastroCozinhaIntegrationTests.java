@@ -16,53 +16,53 @@ import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
 @SpringBootTest
 public class CadastroCozinhaIntegrationTests {
 
-   @Autowired
-   private CadastroCozinhaService cadastroCozinha;
+	@Autowired
+	private CadastroCozinhaService cadastroCozinha;
 
-   /*
-    * Caminho feliz
-    */
-   @Test
-   public void testarCadastroCozinhaComSucesso() {
+	/*
+	 * Caminho feliz
+	 */
+	@Test
+	public void deveCadastrarCozinhaComSucesso() {
 
-      // cenário
-      Cozinha novaCozinha = new Cozinha();
-      novaCozinha.setNome("Chinesa");
+		// cenário
+		Cozinha novaCozinha = new Cozinha();
+		novaCozinha.setNome("Chinesa");
 
-      // ação
-      novaCozinha = cadastroCozinha.salvar(novaCozinha);
+		// ação
+		novaCozinha = cadastroCozinha.salvar(novaCozinha);
 
-      // validação
-      assertThat(novaCozinha).isNotNull();
-      assertThat(novaCozinha.getId()).isNotNull();
-   }
+		// validação
+		assertThat(novaCozinha).isNotNull();
+		assertThat(novaCozinha.getId()).isNotNull();
+	}
 
-   /*
-    * Caminho infeliz
-    */
-   @Test
-   public void testarCadastroCozinhaSemNome() {
+	/*
+	 * Caminho infeliz
+	 */
+	@Test
+	public void deveFalharAoCadastrarCozinhaSemNome() {
 
-      Cozinha novaCozinha = new Cozinha();
-      novaCozinha.setNome(null);
+		Cozinha novaCozinha = new Cozinha();
+		novaCozinha.setNome(null);
 
-      ConstraintViolationException erroEsperado = Assertions.assertThrows(ConstraintViolationException.class, () -> {
-         cadastroCozinha.salvar(novaCozinha);
-      });
+		ConstraintViolationException erroEsperado = Assertions.assertThrows(ConstraintViolationException.class, () -> {
+			cadastroCozinha.salvar(novaCozinha);
+		});
 
-      System.out.println(erroEsperado.toString());
+		System.out.println(erroEsperado.toString());
 
-      assertThat(erroEsperado).isNotNull();
-   }
+		assertThat(erroEsperado).isNotNull();
+	}
 
-   @Test
-   public void deveFalhar_QuandoExcluirCozinhaEmUso() {
+	@Test
+	public void deveFalharAoExcluirCozinhaEmUso() {
 
-      EntidadeEmUsoException erroEsperado = Assertions.assertThrows(EntidadeEmUsoException.class, () -> {
-         cadastroCozinha.excluir(1L);
-      });
+		EntidadeEmUsoException erroEsperado = Assertions.assertThrows(EntidadeEmUsoException.class, () -> {
+			cadastroCozinha.excluir(1L);
+		});
 
-      assertThat(erroEsperado).isNotNull();
-   }
+		assertThat(erroEsperado).isNotNull();
+	}
 
 }
