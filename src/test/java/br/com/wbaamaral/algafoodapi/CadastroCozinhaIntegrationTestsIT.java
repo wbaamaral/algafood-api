@@ -1,81 +1,39 @@
 package br.com.wbaamaral.algafoodapi;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static io.restassured.RestAssured.given;
 
-import javax.validation.ConstraintViolationException;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
 
-import br.com.wbaamaral.algafoodapi.domain.exception.CozinhaNaoEncontradaException;
-import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
-import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
-import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CadastroCozinhaIntegrationTestsIT {
 
-	private static final Long COZINHA_EXISTENTE_EM_USO = 1L;
-	private static final Long COZINHA_INESISTENTE = 1_000_000_000L;
-	
-	@Autowired
-	private CadastroCozinhaService cadastroCozinha;
+   @LocalServerPort
+   private int port;
 
-	/*
-	 * Caminho feliz
-	 */
-	@Test
-	public void deveCadastrarCozinhaComSucesso() {
+   private final String BASE_URI = "/cozinhas";
 
-		// cenário
-		Cozinha novaCozinha = new Cozinha();
-		novaCozinha.setNome("Chinesa");
+   @Test
+   public void devRetornarStatus200_QaundoConsultarCozinhas() {
 
-		// ação
-		novaCozinha = cadastroCozinha.salvar(novaCozinha);
+      // @formatter:off
+      RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
-		// validação
-		assertThat(novaCozinha).isNotNull();
-		assertThat(novaCozinha.getId()).isNotNull();
-	}
+      given()
+         .basePath(BASE_URI)
+         .port(port)
+         .accept(ContentType.JSON)
+       .when()
+         .get()
+       .then()
+         .statusCode(HttpStatus.OK.value());
 
-	/*
-	 * Caminho infeliz
-	 */
-	@Test
-	public void deveFalharAoCadastrarCozinhaSemNome() {
-
-		Cozinha novaCozinha = new Cozinha();
-		novaCozinha.setNome(null);
-
-		ConstraintViolationException erroEsperado = Assertions.assertThrows(ConstraintViolationException.class, () -> {
-			cadastroCozinha.salvar(novaCozinha);
-		});
-
-		System.out.println(erroEsperado.toString());
-
-		assertThat(erroEsperado).isNotNull();
-	}
-
-	@Test
-	public void deveFalharAoExcluirCozinhaEmUso() {
-
-		EntidadeEmUsoException erroEsperado = Assertions.assertThrows(EntidadeEmUsoException.class, () -> {
-			cadastroCozinha.excluir(COZINHA_EXISTENTE_EM_USO);
-		});
-
-		assertThat(erroEsperado).isNotNull();
-	}
-
-	@Test
-	public void deveFalharAoExcluirCozinhaInesistente() {
-		
-		CozinhaNaoEncontradaException erroesperado = Assertions.assertThrows(CozinhaNaoEncontradaException.class, () -> {
-			cadastroCozinha.excluir(COZINHA_INESISTENTE);
-		});
-		
-		assertThat(erroesperado).isNotNull();
-	}
+      // @formatter:on
+   }
 }
