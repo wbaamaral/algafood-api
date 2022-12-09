@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -16,20 +17,25 @@ import io.restassured.http.ContentType;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CadastroCozinhaIntegrationTestsIT {
 
+   private final String BASE_URI = "/cozinhas";
+
    @LocalServerPort
    private int port;
 
-   private final String BASE_URI = "/cozinhas";
+   @BeforeEach
+   public void setuUP() {
+
+      RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+      RestAssured.basePath = BASE_URI;
+      RestAssured.port = port;
+
+   }
 
    @Test
    public void devRetornarStatus200_QaundoConsultarCozinhas() {
 
       // @formatter:off
-      RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-
       given()
-         .basePath(BASE_URI)
-         .port(port)
          .accept(ContentType.JSON)
        .when()
          .get()
@@ -43,17 +49,15 @@ public class CadastroCozinhaIntegrationTestsIT {
    public void deveConter4Cozinhas_QaundoConsultarCozinhas() {
 
    // @formatter:off
-      RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-      
+
       given()
-         .basePath(BASE_URI)
-         .port(port)
          .accept(ContentType.JSON)
        .when()
          .get()
        .then()
          .body("", hasSize(5))
          .body("nome", hasItems("Indiana", "Tailandesa"));
+      
    // @formatter:on
 
    }
