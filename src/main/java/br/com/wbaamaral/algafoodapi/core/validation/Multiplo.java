@@ -21,11 +21,11 @@ import javax.validation.Payload;
 @Constraint(validatedBy = { MultiploValidator.class })
 public @interface Multiplo {
 
-	String message() default "{Multiplo.invalido}";
+  String message() default "{Multiplo.invalido}";
 
-	Class<?>[] groups() default {};
+  Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+  Class<? extends Payload>[] payload() default {};
 
-	int numero();
+  int numero();
 }
