@@ -221,20 +221,20 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     10.1. Introdução aos Testes de Integração e Testes de APIs :feet:\
     10.2. Preparando o projeto para testes de integração :feet:\
     10.3. Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ :feet:\
-    10.4. Escrevendo bons nomes de testes \
-    10.5. Desafio: escrevendo testes de integração \
-    10.6. Rodando os testes pelo Maven \
-    10.7. Configurando Maven Failsafe Plugin no projeto \
-    10.8. Implementando Testes de API com REST Assured e validando o código de status HTTP \
-    10.9. Validando o corpo da resposta HTTP \
-    10.10. Criando um método para fazer setup dos testes \
-    10.11. Entendendo o problema da ordem de execução dos testes \
-    10.12. Voltando o estado inicial do banco de dados para cada execução de teste com callback do Flyway \
-    10.13. Configurando um banco de testes e usando @TestPropertySource \
-    10.14. Limpando e populando o banco de dados de teste \
-    10.15. Testando endpoint passando parâmetro de URL \
-    10.16. Desafio: refatorando o código de testes \
-    10.17. Desafio: escrevendo testes de API 
+    10.4. Escrevendo bons nomes de testes  :feet:\
+    10.5. Desafio: escrevendo testes de integração  :feet:\
+    10.6. Rodando os testes pelo Maven  :feet:\
+    10.7. Configurando Maven Failsafe Plugin no projeto  :feet:\
+    10.8. Implementando Testes de API com REST Assured e validando o código de status HTTP  :feet:\
+    10.9. Validando o corpo da resposta HTTP  :feet:\
+    10.10. Criando um método para fazer setup dos testes  :feet:\
+    10.11. Entendendo o problema da ordem de execução dos testes  :feet:\
+    10.12. Voltando o estado inicial do banco de dados para cada execução de teste com callback do Flyway  :feet:\
+    10.13. Configurando um banco de testes e usando @TestPropertySource  :feet:\
+    10.14. Limpando e populando o banco de dados de teste  :feet:\
+    10.15. Testando endpoint passando parâmetro de URL  :feet:\
+    10.16. Desafio: refatorando o código de testes :feet: \
+    10.17. Desafio: escrevendo testes de API :feet: 
 
 11. Boas práticas e técnicas para APIs    
     11.1. Analisando e definindo melhor o escopo das transações \
