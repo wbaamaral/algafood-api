@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.groups.ConvertGroup;
 import javax.validation.groups.Default;
 
@@ -26,7 +27,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import br.com.wbaamaral.algafoodapi.core.validation.Groups;
-import br.com.wbaamaral.algafoodapi.core.validation.TaxaFrete;
 import br.com.wbaamaral.algafoodapi.core.validation.ValorZeroIncluiDescricao;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,41 +41,40 @@ public class Restaurante {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
+  
   @NotBlank
-  @EqualsAndHashCode.Include
   @Column(nullable = false)
   private String nome;
-
+  
   @NotNull
-  @TaxaFrete
-  @EqualsAndHashCode.Include
+  @PositiveOrZero
   @Column(name = "taxa_frete", nullable = false)
   private BigDecimal taxaFrete;
-
+  
   @Valid
-  @NotNull
   @ConvertGroup(from = Default.class, to = Groups.CozinhaId.class)
-  @EqualsAndHashCode.Include
+  @NotNull
   @ManyToOne
   @JoinColumn(name = "cozinha_id", nullable = false)
   private Cozinha cozinha;
-
+  
   @Embedded
   private Endereco endereco;
-
+  
   @CreationTimestamp
   @Column(nullable = false, columnDefinition = "datetime")
   private LocalDateTime dataCadastro;
-
+  
   @UpdateTimestamp
   @Column(nullable = false, columnDefinition = "datetime")
   private LocalDateTime dataAtualizacao;
-
+  
   @ManyToMany
-  @JoinTable(name = "restaurante_forma_pagamento", joinColumns = @JoinColumn(name = "restaurante_id"), inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
+  @JoinTable(name = "restaurante_forma_pagamento",
+      joinColumns = @JoinColumn(name = "restaurante_id"),
+      inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
   private List<FormaPagamento> formasPagamento = new ArrayList<>();
-
+  
   @OneToMany(mappedBy = "restaurante")
   private List<Produto> produtos = new ArrayList<>();
 

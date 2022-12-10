@@ -12,23 +12,23 @@ import br.com.wbaamaral.algafoodapi.domain.model.Endereco;
 import br.com.wbaamaral.algafoodapi.domain.model.FormaPagamento;
 import br.com.wbaamaral.algafoodapi.domain.model.Produto;
 
-public abstract class RestauranteMixin {
-  
+public class RestauranteMixin {
+
   @JsonIgnoreProperties(value = "nome", allowGetters = true)
   private Cozinha cozinha;
-  
+
   @JsonIgnore
   private Endereco endereco;
-  
+
   @JsonIgnore
   private LocalDateTime dataCadastro;
-  
+
   @JsonIgnore
   private LocalDateTime dataAtualizacao;
-  
+
   @JsonIgnore
   private List<FormaPagamento> formasPagamento = new ArrayList<>();
-  
+
   @JsonIgnore
   private List<Produto> produtos = new ArrayList<>();
 }
