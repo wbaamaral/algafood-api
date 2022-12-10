@@ -239,8 +239,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
 11. Boas práticas e técnicas para APIs  :triangular_flag_on_post:  
     11.1. Analisando e definindo melhor o escopo das transações :feet:\
     11.2. Refinando o payload de cadastro com @JsonIgnoreProperties :feet:\
-    11.3. Criando classes de mixin para usar as anotações do Jackson \
-    11.4. Desafio: usando @JsonIgnoreProperties e Jackson Mixin \
+    11.3. Criando classes de mixin para usar as anotações do Jackson :feet:\
+    11.4. Desafio: usando @JsonIgnoreProperties e Jackson Mixin :feet:\
     11.5. Antes de estudar sobre data/hora: relembrando as aulas de geografia e entendendo os fusos horários \
     11.6. Boas práticas para trabalhar com data e hora em REST APIs \
     11.7. Configurando e refatorando o projeto para usar UTC \
