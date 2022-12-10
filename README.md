@@ -236,7 +236,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     10.16. Desafio: refatorando o código de testes :feet: \
     10.17. Desafio: escrevendo testes de API :feet: 
 
-11. Boas práticas e técnicas para APIs  :triangular_flag_on_post: \ 
+11. Boas práticas e técnicas para APIs  :triangular_flag_on_post:  
     11.1. Analisando e definindo melhor o escopo das transações :feet:\
     11.2. Refinando o payload de cadastro com @JsonIgnoreProperties :feet:\
     11.3. Criando classes de mixin para usar as anotações do Jackson \
