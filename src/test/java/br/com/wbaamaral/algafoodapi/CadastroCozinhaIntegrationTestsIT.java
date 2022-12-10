@@ -4,8 +4,10 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 
+import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -17,24 +19,29 @@ import io.restassured.http.ContentType;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CadastroCozinhaIntegrationTestsIT {
 
-   private final String BASE_URI = "/cozinhas";
+  private final String BASE_URI = "/cozinhas";
 
-   @LocalServerPort
-   private int port;
+  @LocalServerPort
+  private int port;
 
-   @BeforeEach
-   public void setuUP() {
+  @Autowired
+  private Flyway flyway;
 
-      RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-      RestAssured.basePath = BASE_URI;
-      RestAssured.port = port;
+  @BeforeEach
+  public void setuUP() {
 
-   }
+    RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+    RestAssured.basePath = BASE_URI;
+    RestAssured.port = port;
 
-   @Test
-   public void devRetornarStatus200_QaundoConsultarCozinhas() {
+    flyway.migrate();
 
-      // @formatter:off
+  }
+
+  @Test
+  public void devRetornarStatus200_QaundoConsultarCozinhas() {
+
+    // @formatter:off
       given()
          .accept(ContentType.JSON)
        .when()
@@ -43,10 +50,10 @@ public class CadastroCozinhaIntegrationTestsIT {
          .statusCode(HttpStatus.OK.value());
 
       // @formatter:on
-   }
+  }
 
-   @Test
-   public void deveConter4Cozinhas_QaundoConsultarCozinhas() {
+  @Test
+  public void deveConter4Cozinhas_QaundoConsultarCozinhas() {
 
    // @formatter:off
 
@@ -60,5 +67,18 @@ public class CadastroCozinhaIntegrationTestsIT {
       
    // @formatter:on
 
-   }
+  }
+
+  
+  @Test
+  public void testRetornarStatus201_QuandoCadastrarCozinha() {
+    given()
+        .body("{ \"nome\": \"Chinesa\" }")
+        .contentType(ContentType.JSON)
+        .accept(ContentType.JSON)
+        .when()
+        .post()
+        .then()
+        .statusCode(HttpStatus.CREATED.value());
+  }
 }
