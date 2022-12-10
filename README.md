@@ -217,7 +217,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.19. Executando processo de validação programaticamente :feet:\
     9.20. Desafio: tratando a exception customizada de validações programáticas :feet:
 
-10. Testes de integração :triangular_flag_on_post:\
+10. Testes de integração :white_check_mark:\
     10.1. Introdução aos Testes de Integração e Testes de APIs :feet:\
     10.2. Preparando o projeto para testes de integração :feet:\
     10.3. Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ :feet:\
@@ -236,9 +236,9 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     10.16. Desafio: refatorando o código de testes :feet: \
     10.17. Desafio: escrevendo testes de API :feet: 
 
-11. Boas práticas e técnicas para APIs    
-    11.1. Analisando e definindo melhor o escopo das transações \
-    11.2. Refinando o payload de cadastro com @JsonIgnoreProperties \
+11. Boas práticas e técnicas para APIs  :triangular_flag_on_post: \ 
+    11.1. Analisando e definindo melhor o escopo das transações :feet:\
+    11.2. Refinando o payload de cadastro com @JsonIgnoreProperties :feet:\
     11.3. Criando classes de mixin para usar as anotações do Jackson \
     11.4. Desafio: usando @JsonIgnoreProperties e Jackson Mixin \
     11.5. Antes de estudar sobre data/hora: relembrando as aulas de geografia e entendendo os fusos horários \
