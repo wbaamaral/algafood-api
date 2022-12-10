@@ -4,7 +4,6 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 
-import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,9 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.TestPropertySource;
 
+import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
+import br.com.wbaamaral.algafoodapi.domain.repository.CozinhaRepository;
+import br.com.wbaamaral.algafoodapi.util.DatabaseCleaner;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
@@ -27,7 +29,10 @@ public class CadastroCozinhaIntegrationTestsIT {
   private int port;
 
   @Autowired
-  private Flyway flyway;
+  private DatabaseCleaner dataBaseCleaner;
+
+  @Autowired
+  private CozinhaRepository cozinhaRepository;
 
   @BeforeEach
   public void setuUP() {
@@ -36,8 +41,18 @@ public class CadastroCozinhaIntegrationTestsIT {
     RestAssured.basePath = BASE_URI;
     RestAssured.port = port;
 
-    flyway.migrate();
+    dataBaseCleaner.clearTables();
+    prepararDados();
+  }
 
+  private void prepararDados() {
+    Cozinha cozinha1 = new Cozinha();
+    cozinha1.setNome("Tailandesa");
+    cozinhaRepository.save(cozinha1);
+
+    Cozinha cozinha2 = new Cozinha();
+    cozinha2.setNome("Americana");
+    cozinhaRepository.save(cozinha2);
   }
 
   @Test
@@ -57,17 +72,12 @@ public class CadastroCozinhaIntegrationTestsIT {
   @Test
   public void deveConter4Cozinhas_QaundoConsultarCozinhas() {
 
-   // @formatter:off
-
-      given()
-         .accept(ContentType.JSON)
-       .when()
-         .get()
-       .then()
-         .body("", hasSize(5))
-         .body("nome", hasItems("Indiana", "Tailandesa"));
-      
-   // @formatter:on
+    given()
+        .accept(ContentType.JSON)
+        .when()
+        .get()
+        .then()
+        .body("", hasSize(2));
 
   }
 
@@ -82,5 +92,5 @@ public class CadastroCozinhaIntegrationTestsIT {
         .then()
         .statusCode(HttpStatus.CREATED.value());
   }
-
+  
 }
