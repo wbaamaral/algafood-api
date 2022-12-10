@@ -1,7 +1,7 @@
 package br.com.wbaamaral.algafoodapi.domain.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,38 +24,38 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Pedido {
 
-	@EqualsAndHashCode.Include
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
+  @EqualsAndHashCode.Include
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long Id;
 
-	private BigDecimal subtotal;
-	private BigDecimal taxaFrete;
-	private BigDecimal valorTotal;
+  private BigDecimal subtotal;
+  private BigDecimal taxaFrete;
+  private BigDecimal valorTotal;
 
-	@Embedded
-	private Endereco enderecoEntrega;
+  @Embedded
+  private Endereco enderecoEntrega;
 
-	private StatusPedido status;
+  private StatusPedido status;
 
-	@CreationTimestamp
-	private LocalDateTime dataCriacao;
+  @CreationTimestamp
+  private OffsetDateTime dataCriacao;
 
-	private LocalDateTime dataCancelamento;
-	private LocalDateTime dataEntrega;
+  private OffsetDateTime dataCancelamento;
+  private OffsetDateTime dataEntrega;
 
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private FormaPagamento formapagmento;
+  @ManyToOne
+  @JoinColumn(nullable = false)
+  private FormaPagamento formapagmento;
 
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private Restaurante restaurante;
+  @ManyToOne
+  @JoinColumn(nullable = false)
+  private Restaurante restaurante;
 
-	@ManyToOne
-	@JoinColumn(name = "usuario_client_id", nullable = false)
-	private Usuario cliente;
+  @ManyToOne
+  @JoinColumn(name = "usuario_client_id", nullable = false)
+  private Usuario cliente;
 
-	@OneToMany(mappedBy = "pedido")
-	private List<ItemPedido> itens = new ArrayList<>();
+  @OneToMany(mappedBy = "pedido")
+  private List<ItemPedido> itens = new ArrayList<>();
 }

@@ -241,10 +241,10 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     11.2. Refinando o payload de cadastro com @JsonIgnoreProperties :feet:\
     11.3. Criando classes de mixin para usar as anotações do Jackson :feet:\
     11.4. Desafio: usando @JsonIgnoreProperties e Jackson Mixin :feet:\
-    11.5. Antes de estudar sobre data/hora: relembrando as aulas de geografia e entendendo os fusos horários \
-    11.6. Boas práticas para trabalhar com data e hora em REST APIs \
-    11.7. Configurando e refatorando o projeto para usar UTC \
-    11.8. Desafio: refatorando o código para usar OffsetDateTime \
+    11.5. Antes de estudar sobre data/hora: relembrando as aulas de geografia e entendendo os fusos horários :feet:\
+    11.6. Boas práticas para trabalhar com data e hora em REST APIs :feet:\
+    11.7. Configurando e refatorando o projeto para usar UTC :feet:\
+    11.8. Desafio: refatorando o código para usar OffsetDateTime :feet:\
     11.9. Isolando o Domain Model do Representation Model com o padrão DTO \
     11.10. Implementando a conversão de entidade para DTO \
     11.11. Criando DTOs para entrada de dados na API \
