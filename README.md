@@ -245,11 +245,11 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     11.6. Boas práticas para trabalhar com data e hora em REST APIs :feet:\
     11.7. Configurando e refatorando o projeto para usar UTC :feet:\
     11.8. Desafio: refatorando o código para usar OffsetDateTime :feet:\
-    11.9. Isolando o Domain Model do Representation Model com o padrão DTO \
-    11.10. Implementando a conversão de entidade para DTO \
-    11.11. Criando DTOs para entrada de dados na API \
-    11.12. Refatorando e criando um assembler de DTO \
-    11.13. Desafio: Refatorando e criando um disassembler do DTO \
+    11.9. Isolando o Domain Model do Representation Model com o padrão DTO :feet:\
+    11.10. Implementando a conversão de entidade para DTO :feet:\
+    11.11. Criando DTOs para entrada de dados na API :feet:\
+    11.12. Refatorando e criando um assembler de DTO :feet:\
+    11.13. Desafio: Refatorando e criando um disassembler do DTO :feet:\
     11.14. Adicionando e usando o ModelMapper \
     11.15. Entendendo a estratégia padrão do ModelMapper para correspondência de propriedades \
     11.16. Customizando o mapeamento de propriedades com ModelMapper \
