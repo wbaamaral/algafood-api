@@ -3,34 +3,26 @@ package br.com.wbaamaral.algafoodapi.api.assembler;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.wbaamaral.algafoodapi.api.model.CozinhaModel;
 import br.com.wbaamaral.algafoodapi.api.model.RestauranteModel;
 import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
 
 @Component
 public class RestauranteModelAssembler {
 
-  public RestauranteModel toModel(Restaurante restaurante) {
+	@Autowired
+	private ModelMapper modelMapper;
 
-    CozinhaModel cozinhaModel = new CozinhaModel();
-    cozinhaModel.setId(restaurante.getCozinha().getId());
-    cozinhaModel.setNome(restaurante.getCozinha().getNome());
+	public RestauranteModel toModel(Restaurante restaurante) {
 
-    RestauranteModel restauranteModel = new RestauranteModel();
-    restauranteModel.setId(restaurante.getId());
-    restauranteModel.setNome(restaurante.getNome());
-    restauranteModel.setTaxaFrete(restaurante.getTaxaFrete());
-    restauranteModel.setCozinha(cozinhaModel);
+		return modelMapper.map(restaurante, RestauranteModel.class);
+	}
 
-    return restauranteModel;
-  }
+	public List<RestauranteModel> toCollectionModel(List<Restaurante> restaurantes) {
 
-  public List<RestauranteModel> toCollectionModel(List<Restaurante> restaurantes) {
-
-    return restaurantes.stream()
-        .map(restaurante -> toModel(restaurante))
-        .collect(Collectors.toList());
-  }
+		return restaurantes.stream().map(restaurante -> toModel(restaurante)).collect(Collectors.toList());
+	}
 }

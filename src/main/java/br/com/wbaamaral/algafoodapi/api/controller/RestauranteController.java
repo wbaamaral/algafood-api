@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -73,18 +74,25 @@ public class RestauranteController {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@Transactional
 	public RestauranteModel adicionar(@RequestBody @Valid RestauranteInput restauranteInput) {
 		try {
 
 			Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
 
-			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restaurante));
+			RestauranteModel restauranteModel = restauranteModelAssembler
+					.toModel(cadastroRestaurante.salvar(restaurante));
+
+			restauranteRepository.flush();
+
+			return restauranteModel;
 		} catch (CozinhaNaoEncontradaException e) {
 			throw new NegocioException(e.getLocalizedMessage());
 		}
 	}
 
 	@PutMapping("/{restauranteId}")
+	@Transactional
 	public RestauranteModel atualizar(@PathVariable Long restauranteId,
 			@RequestBody @Valid RestauranteInput restauranteInput) {
 
@@ -96,13 +104,18 @@ public class RestauranteController {
 			BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formasPagamento", "endereco", "dataCadastro",
 					"produtos");
 
-			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restauranteAtual));
+			RestauranteModel restauranteModel = restauranteModelAssembler
+					.toModel(cadastroRestaurante.salvar(restauranteAtual));
+			restauranteRepository.flush();
+
+			return restauranteModel;
 		} catch (CozinhaNaoEncontradaException e) {
 			throw new NegocioException(e.getMessage());
 		}
 	}
 
 	@PatchMapping("/{restauranteId}")
+	@Transactional
 	public RestauranteModel atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos,
 			HttpServletRequest request) {
 
@@ -116,7 +129,9 @@ public class RestauranteController {
 
 		restaurante = restauranteInputDisassembler.toInputObInput(restauranteAtual);
 
-		return atualizar(restauranteId, restaurante);
+		RestauranteModel restauranteModel = atualizar(restauranteId, restaurante);
+		
+		return restauranteModel;
 	}
 
 	private void validarRestaurante(Restaurante restaurante, String objectName) {

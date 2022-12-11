@@ -1,9 +1,9 @@
 package br.com.wbaamaral.algafoodapi.api.assembler;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.wbaamaral.algafoodapi.api.model.RestauranteModel;
-import br.com.wbaamaral.algafoodapi.api.model.input.CozinhaInput;
 import br.com.wbaamaral.algafoodapi.api.model.input.RestauranteInput;
 import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
 import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
@@ -11,32 +11,24 @@ import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
 @Component
 public class RestauranteInputDisassembler {
 
-  public Restaurante toDomainObject(RestauranteInput restauranteInput) {
+	@Autowired
+	private ModelMapper modelMapper;
 
-    Restaurante restaurante = new Restaurante();
-    Cozinha cozinha = new Cozinha();
+	public Restaurante toDomainObject(RestauranteInput restauranteInput) {
 
-    cozinha.setId(restauranteInput.getCozinha().getId());
+		return modelMapper.map(restauranteInput, Restaurante.class);
+	}
 
-    restaurante.setNome(restauranteInput.getNome());
-    restaurante.setTaxaFrete(restauranteInput.getTaxaFrete());
-    restaurante.setCozinha(cozinha);
+	public void copyToDomainObject(RestauranteInput restauranteInput, Restaurante restaurante) {
+		// Para evitar org.hibernate.HibernateException: identifier of an instance of
+		// com.algaworks.algafood.domain.model.Cozinha was altered from 1 to 2
+		restaurante.setCozinha(new Cozinha());
 
-    return restaurante;
-  }
-  
-  public RestauranteInput toInputObInput (Restaurante restaurante) {
+		modelMapper.map(restauranteInput, restaurante);
+	}
 
-	    RestauranteInput restauranteInput = new RestauranteInput();
-	    CozinhaInput cozinha = new CozinhaInput();
+	public RestauranteInput toInputObInput(Restaurante restaurante) {
 
-	    cozinha.setId(restaurante.getCozinha().getId());
-
-	    restauranteInput.setNome(restaurante.getNome());
-	    restauranteInput.setTaxaFrete(restaurante.getTaxaFrete());
-	    restauranteInput.setCozinha(cozinha);
-
-	    return restauranteInput;
-
-  }
+		return modelMapper.map(restaurante, RestauranteInput.class);
+	}
 }

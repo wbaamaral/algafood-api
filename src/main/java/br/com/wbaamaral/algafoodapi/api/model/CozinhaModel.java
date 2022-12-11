@@ -1,10 +1,12 @@
 package br.com.wbaamaral.algafoodapi.api.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 public class CozinhaModel {
 
-  private Long id;
-  private String nome;
+	private Long id;
+	private String nome;
 }
