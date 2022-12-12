@@ -51,8 +51,8 @@ public class EstadoController {
 	}
 
 	@GetMapping("/{estadoId}")
-	public EstadoModel buscar(@PathVariable EstadoIdInput estadoIdInput) {
-		Estado estado = cadastroEstado.buscarOuFalhar(estadoIdInput.getId());
+	public EstadoModel buscar(@PathVariable Long estadoId) {
+		Estado estado = cadastroEstado.buscarOuFalhar(estadoId);
 
 		return estadoModelAssembler.toModel(estado);
 	}
@@ -75,12 +75,12 @@ public class EstadoController {
 
 	@PutMapping("/{estadoId}")
 	@Transactional
-	public EstadoModel atualizar(@PathVariable EstadoIdInput estadoIdInput,
+	public EstadoModel atualizar(@PathVariable Long estadoIdInput,
 			@RequestBody @Valid EstadoInput estadoInput) {
 		Estado estadoAtual = new Estado();
 		try {
 
-			estadoAtual = cadastroEstado.buscarOuFalhar(estadoIdInput.getId());
+			estadoAtual = cadastroEstado.buscarOuFalhar(estadoIdInput);
 
 			estadoInputDisassembler.copyToDomainObject(estadoInput, estadoAtual);
 
