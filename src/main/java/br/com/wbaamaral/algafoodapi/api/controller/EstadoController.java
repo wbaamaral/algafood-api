@@ -2,12 +2,12 @@ package br.com.wbaamaral.algafoodapi.api.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+import javax.validation.ConstraintDeclarationException;
 import javax.validation.Valid;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.wbaamaral.algafoodapi.api.assembler.EstadoInputDisassembler;
+import br.com.wbaamaral.algafoodapi.api.assembler.EstadoModelAssembler;
+import br.com.wbaamaral.algafoodapi.api.model.EstadoModel;
+import br.com.wbaamaral.algafoodapi.api.model.input.EstadoIdInput;
+import br.com.wbaamaral.algafoodapi.api.model.input.EstadoInput;
+import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
+import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import br.com.wbaamaral.algafoodapi.domain.model.Estado;
 import br.com.wbaamaral.algafoodapi.domain.repository.EstadoRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroEstadoService;
@@ -32,37 +39,78 @@ public class EstadoController {
 	@Autowired
 	private CadastroEstadoService cadastroEstado;
 
+	@Autowired
+	private EstadoModelAssembler estadoModelAssembler;
+
+	@Autowired
+	private EstadoInputDisassembler estadoInputDisassembler;
+
 	@GetMapping
-	public List<Estado> listar() {
-		return estadoRepository.findAll();
+	public List<EstadoModel> listar() {
+		return estadoModelAssembler.toCollectionModel(estadoRepository.findAll());
 	}
 
 	@GetMapping("/{estadoId}")
-	public Estado buscar(@PathVariable Long estadoId) {
-		Estado estado = cadastroEstado.buscarOuFalhar(estadoId);
+	public EstadoModel buscar(@PathVariable EstadoIdInput estadoIdInput) {
+		Estado estado = cadastroEstado.buscarOuFalhar(estadoIdInput.getId());
 
-		return estado;
+		return estadoModelAssembler.toModel(estado);
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Estado adicionar(@RequestBody @Valid Estado estado) {
-		return cadastroEstado.salvar(estado);
+	@Transactional
+	public EstadoModel adicionar(@RequestBody @Valid EstadoInput estadoInput) {
+		Estado estado = estadoInputDisassembler.toDomainObject(estadoInput);
+		try {
+			estado = cadastroEstado.salvar(estado);
+
+			estadoRepository.flush();
+		} catch (Exception e) {
+			throw new NegocioException(e.getMessage());
+		}
+
+		return estadoModelAssembler.toModel(estado);
 	}
 
 	@PutMapping("/{estadoId}")
-	public ResponseEntity<Estado> atualizar(@PathVariable Long estadoId, @RequestBody @Valid Estado estado) {
-		Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
+	@Transactional
+	public EstadoModel atualizar(@PathVariable EstadoIdInput estadoIdInput,
+			@RequestBody @Valid EstadoInput estadoInput) {
+		Estado estadoAtual = new Estado();
+		try {
 
-		BeanUtils.copyProperties(estado, estadoAtual, "id");
+			estadoAtual = cadastroEstado.buscarOuFalhar(estadoIdInput.getId());
 
-		return ResponseEntity.ok(cadastroEstado.salvar(estadoAtual));
+			estadoInputDisassembler.copyToDomainObject(estadoInput, estadoAtual);
+
+			estadoAtual = cadastroEstado.salvar(estadoAtual);
+			estadoRepository.flush();
+
+		} catch (ConstraintDeclarationException e) {
+
+			throw new EntidadeEmUsoException("Estado está em uso, não é permitida a remoção.");
+
+		} catch (Exception e) {
+			
+			throw new NegocioException(e.getMessage());
+		}
+		return estadoModelAssembler.toModel(estadoAtual);
+
 	}
 
 	@DeleteMapping("/{estadoId}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@Transactional
 	public void remover(@PathVariable Long estadoId) {
-		cadastroEstado.excluir(estadoId);
+		try {
+
+			cadastroEstado.excluir(estadoId);
+			estadoRepository.flush();
+
+		} catch (Exception e) {
+			throw new NegocioException(e.getMessage());
+		}
 	}
 
 }
