@@ -45,132 +45,130 @@ import br.com.wbaamaral.algafoodapi.domain.service.CadastroRestauranteService;
 @RequestMapping(value = "/restaurantes")
 public class RestauranteController {
 
-	@Autowired
-	private RestauranteRepository restauranteRepository;
+   @Autowired
+   private RestauranteRepository restauranteRepository;
 
-	@Autowired
-	private CadastroRestauranteService cadastroRestaurante;
+   @Autowired
+   private CadastroRestauranteService cadastroRestaurante;
 
-	@Autowired
-	private SmartValidator validator;
+   @Autowired
+   private SmartValidator validator;
 
-	@Autowired
-	private RestauranteModelAssembler restauranteModelAssembler;
+   @Autowired
+   private RestauranteModelAssembler restauranteModelAssembler;
 
-	@Autowired
-	private RestauranteInputDisassembler restauranteInputDisassembler;
+   @Autowired
+   private RestauranteInputDisassembler restauranteInputDisassembler;
 
-	@GetMapping
-	public List<RestauranteModel> listar() {
-		return restauranteModelAssembler.toCollectionModel(restauranteRepository.findAll());
-	}
+   @GetMapping
+   public List<RestauranteModel> listar() {
 
-	@GetMapping("/{restauranteId}")
-	public RestauranteModel buscar(@PathVariable Long restauranteId) {
-		var restaurante = cadastroRestaurante.buscarOuFalhar(restauranteId);
+      return restauranteModelAssembler.toCollectionModel(restauranteRepository.findAll());
+   }
 
-		return restauranteModelAssembler.toModel(restaurante);
-	}
+   @GetMapping("/{restauranteId}")
+   public RestauranteModel buscar(@PathVariable Long restauranteId) {
 
-	@PostMapping
-	@ResponseStatus(code = HttpStatus.CREATED)
-	@Transactional
-	public RestauranteModel adicionar(@RequestBody @Valid RestauranteInput restauranteInput) {
-		try {
+      var restaurante = cadastroRestaurante.buscarOuFalhar(restauranteId);
 
-			Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
+      return restauranteModelAssembler.toModel(restaurante);
+   }
 
-			RestauranteModel restauranteModel = restauranteModelAssembler
-					.toModel(cadastroRestaurante.salvar(restaurante));
+   @PostMapping
+   @ResponseStatus(code = HttpStatus.CREATED)
+   @Transactional
+   public RestauranteModel adicionar(@RequestBody @Valid RestauranteInput restauranteInput) {
 
-			restauranteRepository.flush();
+      try {
 
-			return restauranteModel;
-		} catch (CozinhaNaoEncontradaException e) {
-			throw new NegocioException(e.getLocalizedMessage());
-		}
-	}
+         Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
 
-	@PutMapping("/{restauranteId}")
-	@Transactional
-	public RestauranteModel atualizar(@PathVariable Long restauranteId,
-			@RequestBody @Valid RestauranteInput restauranteInput) {
+         RestauranteModel restauranteModel = restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restaurante));
 
-		try {
-			Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
+         restauranteRepository.flush();
 
-			Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
+         return restauranteModel;
+      } catch (CozinhaNaoEncontradaException e) {
+         throw new NegocioException(e.getLocalizedMessage());
+      }
+   }
 
-			BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "formasPagamento", "endereco", "dataCadastro",
-					"produtos");
+   @PutMapping("/{restauranteId}")
+   @Transactional
+   public RestauranteModel atualizar(@PathVariable Long restauranteId,
+         @RequestBody @Valid RestauranteInput restauranteInput) {
 
-			RestauranteModel restauranteModel = restauranteModelAssembler
-					.toModel(cadastroRestaurante.salvar(restauranteAtual));
-			restauranteRepository.flush();
+      try {
+         Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
 
-			return restauranteModel;
-		} catch (CozinhaNaoEncontradaException e) {
-			throw new NegocioException(e.getMessage());
-		}
-	}
+         restauranteInputDisassembler.copyToDomainObject(restauranteInput, restauranteAtual);
 
-	@PatchMapping("/{restauranteId}")
-	@Transactional
-	public RestauranteModel atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos,
-			HttpServletRequest request) {
+         return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restauranteAtual));
 
-		RestauranteInput restaurante = new RestauranteInput();
+      } catch (CozinhaNaoEncontradaException e) {
+         throw new NegocioException(e.getMessage());
+      }
 
-		Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
+   }
 
-		merge(campos, restauranteAtual, request);
+   @PatchMapping("/{restauranteId}")
+   @Transactional
+   public RestauranteModel atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos,
+         HttpServletRequest request) {
 
-		validarRestaurante(restauranteAtual, "restaurante");
+      RestauranteInput restaurante;
 
-		restaurante = restauranteInputDisassembler.toInputObInput(restauranteAtual);
+      Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
 
-		RestauranteModel restauranteModel = atualizar(restauranteId, restaurante);
-		
-		return restauranteModel;
-	}
+      merge(campos, restauranteAtual, request);
 
-	private void validarRestaurante(Restaurante restaurante, String objectName) {
+      validarRestaurante(restauranteAtual, "restaurante");
 
-		BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(restaurante, objectName);
+      restaurante = restauranteInputDisassembler.toInputObInput(restauranteAtual);
 
-		validator.validate(restaurante, bindingResult);
+      RestauranteModel restauranteModel = atualizar(restauranteId, restaurante);
 
-		if (bindingResult.hasErrors()) {
-			throw new ValidacaoException(bindingResult);
-		}
-	}
+      return restauranteModel;
+   }
 
-	private void merge(Map<String, Object> dadosOrigem, Restaurante restauranteDestino, HttpServletRequest request) {
-		ServletServerHttpRequest serverHttpRequest = new ServletServerHttpRequest(request);
+   private void validarRestaurante(Restaurante restaurante, String objectName) {
 
-		try {
-			ObjectMapper objectMapper = new ObjectMapper();
-			objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, true);
-			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+      BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(restaurante, objectName);
 
-			Restaurante restauranteOrigem = objectMapper.convertValue(dadosOrigem, Restaurante.class);
+      validator.validate(restaurante, bindingResult);
 
-			dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
-				Field field = ReflectionUtils.findField(Restaurante.class, nomePropriedade);
-				field.setAccessible(true);
+      if (bindingResult.hasErrors()) {
+         throw new ValidacaoException(bindingResult);
+      }
+   }
 
-				Object novoValor = ReflectionUtils.getField(field, restauranteOrigem);
+   private void merge(Map<String, Object> dadosOrigem, Restaurante restauranteDestino, HttpServletRequest request) {
 
-				ReflectionUtils.setField(field, restauranteDestino, novoValor);
-			});
+      ServletServerHttpRequest serverHttpRequest = new ServletServerHttpRequest(request);
 
-			if (restauranteDestino.getNome().isBlank()) {
-				throw new NegocioException("Campo nome não pode ser vazio ou nulo.");
-			}
+      try {
+         ObjectMapper objectMapper = new ObjectMapper();
+         objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, true);
+         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 
-		} catch (IllegalArgumentException e) {
-			Throwable rootCause = ExceptionUtils.getRootCause(e);
-			throw new HttpMessageNotReadableException(e.getMessage(), rootCause, serverHttpRequest);
-		}
-	}
+         Restaurante restauranteOrigem = objectMapper.convertValue(dadosOrigem, Restaurante.class);
+
+         dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
+            Field field = ReflectionUtils.findField(Restaurante.class, nomePropriedade);
+            field.setAccessible(true);
+
+            Object novoValor = ReflectionUtils.getField(field, restauranteOrigem);
+
+            ReflectionUtils.setField(field, restauranteDestino, novoValor);
+         });
+
+         if (restauranteDestino.getNome().isBlank()) {
+            throw new NegocioException("Campo nome não pode ser vazio ou nulo.");
+         }
+
+      } catch (IllegalArgumentException e) {
+         Throwable rootCause = ExceptionUtils.getRootCause(e);
+         throw new HttpMessageNotReadableException(e.getMessage(), rootCause, serverHttpRequest);
+      }
+   }
 }
