@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.wbaamaral.algafoodapi.api.assembler.EstadoInputDisassembler;
 import br.com.wbaamaral.algafoodapi.api.assembler.EstadoModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.EstadoModel;
-import br.com.wbaamaral.algafoodapi.api.model.input.EstadoIdInput;
 import br.com.wbaamaral.algafoodapi.api.model.input.EstadoInput;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
@@ -75,27 +74,25 @@ public class EstadoController {
 
 	@PutMapping("/{estadoId}")
 	@Transactional
-	public EstadoModel atualizar(@PathVariable Long estadoIdInput,
-			@RequestBody @Valid EstadoInput estadoInput) {
-		Estado estadoAtual = new Estado();
+	public EstadoModel atualizar(@PathVariable Long estadoId, @RequestBody @Valid EstadoInput estadoInput) {
 		try {
 
-			estadoAtual = cadastroEstado.buscarOuFalhar(estadoIdInput);
+			Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
 
 			estadoInputDisassembler.copyToDomainObject(estadoInput, estadoAtual);
 
 			estadoAtual = cadastroEstado.salvar(estadoAtual);
 			estadoRepository.flush();
 
+			return estadoModelAssembler.toModel(estadoAtual);
 		} catch (ConstraintDeclarationException e) {
 
 			throw new EntidadeEmUsoException("Estado está em uso, não é permitida a remoção.");
 
 		} catch (Exception e) {
-			
+
 			throw new NegocioException(e.getMessage());
 		}
-		return estadoModelAssembler.toModel(estadoAtual);
 
 	}
 

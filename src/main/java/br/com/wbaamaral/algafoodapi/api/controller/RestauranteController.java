@@ -44,130 +44,131 @@ import br.com.wbaamaral.algafoodapi.domain.service.CadastroRestauranteService;
 @RequestMapping(value = "/restaurantes")
 public class RestauranteController {
 
-   @Autowired
-   private RestauranteRepository restauranteRepository;
+	@Autowired
+	private RestauranteRepository restauranteRepository;
 
-   @Autowired
-   private CadastroRestauranteService cadastroRestaurante;
+	@Autowired
+	private CadastroRestauranteService cadastroRestaurante;
 
-   @Autowired
-   private SmartValidator validator;
+	@Autowired
+	private SmartValidator validator;
 
-   @Autowired
-   private RestauranteModelAssembler restauranteModelAssembler;
+	@Autowired
+	private RestauranteModelAssembler restauranteModelAssembler;
 
-   @Autowired
-   private RestauranteInputDisassembler restauranteInputDisassembler;
+	@Autowired
+	private RestauranteInputDisassembler restauranteInputDisassembler;
 
-   @GetMapping
-   public List<RestauranteModel> listar() {
+	@GetMapping
+	public List<RestauranteModel> listar() {
 
-      return restauranteModelAssembler.toCollectionModel(restauranteRepository.findAll());
-   }
+		return restauranteModelAssembler.toCollectionModel(restauranteRepository.findAll());
+	}
 
-   @GetMapping("/{restauranteId}")
-   public RestauranteModel buscar(@PathVariable Long restauranteId) {
+	@GetMapping("/{restauranteId}")
+	public RestauranteModel buscar(@PathVariable Long restauranteId) {
 
-      var restaurante = cadastroRestaurante.buscarOuFalhar(restauranteId);
+		var restaurante = cadastroRestaurante.buscarOuFalhar(restauranteId);
 
-      return restauranteModelAssembler.toModel(restaurante);
-   }
+		return restauranteModelAssembler.toModel(restaurante);
+	}
 
-   @PostMapping
-   @ResponseStatus(code = HttpStatus.CREATED)
-   @Transactional
-   public RestauranteModel adicionar(@RequestBody @Valid RestauranteInput restauranteInput) {
+	@PostMapping
+	@ResponseStatus(code = HttpStatus.CREATED)
+	@Transactional
+	public RestauranteModel adicionar(@RequestBody @Valid RestauranteInput restauranteInput) {
 
-      try {
+		try {
 
-         Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
+			Restaurante restaurante = restauranteInputDisassembler.toDomainObject(restauranteInput);
 
-         RestauranteModel restauranteModel = restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restaurante));
+			RestauranteModel restauranteModel = restauranteModelAssembler
+					.toModel(cadastroRestaurante.salvar(restaurante));
 
-         restauranteRepository.flush();
+			restauranteRepository.flush();
 
-         return restauranteModel;
-      } catch (CozinhaNaoEncontradaException e) {
-         throw new NegocioException(e.getLocalizedMessage());
-      }
-   }
+			return restauranteModel;
+		} catch (CozinhaNaoEncontradaException e) {
+			throw new NegocioException(e.getLocalizedMessage());
+		}
+	}
 
-   @PutMapping("/{restauranteId}")
-   @Transactional
-   public RestauranteModel atualizar(@PathVariable Long restauranteId,
-         @RequestBody @Valid RestauranteInput restauranteInput) {
+	@PutMapping("/{restauranteId}")
+	@Transactional
+	public RestauranteModel atualizar(@PathVariable Long restauranteId,
+			@RequestBody @Valid RestauranteInput restauranteInput) {
 
-      try {
-         Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
+		try {
+			Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
 
-         restauranteInputDisassembler.copyToDomainObject(restauranteInput, restauranteAtual);
+			restauranteInputDisassembler.copyToDomainObject(restauranteInput, restauranteAtual);
 
-         return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restauranteAtual));
+			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restauranteAtual));
 
-      } catch (CozinhaNaoEncontradaException e) {
-         throw new NegocioException(e.getMessage());
-      }
+		} catch (CozinhaNaoEncontradaException e) {
+			throw new NegocioException(e.getMessage());
+		}
 
-   }
+	}
 
-   @PatchMapping("/{restauranteId}")
-   @Transactional
-   public RestauranteModel atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos,
-         HttpServletRequest request) {
+	@PatchMapping("/{restauranteId}")
+	@Transactional
+	public RestauranteModel atualizarParcial(@PathVariable Long restauranteId, @RequestBody Map<String, Object> campos,
+			HttpServletRequest request) {
 
-      RestauranteInput restaurante;
+		RestauranteInput restaurante;
 
-      Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
+		Restaurante restauranteAtual = cadastroRestaurante.buscarOuFalhar(restauranteId);
 
-      merge(campos, restauranteAtual, request);
+		merge(campos, restauranteAtual, request);
 
-      validarRestaurante(restauranteAtual, "restaurante");
+		validarRestaurante(restauranteAtual, "restaurante");
 
-      restaurante = restauranteInputDisassembler.toInputObInput(restauranteAtual);
+		restaurante = restauranteInputDisassembler.toInputObInput(restauranteAtual);
 
-      RestauranteModel restauranteModel = atualizar(restauranteId, restaurante);
+		RestauranteModel restauranteModel = atualizar(restauranteId, restaurante);
 
-      return restauranteModel;
-   }
+		return restauranteModel;
+	}
 
-   private void validarRestaurante(Restaurante restaurante, String objectName) {
+	private void validarRestaurante(Restaurante restaurante, String objectName) {
 
-      BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(restaurante, objectName);
+		BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(restaurante, objectName);
 
-      validator.validate(restaurante, bindingResult);
+		validator.validate(restaurante, bindingResult);
 
-      if (bindingResult.hasErrors()) {
-         throw new ValidacaoException(bindingResult);
-      }
-   }
+		if (bindingResult.hasErrors()) {
+			throw new ValidacaoException(bindingResult);
+		}
+	}
 
-   private void merge(Map<String, Object> dadosOrigem, Restaurante restauranteDestino, HttpServletRequest request) {
+	private void merge(Map<String, Object> dadosOrigem, Restaurante restauranteDestino, HttpServletRequest request) {
 
-      ServletServerHttpRequest serverHttpRequest = new ServletServerHttpRequest(request);
+		ServletServerHttpRequest serverHttpRequest = new ServletServerHttpRequest(request);
 
-      try {
-         ObjectMapper objectMapper = new ObjectMapper();
-         objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, true);
-         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, true);
+			objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
 
-         Restaurante restauranteOrigem = objectMapper.convertValue(dadosOrigem, Restaurante.class);
+			Restaurante restauranteOrigem = objectMapper.convertValue(dadosOrigem, Restaurante.class);
 
-         dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
-            Field field = ReflectionUtils.findField(Restaurante.class, nomePropriedade);
-            field.setAccessible(true);
+			dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
+				Field field = ReflectionUtils.findField(Restaurante.class, nomePropriedade);
+				field.setAccessible(true);
 
-            Object novoValor = ReflectionUtils.getField(field, restauranteOrigem);
+				Object novoValor = ReflectionUtils.getField(field, restauranteOrigem);
 
-            ReflectionUtils.setField(field, restauranteDestino, novoValor);
-         });
+				ReflectionUtils.setField(field, restauranteDestino, novoValor);
+			});
 
-         if (restauranteDestino.getNome().isBlank()) {
-            throw new NegocioException("Campo nome não pode ser vazio ou nulo.");
-         }
+			if (restauranteDestino.getNome().isBlank()) {
+				throw new NegocioException("Campo nome não pode ser vazio ou nulo.");
+			}
 
-      } catch (IllegalArgumentException e) {
-         Throwable rootCause = ExceptionUtils.getRootCause(e);
-         throw new HttpMessageNotReadableException(e.getMessage(), rootCause, serverHttpRequest);
-      }
-   }
+		} catch (IllegalArgumentException e) {
+			Throwable rootCause = ExceptionUtils.getRootCause(e);
+			throw new HttpMessageNotReadableException(e.getMessage(), rootCause, serverHttpRequest);
+		}
+	}
 }
