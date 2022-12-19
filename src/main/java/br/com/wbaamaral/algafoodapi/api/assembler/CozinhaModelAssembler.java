@@ -13,16 +13,16 @@ import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
 @Component
 public class CozinhaModelAssembler {
 
-	@Autowired
-	private ModelMapper modelMapper;
+   @Autowired
+   private ModelMapper modelMapper;
 
-	public CozinhaModel toModel(Cozinha cozinha) {
+   public CozinhaModel toModel(Cozinha cozinha) {
 
-		return modelMapper.map(cozinha, CozinhaModel.class);
-	}
+      return modelMapper.map(cozinha, CozinhaModel.class);
+   }
 
-	public List<CozinhaModel> toColectionModel(List<Cozinha> cozinhas) {
+   public List<CozinhaModel> toCollectionModel(List<Cozinha> cozinhas) {
 
-		return cozinhas.stream().map(cozinha -> toModel(cozinha)).collect(Collectors.toList());
-	}
+      return cozinhas.stream().map(cozinha -> toModel(cozinha)).collect(Collectors.toList());
+   }
 }
