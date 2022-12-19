@@ -236,7 +236,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     10.16. Desafio: refatorando o código de testes :feet: \
     10.17. Desafio: escrevendo testes de API :feet: 
 
-11. Boas práticas e técnicas para APIs  :triangular_flag_on_post:  
+11. Boas práticas e técnicas para APIs  :white_check_mark:  
     11.1. Analisando e definindo melhor o escopo das transações :feet:\
     11.2. Refinando o payload de cadastro com @JsonIgnoreProperties :feet:\
     11.3. Criando classes de mixin para usar as anotações do Jackson :feet:\
@@ -259,7 +259,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     11.20. Desafio: usando DTOs como representation model :feet: \
     11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA :feet: 
 
-12. Modelagem avançada e implementação da API    
+12. Modelagem avançada e implementação da API:triangular_flag_on_post:    
   12.1. Modelando sub-recursos para relacionamentos \
   12.2. Granularidade de recursos: Chatty vs Chunky APIs \
   12.3. Modelando conceitos abstratos de negócio e ações não-CRUD como recursos \
