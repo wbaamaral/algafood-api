@@ -217,7 +217,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     9.19. Executando processo de validação programaticamente :feet:\
     9.20. Desafio: tratando a exception customizada de validações programáticas :feet:
 
-10. Testes de integração :triangular_flag_on_post:\
+10. Testes de integração :white_check_mark:\
     10.1. Introdução aos Testes de Integração e Testes de APIs :feet:\
     10.2. Preparando o projeto para testes de integração :feet:\
     10.3. Criando e rodando um teste de integração com Spring Boot, JUnit e AssertJ :feet:\
@@ -236,28 +236,28 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     10.16. Desafio: refatorando o código de testes :feet: \
     10.17. Desafio: escrevendo testes de API :feet: 
 
-11. Boas práticas e técnicas para APIs    
-    11.1. Analisando e definindo melhor o escopo das transações \
-    11.2. Refinando o payload de cadastro com @JsonIgnoreProperties \
-    11.3. Criando classes de mixin para usar as anotações do Jackson \
-    11.4. Desafio: usando @JsonIgnoreProperties e Jackson Mixin \
-    11.5. Antes de estudar sobre data/hora: relembrando as aulas de geografia e entendendo os fusos horários \
-    11.6. Boas práticas para trabalhar com data e hora em REST APIs \
-    11.7. Configurando e refatorando o projeto para usar UTC \
-    11.8. Desafio: refatorando o código para usar OffsetDateTime \
-    11.9. Isolando o Domain Model do Representation Model com o padrão DTO \
-    11.10. Implementando a conversão de entidade para DTO \
-    11.11. Criando DTOs para entrada de dados na API \
-    11.12. Refatorando e criando um assembler de DTO \
-    11.13. Desafio: Refatorando e criando um disassembler do DTO \
-    11.14. Adicionando e usando o ModelMapper \
-    11.15. Entendendo a estratégia padrão do ModelMapper para correspondência de propriedades \
-    11.16. Customizando o mapeamento de propriedades com ModelMapper \
-    11.17. Mapeando para uma instância destino (e não um tipo) com ModelMapper \
-    11.18. Revisando e ajustando as mensagens de validação com o uso de DTOs \
-    11.19. Estratégias de nomes de propriedades: snake case vs lower camel case \
-    11.20. Desafio: usando DTOs como representation model \
-    11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA 
+11. Boas práticas e técnicas para APIs  :triangular_flag_on_post:  
+    11.1. Analisando e definindo melhor o escopo das transações :feet:\
+    11.2. Refinando o payload de cadastro com @JsonIgnoreProperties :feet:\
+    11.3. Criando classes de mixin para usar as anotações do Jackson :feet:\
+    11.4. Desafio: usando @JsonIgnoreProperties e Jackson Mixin :feet:\
+    11.5. Antes de estudar sobre data/hora: relembrando as aulas de geografia e entendendo os fusos horários :feet:\
+    11.6. Boas práticas para trabalhar com data e hora em REST APIs :feet:\
+    11.7. Configurando e refatorando o projeto para usar UTC :feet:\
+    11.8. Desafio: refatorando o código para usar OffsetDateTime :feet:\
+    11.9. Isolando o Domain Model do Representation Model com o padrão DTO :feet:\
+    11.10. Implementando a conversão de entidade para DTO :feet:\
+    11.11. Criando DTOs para entrada de dados na API :feet:\
+    11.12. Refatorando e criando um assembler de DTO :feet:\
+    11.13. Desafio: Refatorando e criando um disassembler do DTO :feet:\
+    11.14. Adicionando e usando o ModelMapper :feet: \
+    11.15. Entendendo a estratégia padrão do ModelMapper para correspondência de propriedades :feet: \
+    11.16. Customizando o mapeamento de propriedades com ModelMapper :feet: \
+    11.17. Mapeando para uma instância destino (e não um tipo) com ModelMapper :feet: \
+    11.18. Revisando e ajustando as mensagens de validação com o uso de DTOs :feet: \
+    11.19. Estratégias de nomes de propriedades: snake case vs lower camel case :feet: \
+    11.20. Desafio: usando DTOs como representation model :feet: \
+    11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA :feet: 
 
 12. Modelagem avançada e implementação da API    
   12.1. Modelando sub-recursos para relacionamentos \

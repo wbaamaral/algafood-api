@@ -7,29 +7,29 @@ import javax.validation.ConstraintValidatorContext;
 
 public class MultiploValidator implements ConstraintValidator<Multiplo, Number> {
 
-	private int numeroMultiplo;
+  private int numeroMultiplo;
 
-	@Override
-	public void initialize(Multiplo constraintAnnotation) {
+  @Override
+  public void initialize(Multiplo constraintAnnotation) {
 
-		this.numeroMultiplo = constraintAnnotation.numero();
-	}
+    this.numeroMultiplo = constraintAnnotation.numero();
+  }
 
-	@Override
-	public boolean isValid(Number value, ConstraintValidatorContext context) {
-		boolean valido = true;
+  @Override
+  public boolean isValid(Number value, ConstraintValidatorContext context) {
+    boolean valido = true;
 
-		if (value != null) {
-			var ValorDecimal = BigDecimal.valueOf(value.doubleValue());
-			var multiploDecimal = BigDecimal.valueOf(this.numeroMultiplo);
+    if (value != null) {
+      var ValorDecimal = BigDecimal.valueOf(value.doubleValue());
+      var multiploDecimal = BigDecimal.valueOf(this.numeroMultiplo);
 
-			// valor resto da divisao valor decimal por multiplo decimal
-			var resto = ValorDecimal.remainder(multiploDecimal);
+      // valor resto da divisao valor decimal por multiplo decimal
+      var resto = ValorDecimal.remainder(multiploDecimal);
 
-			valido = BigDecimal.ZERO.compareTo(resto) == 0;
-		}
+      valido = BigDecimal.ZERO.compareTo(resto) == 0;
+    }
 
-		return valido;
-	}
+    return valido;
+  }
 
 }
