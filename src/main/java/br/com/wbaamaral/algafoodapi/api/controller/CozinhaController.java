@@ -33,82 +33,88 @@ import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
 @RequestMapping(value = "/cozinhas")
 public class CozinhaController {
 
-	@Autowired
-	private CozinhaRepository cozinhaRepository;
+   @Autowired
+   private CozinhaRepository cozinhaRepository;
 
-	@Autowired
-	private CadastroCozinhaService cadastroCozinha;
+   @Autowired
+   private CadastroCozinhaService cadastroCozinha;
 
-	@Autowired
-	private CozinhaModelAssembler cozinhaModelAssembler;
+   @Autowired
+   private CozinhaModelAssembler cozinhaModelAssembler;
 
-	@Autowired
-	private CozinhaInputDisassembler cozinhaInputDisassembler;
+   @Autowired
+   private CozinhaInputDisassembler cozinhaInputDisassembler;
 
-	@GetMapping
-	public List<Cozinha> listar() {
-		return cozinhaRepository.findAll();
-	}
+   @GetMapping
+   public List<CozinhaModel> listar() {
 
-	@GetMapping("/{cozinhaId}")
-	public CozinhaModel buscar(@PathVariable Long cozinhaId) {
+      List<Cozinha> todasCozinhas = cozinhaRepository.findAll();
 
-		return cozinhaModelAssembler.toModel(cadastroCozinha.buscarOuFalhar(cozinhaId));
+      return cozinhaModelAssembler.toCollectionModel(todasCozinhas);
+   }
 
-	}
+   @GetMapping("/{cozinhaId}")
+   public CozinhaModel buscar(@PathVariable Long cozinhaId) {
 
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	@Transactional
-	public CozinhaModel adicionar(@RequestBody @Valid CozinhaInput cozinhaInput) {
-		try {
-			Cozinha cozinha = cozinhaInputDisassembler.toDomainObject(cozinhaInput);
+      return cozinhaModelAssembler.toModel(cadastroCozinha.buscarOuFalhar(cozinhaId));
 
-			CozinhaModel cozinhaModel = cozinhaModelAssembler.toModel(cadastroCozinha.salvar(cozinha));
+   }
 
-			cozinhaRepository.flush();
+   @PostMapping
+   @ResponseStatus(HttpStatus.CREATED)
+   @Transactional
+   public CozinhaModel adicionar(@RequestBody @Valid CozinhaInput cozinhaInput) {
 
-			return cozinhaModel;
-		} catch (Exception e) {
-			throw new NegocioException(e.getMessage());
-		}
-	}
+      try {
+         Cozinha cozinha = cozinhaInputDisassembler.toDomainObject(cozinhaInput);
 
-	@PutMapping("/{cozinhaId}")
-	@Transactional
-	public CozinhaModel atualizar(@PathVariable Long cozinhaId, @RequestBody CozinhaInput cozinhaInput) {
-		try {
-			Cozinha cozinhaAntiga = cozinhaInputDisassembler.toDomainObject(cozinhaInput);
+         CozinhaModel cozinhaModel = cozinhaModelAssembler.toModel(cadastroCozinha.salvar(cozinha));
 
-			Cozinha cozinhaAtual = cadastroCozinha.buscarOuFalhar(cozinhaId);
-			BeanUtils.copyProperties(cozinhaAntiga, cozinhaAtual, "id");
+         cozinhaRepository.flush();
 
-			Cozinha cozinhaFinal = cadastroCozinha.salvar(cozinhaAtual);
+         return cozinhaModel;
+      } catch (Exception e) {
+         throw new NegocioException(e.getMessage());
+      }
+   }
 
-			cozinhaRepository.flush();
+   @PutMapping("/{cozinhaId}")
+   @Transactional
+   public CozinhaModel atualizar(@PathVariable Long cozinhaId, @RequestBody CozinhaInput cozinhaInput) {
 
-			return cozinhaModelAssembler.toModel(cozinhaFinal);
-		} catch (Exception e) {
-			throw new NegocioException(e.getMessage());
-		}
-	}
+      try {
+         Cozinha cozinhaAntiga = cozinhaInputDisassembler.toDomainObject(cozinhaInput);
 
-	@DeleteMapping("/{cozinhaId}")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	@Transactional
-	public void remover(@PathVariable Long cozinhaId) {
-		try {
-			cadastroCozinha.excluir(cozinhaId);
+         Cozinha cozinhaAtual = cadastroCozinha.buscarOuFalhar(cozinhaId);
+         BeanUtils.copyProperties(cozinhaAntiga, cozinhaAtual, "id");
 
-			cozinhaRepository.flush();
-		} catch (DataIntegrityViolationException e) {
+         Cozinha cozinhaFinal = cadastroCozinha.salvar(cozinhaAtual);
 
-			throw new EntidadeEmUsoException("A cozinha esta em uso, não pode ser removida.");
+         cozinhaRepository.flush();
 
-		} catch (Exception e) {
+         return cozinhaModelAssembler.toModel(cozinhaFinal);
+      } catch (Exception e) {
+         throw new NegocioException(e.getMessage());
+      }
+   }
 
-			throw new NegocioException(e.getMessage());
-		}
-	}
+   @DeleteMapping("/{cozinhaId}")
+   @ResponseStatus(code = HttpStatus.NO_CONTENT)
+   @Transactional
+   public void remover(@PathVariable Long cozinhaId) {
+
+      try {
+         cadastroCozinha.excluir(cozinhaId);
+
+         cozinhaRepository.flush();
+      } catch (DataIntegrityViolationException e) {
+
+         throw new EntidadeEmUsoException("A cozinha esta em uso, não pode ser removida.");
+
+      } catch (Exception e) {
+
+         throw new NegocioException(e.getMessage());
+      }
+   }
 
 }
