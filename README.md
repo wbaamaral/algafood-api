@@ -250,14 +250,14 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     11.11. Criando DTOs para entrada de dados na API :feet:\
     11.12. Refatorando e criando um assembler de DTO :feet:\
     11.13. Desafio: Refatorando e criando um disassembler do DTO :feet:\
-    11.14. Adicionando e usando o ModelMapper \
-    11.15. Entendendo a estratégia padrão do ModelMapper para correspondência de propriedades \
-    11.16. Customizando o mapeamento de propriedades com ModelMapper \
-    11.17. Mapeando para uma instância destino (e não um tipo) com ModelMapper \
-    11.18. Revisando e ajustando as mensagens de validação com o uso de DTOs \
-    11.19. Estratégias de nomes de propriedades: snake case vs lower camel case \
-    11.20. Desafio: usando DTOs como representation model \
-    11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA 
+    11.14. Adicionando e usando o ModelMapper :feet: \
+    11.15. Entendendo a estratégia padrão do ModelMapper para correspondência de propriedades :feet: \
+    11.16. Customizando o mapeamento de propriedades com ModelMapper :feet: \
+    11.17. Mapeando para uma instância destino (e não um tipo) com ModelMapper :feet: \
+    11.18. Revisando e ajustando as mensagens de validação com o uso de DTOs :feet: \
+    11.19. Estratégias de nomes de propriedades: snake case vs lower camel case :feet: \
+    11.20. Desafio: usando DTOs como representation model :feet: \
+    11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA :feet: 
 
 12. Modelagem avançada e implementação da API    
   12.1. Modelando sub-recursos para relacionamentos \
