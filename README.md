@@ -265,7 +265,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.3. Modelando conceitos abstratos de negócio e ações não-CRUD como recursos :feet:\
   12.4. Implementando os endpoints de ativação e inativação de restaurantes :feet:\
   12.5. Desafio: implementando os endpoints de formas de pagamento :feet:\
-  12.6. Adicionando endereço no modelo da representação do recurso de restaurante \
+  12.6. Adicionando endereço no modelo da representação do recurso de restaurante :feet:\
   12.7. Refatorando serviço de cadastro de restaurante para incluir endereço \
   12.8. Desafio: implementando os endpoints de grupos \
   12.9. Desafio: implementando os endpoints de usuarios \
