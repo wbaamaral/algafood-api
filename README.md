@@ -260,10 +260,10 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA :feet: 
 
 12. Modelagem avançada e implementação da API:triangular_flag_on_post:    
-  12.1. Modelando sub-recursos para relacionamentos \
-  12.2. Granularidade de recursos: Chatty vs Chunky APIs \
-  12.3. Modelando conceitos abstratos de negócio e ações não-CRUD como recursos \
-  12.4. Implementando os endpoints de ativação e inativação de restaurantes \
+  12.1. Modelando sub-recursos para relacionamentos :feet:\
+  12.2. Granularidade de recursos: Chatty vs Chunky APIs :feet:\
+  12.3. Modelando conceitos abstratos de negócio e ações não-CRUD como recursos :feet:\
+  12.4. Implementando os endpoints de ativação e inativação de restaurantes :feet:\
   12.5. Desafio: implementando os endpoints de formas de pagamento \
   12.6. Adicionando endereço no modelo da representação do recurso de restaurante \
   12.7. Refatorando serviço de cadastro de restaurante para incluir endereço \
