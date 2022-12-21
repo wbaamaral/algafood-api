@@ -35,6 +35,7 @@ import br.com.wbaamaral.algafoodapi.api.assembler.RestauranteModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.exceptionhandler.ValidacaoException;
 import br.com.wbaamaral.algafoodapi.api.model.RestauranteModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.RestauranteInput;
+import br.com.wbaamaral.algafoodapi.domain.exception.CidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.CozinhaNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
@@ -89,7 +90,7 @@ public class RestauranteController {
 			restauranteRepository.flush();
 
 			return restauranteModel;
-		} catch (CozinhaNaoEncontradaException e) {
+		} catch (CozinhaNaoEncontradaException | CidadeNaoEncontradaException e) {
 			throw new NegocioException(e.getLocalizedMessage());
 		}
 	}
@@ -106,7 +107,7 @@ public class RestauranteController {
 
 			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restauranteAtual));
 
-		} catch (CozinhaNaoEncontradaException e) {
+		} catch (CozinhaNaoEncontradaException | CidadeNaoEncontradaException e) {
 			throw new NegocioException(e.getMessage());
 		}
 

@@ -266,7 +266,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.4. Implementando os endpoints de ativação e inativação de restaurantes :feet:\
   12.5. Desafio: implementando os endpoints de formas de pagamento :feet:\
   12.6. Adicionando endereço no modelo da representação do recurso de restaurante :feet:\
-  12.7. Refatorando serviço de cadastro de restaurante para incluir endereço \
+  12.7. Refatorando serviço de cadastro de restaurante para incluir endereço :feet:\
   12.8. Desafio: implementando os endpoints de grupos \
   12.9. Desafio: implementando os endpoints de usuarios \
   12.10. Um pouco mais sobre JPA: objeto alterado fora da transação é sincronizado com o banco de dados \
