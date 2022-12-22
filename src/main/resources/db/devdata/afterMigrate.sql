@@ -111,3 +111,4 @@ insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('San
 insert into produto (nome, descricao, preco, ativo, restaurante_id) values ('Espetinho de Cupim', 'Acompanha farinha, mandioca e vinagrete', 8, 1, 6);
 
 
+INSERT INTO grupo (nome) VALUES ('Gerente'), ('Vendedor'), ('Secretario'), ('Cadastrador');
