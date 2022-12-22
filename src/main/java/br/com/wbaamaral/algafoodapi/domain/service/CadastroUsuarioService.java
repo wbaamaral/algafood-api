@@ -1,5 +1,7 @@
 package br.com.wbaamaral.algafoodapi.domain.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,31 +15,40 @@ import br.com.wbaamaral.algafoodapi.domain.repository.UsuarioRepository;
 @Service
 public class CadastroUsuarioService {
 
-   @Autowired
-   private UsuarioRepository usuarioRepository;
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
-   @Transactional
-   public Usuario salvar(Usuario usuario) {
+	@Transactional
+	public Usuario salvar(Usuario usuario) {
 
-      return usuarioRepository.save(usuario);
-   }
+		usuarioRepository.detach(usuario);
 
-   @Transactional
-   public void alterarSenha(Long usuarioId, String senhaAtual, String novaSenha) {
+		Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(usuario.getEmail());
 
-      Usuario usuario = buscarOuFalhar(usuarioId);
+		if (usuarioExistente.isPresent() && !usuarioExistente.get().equals(usuario)) {
 
-      if (usuario.senhaNaoCoincideCom(senhaAtual)) {
-         throw new NegocioException("Senha atual informada não coincide com a senha do usuário.");
-      }
+			throw new NegocioException(
+					String.format("Já existe um usuário cadastrado com esse e-mail %s", usuario.getEmail()));
+		}
 
-      usuario.setSenha(novaSenha);
-   }
+		return usuarioRepository.save(usuario);
+	}
 
-   public Usuario buscarOuFalhar(Long usuarioId) {
+	@Transactional
+	public void alterarSenha(Long usuarioId, String senhaAtual, String novaSenha) {
 
-      return usuarioRepository.findById(usuarioId).orElseThrow(() -> new UsuarioNaoEncontradoException(usuarioId));
-   }
+		Usuario usuario = buscarOuFalhar(usuarioId);
 
+		if (usuario.senhaNaoCoincideCom(senhaAtual)) {
+			throw new NegocioException("Senha atual informada não coincide com a senha do usuário.");
+		}
+
+		usuario.setSenha(novaSenha);
+	}
+
+	public Usuario buscarOuFalhar(Long usuarioId) {
+
+		return usuarioRepository.findById(usuarioId).orElseThrow(() -> new UsuarioNaoEncontradoException(usuarioId));
+	}
 
 }

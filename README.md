@@ -269,8 +269,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.7. Refatorando serviço de cadastro de restaurante para incluir endereço :feet:\
   12.8. Desafio: implementando os endpoints de grupos :feet:\
   12.9. Desafio: implementando os endpoints de usuarios :feet:\
-  12.10. Um pouco mais sobre JPA: objeto alterado fora da transação é sincronizado com o banco de dados \
-  12.11. Implementando regra de negócio para evitar usuários com e-mails duplicados \
+  12.10. Um pouco mais sobre JPA: objeto alterado fora da transação é sincronizado com o banco de dados :feet:\
+  12.11. Implementando regra de negócio para evitar usuários com e-mails duplicados :feet:\
   12.12. Implementando os endpoints de associação de formas de pagamento em restaurantes \
   12.13. Desafio: implementando os endpoints de produtos \
   12.14. Desafio: Implementando os endpoints de abertura e fechamento de restaurantes \
