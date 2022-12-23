@@ -272,7 +272,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.10. Um pouco mais sobre JPA: objeto alterado fora da transação é sincronizado com o banco de dados :feet:\
   12.11. Implementando regra de negócio para evitar usuários com e-mails duplicados :feet:\
   12.12. Implementando os endpoints de associação de formas de pagamento em restaurantes :feet:\
-  12.13. Desafio: implementando os endpoints de produtos \
+  12.13. Desafio: implementando os endpoints de produtos :feet:\
   12.14. Desafio: Implementando os endpoints de abertura e fechamento de restaurantes \
   12.15. Desafio: implementando os endpoints de associação de grupos com permissões \
   12.16. Desafio: implementando os endpoints de associação de usuários com grupos \
