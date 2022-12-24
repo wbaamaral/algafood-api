@@ -2,85 +2,52 @@ package br.com.wbaamaral.algafoodapi.api.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.wbaamaral.algafoodapi.api.assembler.UsuarioInputDisassembler;
-import br.com.wbaamaral.algafoodapi.api.assembler.UsuarioModelAssembler;
-import br.com.wbaamaral.algafoodapi.api.model.UsuarioModel;
-import br.com.wbaamaral.algafoodapi.api.model.input.SenhaInput;
-import br.com.wbaamaral.algafoodapi.api.model.input.UsuarioComSenhaInput;
-import br.com.wbaamaral.algafoodapi.api.model.input.UsuarioInput;
+import br.com.wbaamaral.algafoodapi.api.assembler.GrupoModelAssembler;
+import br.com.wbaamaral.algafoodapi.api.model.GrupoModel;
 import br.com.wbaamaral.algafoodapi.domain.model.Usuario;
-import br.com.wbaamaral.algafoodapi.domain.repository.UsuarioRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroUsuarioService;
 
 @RestController
-@RequestMapping(value = "/usuarios")
+@RequestMapping(value = "/usuarios/{usuarioId}/grupos")
 public class UsuarioController {
 
-   @Autowired
-   private UsuarioRepository usuarioRepository;
+	@Autowired
+	private CadastroUsuarioService cadastroUsuario;
 
-   @Autowired
-   private CadastroUsuarioService cadastroUsuario;
+	@Autowired
+	private GrupoModelAssembler grupoModelAssembler;
 
-   @Autowired
-   private UsuarioModelAssembler usuarioModelAssembler;
+	@GetMapping
+	public List<GrupoModel> listar(@PathVariable Long usuarioId) {
 
-   @Autowired
-   private UsuarioInputDisassembler usuarioInputDisassembler;
+		Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
 
-   @GetMapping
-   public List<UsuarioModel> listar() {
+		return grupoModelAssembler.toCollectionModel(usuario.getGrupos());
+	}
+	
+	@DeleteMapping("/{grupoId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void desassociar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
+		
+		cadastroUsuario.desassociarGrupo(usuarioId, grupoId);
+	}
+	
+	@PutMapping("/{grupoId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void associar(@PathVariable Long usuarioId, @PathVariable Long grupoId) {
+		
+		cadastroUsuario.associarGrupo(usuarioId, grupoId);
+	}
+	
 
-      List<Usuario> todasUsuarios = usuarioRepository.findAll();
-
-      return usuarioModelAssembler.toCollectionModel(todasUsuarios);
-   }
-
-   @GetMapping("/{usuarioId}")
-   public UsuarioModel buscar(@PathVariable Long usuarioId) {
-
-      Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
-
-      return usuarioModelAssembler.toModel(usuario);
-   }
-
-   @PostMapping
-   @ResponseStatus(HttpStatus.CREATED)
-   public UsuarioModel adicionar(@RequestBody @Valid UsuarioComSenhaInput usuarioInput) {
-
-      Usuario usuario = usuarioInputDisassembler.toDomainObject(usuarioInput);
-      usuario = cadastroUsuario.salvar(usuario);
-
-      return usuarioModelAssembler.toModel(usuario);
-   }
-
-   @PutMapping("/{usuarioId}")
-   public UsuarioModel atualizar(@PathVariable Long usuarioId, @RequestBody @Valid UsuarioInput usuarioInput) {
-
-      Usuario usuarioAtual = cadastroUsuario.buscarOuFalhar(usuarioId);
-      usuarioInputDisassembler.copyToDomainObject(usuarioInput, usuarioAtual);
-      usuarioAtual = cadastroUsuario.salvar(usuarioAtual);
-
-      return usuarioModelAssembler.toModel(usuarioAtual);
-   }
-
-   @PutMapping("/{usuarioId}/senha")
-   @ResponseStatus(HttpStatus.NO_CONTENT)
-   public void alterarSenha(@PathVariable Long usuarioId, @RequestBody @Valid SenhaInput senha) {
-
-      cadastroUsuario.alterarSenha(usuarioId, senha.getSenhaAtual(), senha.getNovaSenha());
-   }
 }

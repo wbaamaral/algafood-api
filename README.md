@@ -275,7 +275,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.13. Desafio: implementando os endpoints de produtos :feet:\
   12.14. Desafio: Implementando os endpoints de abertura e fechamento de restaurantes :feet:\
   12.15. Desafio: implementando os endpoints de associação de grupos com permissões :feet:\
-  12.16. Desafio: implementando os endpoints de associação de usuários com grupos \
+  12.16. Desafio: implementando os endpoints de associação de usuários com grupos :feet:\
   12.17. Desafio: implementando endpoints de associação de usuários responsáveis com restaurantes \
   12.18. Implementando ativação e inativação em massa de restaurantes \
   12.19. Desafio: Implementando os endpoints de consulta de pedidos \
