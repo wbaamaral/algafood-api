@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,38 +26,57 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Pedido {
 
-  @EqualsAndHashCode.Include
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long Id;
+   @EqualsAndHashCode.Include
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long Id;
 
-  private BigDecimal subtotal;
-  private BigDecimal taxaFrete;
-  private BigDecimal valorTotal;
+   private BigDecimal subtotal;
+   private BigDecimal taxaFrete;
+   private BigDecimal valorTotal;
 
-  @Embedded
-  private Endereco enderecoEntrega;
+   @Embedded
+   private Endereco enderecoEntrega;
 
-  private StatusPedido status;
+   @Enumerated(EnumType.STRING)
+   private StatusPedido status = StatusPedido.CRIADO;
 
-  @CreationTimestamp
-  private OffsetDateTime dataCriacao;
+   @CreationTimestamp
+   private OffsetDateTime dataCriacao;
 
-  private OffsetDateTime dataCancelamento;
-  private OffsetDateTime dataEntrega;
+   private OffsetDateTime dataCancelamento;
+   private OffsetDateTime dataEntrega;
 
-  @ManyToOne
-  @JoinColumn(nullable = false)
-  private FormaPagamento formapagmento;
+   @ManyToOne
+   @JoinColumn(nullable = false)
+   private FormaPagamento formapagmento;
 
-  @ManyToOne
-  @JoinColumn(nullable = false)
-  private Restaurante restaurante;
+   @ManyToOne
+   @JoinColumn(nullable = false)
+   private Restaurante restaurante;
 
-  @ManyToOne
-  @JoinColumn(name = "usuario_client_id", nullable = false)
-  private Usuario cliente;
+   @ManyToOne
+   @JoinColumn(name = "usuario_client_id", nullable = false)
+   private Usuario cliente;
 
-  @OneToMany(mappedBy = "pedido")
-  private List<ItemPedido> itens = new ArrayList<>();
+   @OneToMany(mappedBy = "pedido")
+   private List<ItemPedido> itens = new ArrayList<>();
+
+   public void calcularValorTotal() {
+
+      this.subtotal = getItens().stream().map(item -> item.getPrecoTotal()).reduce(BigDecimal.ZERO, BigDecimal::add);
+
+      this.valorTotal = this.subtotal.add(this.taxaFrete);
+   }
+
+   public void definirFrete() {
+
+      setTaxaFrete(getRestaurante().getTaxaFrete());
+   }
+
+   public void atribuirPedidoAosItens() {
+
+      getItens().forEach(item -> item.setPedido(this));
+   }
+
 }
