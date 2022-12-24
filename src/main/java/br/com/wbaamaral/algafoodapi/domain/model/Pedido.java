@@ -29,7 +29,7 @@ public class Pedido {
    @EqualsAndHashCode.Include
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long Id;
+   private Long id;
 
    private BigDecimal subtotal;
    private BigDecimal taxaFrete;
@@ -44,19 +44,20 @@ public class Pedido {
    @CreationTimestamp
    private OffsetDateTime dataCriacao;
 
+   private OffsetDateTime dataConfirmacao;
    private OffsetDateTime dataCancelamento;
    private OffsetDateTime dataEntrega;
 
    @ManyToOne
    @JoinColumn(nullable = false)
-   private FormaPagamento formapagmento;
+   private FormaPagamento formaPagamento;
 
    @ManyToOne
    @JoinColumn(nullable = false)
    private Restaurante restaurante;
 
    @ManyToOne
-   @JoinColumn(name = "usuario_client_id", nullable = false)
+   @JoinColumn(name = "usuario_cliente_id", nullable = false)
    private Usuario cliente;
 
    @OneToMany(mappedBy = "pedido")

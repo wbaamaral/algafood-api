@@ -23,7 +23,13 @@ public class PedidoModelAssembler {
 
    public List<PedidoModel> toCollectionModel(List<Pedido> pedidos) {
 
-      return pedidos.stream().map(pedido -> toModel(pedido)).collect(Collectors.toList());
+      // @formatter:off
+
+      return pedidos.stream()
+            .map(pedido -> toModel(pedido))
+            .collect(Collectors.toList());
+      
+      // @formatter:on
    }
 
 }
