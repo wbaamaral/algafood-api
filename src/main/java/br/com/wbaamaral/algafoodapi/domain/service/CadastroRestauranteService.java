@@ -1,5 +1,7 @@
 package br.com.wbaamaral.algafoodapi.domain.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,22 +39,6 @@ public class CadastroRestauranteService {
 				.setCidade(cadastroCidade.buscarOuFalhar(restaurante.getEndereco().getCidade().getId()));
 
 		return restauranteRepository.save(restaurante);
-	}
-
-	@Transactional
-	public void ativar(Long restauranteId) {
-
-		Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
-		restauranteAtual.ativar();
-
-	}
-
-	@Transactional
-	public void inativar(Long restauranteId) {
-
-		Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
-		restauranteAtual.inativar();
-
 	}
 
 	public Restaurante buscarOuFalhar(Long restauranteId) {
@@ -110,4 +96,34 @@ public class CadastroRestauranteService {
 	    
 	    restaurante.adicionarResponsavel(usuario);
 	}	
+
+
+	@Transactional
+	public void ativar(Long restauranteId) {
+
+		Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
+		restauranteAtual.ativar();
+
+	}
+	
+	@Transactional
+	public void ativar(List<Long> restauranteIds) {
+		
+		restauranteIds.forEach(this::ativar);
+	}
+	
+	@Transactional
+	public void inativar(Long restauranteId) {
+
+		Restaurante restauranteAtual = buscarOuFalhar(restauranteId);
+		restauranteAtual.inativar();
+
+	}
+
+	@Transactional
+	public void inativar(List<Long> restauranteIds) {
+		
+		restauranteIds.forEach(this::inativar);
+	}
+
 }
