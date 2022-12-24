@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.wbaamaral.algafoodapi.domain.exception.RestauranteNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.model.FormaPagamento;
 import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
+import br.com.wbaamaral.algafoodapi.domain.model.Usuario;
 import br.com.wbaamaral.algafoodapi.domain.repository.RestauranteRepository;
 
 @Service
@@ -24,6 +25,9 @@ public class CadastroRestauranteService {
 
 	@Autowired
 	private CadastroCidadeService cadastroCidade;
+	
+	@Autowired
+	private CadastroUsuarioService cadastroUsuario;
 
 	public Restaurante salvar(Restaurante restaurante) {
 
@@ -90,4 +94,20 @@ public class CadastroRestauranteService {
 
 		restauranteAtual.fechar();
 	}
+	
+	@Transactional
+	public void desassociarResponsavel(Long restauranteId, Long usuarioId) {
+	    Restaurante restaurante = buscarOuFalhar(restauranteId);
+	    Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
+	    
+	    restaurante.removerResponsavel(usuario);
+	}
+
+	@Transactional
+	public void associarResponsavel(Long restauranteId, Long usuarioId) {
+	    Restaurante restaurante = buscarOuFalhar(restauranteId);
+	    Usuario usuario = cadastroUsuario.buscarOuFalhar(usuarioId);
+	    
+	    restaurante.adicionarResponsavel(usuario);
+	}	
 }
