@@ -279,7 +279,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.17. Desafio: implementando endpoints de associação de usuários responsáveis com restaurantes :feet:\
   12.18. Implementando ativação e inativação em massa de restaurantes :feet:\
   12.19. Desafio: Implementando os endpoints de consulta de pedidos :feet:\
-  12.20. Otimizando a query de pedidos e retornando model resumido na listagem \
+  12.20. Otimizando a query de pedidos e retornando model resumido na listagem :feet:\
   12.21. Desafio: Implementando o endpoint de emissão de pedidos \
   12.22. Implementando endpoint de transição de status de pedidos \
   12.23. Desafio: implementando endpoints de transição de status de pedidos \
