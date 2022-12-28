@@ -288,7 +288,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
 
 13. Modelagem de projeções, pesquisas e relatórios :triangular_flag_on_post:    
   13.1. Fazendo projeção de recursos com @JsonView do Jackson :feet:\
-  13.2. Limitando os campos retornados pela API com @JsonFilter do Jackson \
+  13.2. Limitando os campos retornados pela API com @JsonFilter do Jackson :feet:\
   13.3. Limitando os campos retornados pela API com Squiggly \
   13.4. Implementando pesquisas simples na API \
   13.5. 13. Modelando pesquisas complexas na API \
