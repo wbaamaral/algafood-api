@@ -283,7 +283,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.21. Desafio: Implementando o endpoint de emissão de pedidos :feet:\
   12.22. Implementando endpoint de transição de status de pedidos :feet:\
   12.23. Desafio: implementando endpoints de transição de status de pedidos :feet:\
-  12.24. Refatorando o código de regras para transição de status de pedidos \
+  12.24. Refatorando o código de regras para transição de status de pedidos :feet:\
   12.25. Usando IDs vs UUIDs nas URIs de recursos 
 
 13. Modelagem de projeções, pesquisas e relatórios     
