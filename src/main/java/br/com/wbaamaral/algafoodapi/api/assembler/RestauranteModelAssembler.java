@@ -13,16 +13,22 @@ import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
 @Component
 public class RestauranteModelAssembler {
 
-	@Autowired
-	private ModelMapper modelMapper;
+   @Autowired
+   private ModelMapper modelMapper;
 
-	public RestauranteModel toModel(Restaurante restaurante) {
+   public RestauranteModel toModel(Restaurante restaurante) {
 
-		return modelMapper.map(restaurante, RestauranteModel.class);
-	}
+      return modelMapper.map(restaurante, RestauranteModel.class);
+   }
 
-	public List<RestauranteModel> toCollectionModel(List<Restaurante> restaurantes) {
+   public List<RestauranteModel> toCollectionModel(List<Restaurante> restaurantes) {
 
-		return restaurantes.stream().map(restaurante -> toModel(restaurante)).collect(Collectors.toList());
-	}
+      // @formatter:off
+
+		return restaurantes.stream()
+		      .map(restaurante -> toModel(restaurante))
+		      .collect(Collectors.toList());
+
+		// @formatter:on
+   }
 }

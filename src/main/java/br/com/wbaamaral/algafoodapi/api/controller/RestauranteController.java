@@ -16,6 +16,7 @@ import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.SmartValidator;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,8 +35,10 @@ import br.com.wbaamaral.algafoodapi.api.assembler.RestauranteModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.exceptionhandler.ValidacaoException;
 import br.com.wbaamaral.algafoodapi.api.model.RestauranteModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.RestauranteInput;
+import br.com.wbaamaral.algafoodapi.domain.exception.CidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.CozinhaNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
+import br.com.wbaamaral.algafoodapi.domain.exception.RestauranteNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
 import br.com.wbaamaral.algafoodapi.domain.repository.RestauranteRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroRestauranteService;
@@ -88,7 +91,7 @@ public class RestauranteController {
 			restauranteRepository.flush();
 
 			return restauranteModel;
-		} catch (CozinhaNaoEncontradaException e) {
+		} catch (CozinhaNaoEncontradaException | CidadeNaoEncontradaException e) {
 			throw new NegocioException(e.getLocalizedMessage());
 		}
 	}
@@ -105,7 +108,7 @@ public class RestauranteController {
 
 			return restauranteModelAssembler.toModel(cadastroRestaurante.salvar(restauranteAtual));
 
-		} catch (CozinhaNaoEncontradaException e) {
+		} catch (CozinhaNaoEncontradaException | CidadeNaoEncontradaException e) {
 			throw new NegocioException(e.getMessage());
 		}
 
@@ -129,6 +132,54 @@ public class RestauranteController {
 		RestauranteModel restauranteModel = atualizar(restauranteId, restaurante);
 
 		return restauranteModel;
+	}
+
+	@PutMapping("/ativacoes")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void ativarMultiplos(@RequestBody List<Long> restauranteIds) {
+		try {
+			cadastroRestaurante.ativar(restauranteIds);
+			
+		} catch (RestauranteNaoEncontradaException e) {
+			throw new NegocioException( e.getMessage());
+		}
+	}
+	
+	@DeleteMapping("/ativacoes")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void inativarMultiplos(@RequestBody List<Long> restauranteIds) {
+		try {
+			cadastroRestaurante.inativar(restauranteIds);
+			
+		} catch (RestauranteNaoEncontradaException e) {
+			throw new NegocioException( e.getMessage());
+		}
+	}
+	
+	@PutMapping("/{restauranteId}/ativo")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void ativar(@PathVariable Long restauranteId) {
+
+		cadastroRestaurante.ativar(restauranteId);
+	}
+
+	@PutMapping("/{restauranteId}/abertura")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void abrir(@PathVariable Long restauranteId) {
+		cadastroRestaurante.abrir(restauranteId);
+	}
+
+	@PutMapping("/{restauranteId}/fechamento")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void fechar(@PathVariable Long restauranteId) {
+		cadastroRestaurante.fechar(restauranteId);
+	}
+
+	@DeleteMapping("/{restauranteId}/ativo")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void inativar(@PathVariable Long restauranteId) {
+
+		cadastroRestaurante.inativar(restauranteId);
 	}
 
 	private void validarRestaurante(Restaurante restaurante, String objectName) {

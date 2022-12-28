@@ -236,7 +236,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     10.16. Desafio: refatorando o código de testes :feet: \
     10.17. Desafio: escrevendo testes de API :feet: 
 
-11. Boas práticas e técnicas para APIs  :triangular_flag_on_post:  
+11. Boas práticas e técnicas para APIs  :white_check_mark:  
     11.1. Analisando e definindo melhor o escopo das transações :feet:\
     11.2. Refinando o payload de cadastro com @JsonIgnoreProperties :feet:\
     11.3. Criando classes de mixin para usar as anotações do Jackson :feet:\
@@ -259,32 +259,32 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     11.20. Desafio: usando DTOs como representation model :feet: \
     11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA :feet: 
 
-12. Modelagem avançada e implementação da API    
-  12.1. Modelando sub-recursos para relacionamentos \
-  12.2. Granularidade de recursos: Chatty vs Chunky APIs \
-  12.3. Modelando conceitos abstratos de negócio e ações não-CRUD como recursos \
-  12.4. Implementando os endpoints de ativação e inativação de restaurantes \
-  12.5. Desafio: implementando os endpoints de formas de pagamento \
-  12.6. Adicionando endereço no modelo da representação do recurso de restaurante \
-  12.7. Refatorando serviço de cadastro de restaurante para incluir endereço \
-  12.8. Desafio: implementando os endpoints de grupos \
-  12.9. Desafio: implementando os endpoints de usuarios \
-  12.10. Um pouco mais sobre JPA: objeto alterado fora da transação é sincronizado com o banco de dados \
-  12.11. Implementando regra de negócio para evitar usuários com e-mails duplicados \
-  12.12. Implementando os endpoints de associação de formas de pagamento em restaurantes \
-  12.13. Desafio: implementando os endpoints de produtos \
-  12.14. Desafio: Implementando os endpoints de abertura e fechamento de restaurantes \
-  12.15. Desafio: implementando os endpoints de associação de grupos com permissões \
-  12.16. Desafio: implementando os endpoints de associação de usuários com grupos \
-  12.17. Desafio: implementando endpoints de associação de usuários responsáveis com restaurantes \
-  12.18. Implementando ativação e inativação em massa de restaurantes \
-  12.19. Desafio: Implementando os endpoints de consulta de pedidos \
-  12.20. Otimizando a query de pedidos e retornando model resumido na listagem \
-  12.21. Desafio: Implementando o endpoint de emissão de pedidos \
-  12.22. Implementando endpoint de transição de status de pedidos \
-  12.23. Desafio: implementando endpoints de transição de status de pedidos \
-  12.24. Refatorando o código de regras para transição de status de pedidos \
-  12.25. Usando IDs vs UUIDs nas URIs de recursos 
+12. Modelagem avançada e implementação da API :triangular_flag_on_post:    
+  12.1. Modelando sub-recursos para relacionamentos :feet:\
+  12.2. Granularidade de recursos: Chatty vs Chunky APIs :feet:\
+  12.3. Modelando conceitos abstratos de negócio e ações não-CRUD como recursos :feet:\
+  12.4. Implementando os endpoints de ativação e inativação de restaurantes :feet:\
+  12.5. Desafio: implementando os endpoints de formas de pagamento :feet:\
+  12.6. Adicionando endereço no modelo da representação do recurso de restaurante :feet:\
+  12.7. Refatorando serviço de cadastro de restaurante para incluir endereço :feet:\
+  12.8. Desafio: implementando os endpoints de grupos :feet:\
+  12.9. Desafio: implementando os endpoints de usuarios :feet:\
+  12.10. Um pouco mais sobre JPA: objeto alterado fora da transação é sincronizado com o banco de dados :feet:\
+  12.11. Implementando regra de negócio para evitar usuários com e-mails duplicados :feet:\
+  12.12. Implementando os endpoints de associação de formas de pagamento em restaurantes :feet:\
+  12.13. Desafio: implementando os endpoints de produtos :feet:\
+  12.14. Desafio: Implementando os endpoints de abertura e fechamento de restaurantes :feet:\
+  12.15. Desafio: implementando os endpoints de associação de grupos com permissões :feet:\
+  12.16. Desafio: implementando os endpoints de associação de usuários com grupos :feet:\
+  12.17. Desafio: implementando endpoints de associação de usuários responsáveis com restaurantes :feet:\
+  12.18. Implementando ativação e inativação em massa de restaurantes :feet:\
+  12.19. Desafio: Implementando os endpoints de consulta de pedidos :feet:\
+  12.20. Otimizando a query de pedidos e retornando model resumido na listagem :feet:\
+  12.21. Desafio: Implementando o endpoint de emissão de pedidos :feet:\
+  12.22. Implementando endpoint de transição de status de pedidos :feet:\
+  12.23. Desafio: implementando endpoints de transição de status de pedidos :feet:\
+  12.24. Refatorando o código de regras para transição de status de pedidos :feet:\
+  12.25. Usando IDs vs UUIDs nas URIs de recursos :feet:
 
 13. Modelagem de projeções, pesquisas e relatórios     
   13.1. Fazendo projeção de recursos com @JsonView do Jackson \
