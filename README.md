@@ -259,7 +259,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     11.20. Desafio: usando DTOs como representation model :feet: \
     11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA :feet: 
 
-12. Modelagem avançada e implementação da API :triangular_flag_on_post:    
+12. Modelagem avançada e implementação da API :white_check_mark:    
   12.1. Modelando sub-recursos para relacionamentos :feet:\
   12.2. Granularidade de recursos: Chatty vs Chunky APIs :feet:\
   12.3. Modelando conceitos abstratos de negócio e ações não-CRUD como recursos :feet:\
@@ -286,8 +286,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.24. Refatorando o código de regras para transição de status de pedidos :feet:\
   12.25. Usando IDs vs UUIDs nas URIs de recursos :feet:
 
-13. Modelagem de projeções, pesquisas e relatórios     
-  13.1. Fazendo projeção de recursos com @JsonView do Jackson \
+13. Modelagem de projeções, pesquisas e relatórios :triangular_flag_on_post:    
+  13.1. Fazendo projeção de recursos com @JsonView do Jackson :feet:\
   13.2. Limitando os campos retornados pela API com @JsonFilter do Jackson \
   13.3. Limitando os campos retornados pela API com Squiggly \
   13.4. Implementando pesquisas simples na API \
