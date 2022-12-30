@@ -293,7 +293,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   13.4. Implementando pesquisas simples na API :feet:\
   13.5. Modelando pesquisas complexas na API :feet:\
   13.6. Implementando pesquisas complexas na API :feet:\
-  13.7. Tratando BindException ao enviar parâmetros de URL inválidos \
+  13.7. Tratando BindException ao enviar parâmetros de URL inválidos :feet:\
   13.8. Implementando paginação e ordenação em recursos de coleção da API \
   13.9. Desafio: implementando paginação e ordenação de pedidos \
   13.10. Implementando JsonSerializer para customizar representação de paginação \
