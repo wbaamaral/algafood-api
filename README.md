@@ -297,7 +297,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   13.8. Implementando paginação e ordenação em recursos de coleção da API :feet:\
   13.9. Desafio: implementando paginação e ordenação de pedidos :feet:\
   13.10. Implementando JsonSerializer para customizar representação de paginação :feet:\
-  13.11. Implementando um conversor de propriedades de ordenação \
+  13.11. Implementando um conversor de propriedades de ordenação :feet:\
   13.12. Modelando endpoints de consultas com dados agregados (ideal para gráficos e dashboards) \
   13.13. Discutindo sobre onde implementar as consultas com dados agregados \
   13.14. Implementando consulta com dados agregados de vendas diárias \
