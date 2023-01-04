@@ -301,8 +301,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   13.12. Modelando endpoints de consultas com dados agregados (ideal para gráficos e dashboards) :feet:\
   13.13. Discutindo sobre onde implementar as consultas com dados agregados :feet:\
   13.14. Implementando consulta com dados agregados de vendas diárias :feet:\
-  13.15. Desafio: adicionando os filtros na consulta de vendas diárias \
-  13.16. Tratando time offset na agregação de vendas diárias por data \
+  13.15. Desafio: adicionando os filtros na consulta de vendas diárias :feet:\
+  13.16. Tratando time offset na agregação de vendas diárias por data :feet:\
   13.17. Conhecendo o JasperSoft Studio \
   13.18. Criando um layout do relatório JasperReports de vendas diárias \
   13.19. Estruturando endpoint e serviço de emissão de relatório em PDF \
