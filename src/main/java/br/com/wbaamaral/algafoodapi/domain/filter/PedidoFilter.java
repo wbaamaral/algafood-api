@@ -1,4 +1,4 @@
-package br.com.wbaamaral.algafoodapi.domain.repository.filter;
+package br.com.wbaamaral.algafoodapi.domain.filter;
 
 import java.time.OffsetDateTime;
 

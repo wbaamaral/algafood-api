@@ -36,10 +36,10 @@ import br.com.wbaamaral.algafoodapi.api.model.input.PedidoInput;
 import br.com.wbaamaral.algafoodapi.core.data.PageableTranslator;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
+import br.com.wbaamaral.algafoodapi.domain.filter.PedidoFilter;
 import br.com.wbaamaral.algafoodapi.domain.model.Pedido;
 import br.com.wbaamaral.algafoodapi.domain.model.Usuario;
 import br.com.wbaamaral.algafoodapi.domain.repository.PedidoRepository;
-import br.com.wbaamaral.algafoodapi.domain.repository.filter.PedidoFilter;
 import br.com.wbaamaral.algafoodapi.domain.service.EmissaoPedidoService;
 import br.com.wbaamaral.algafoodapi.infrastructure.repository.spec.PedidoSpecs;
 
