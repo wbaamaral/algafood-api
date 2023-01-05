@@ -286,7 +286,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.24. Refatorando o código de regras para transição de status de pedidos :feet:\
   12.25. Usando IDs vs UUIDs nas URIs de recursos :feet:
 
-13. Modelagem de projeções, pesquisas e relatórios :white_check_mark:
+13. Modelagem de projeções, pesquisas e relatórios :white_check_mark: \
   13.1. Fazendo projeção de recursos com @JsonView do Jackson :feet:\
   13.2. Limitando os campos retornados pela API com @JsonFilter do Jackson :feet:\
   13.3. Limitando os campos retornados pela API com Squiggly :feet:\
@@ -308,7 +308,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   13.19. Estruturando endpoint e serviço de emissão de relatório em PDF :feet:\
   13.20. Preenchendo um relatório JasperReports com JavaBeans e gerando bytes do PDF :feet: 
 
-14. Upload e download de arquivos   :triangular_flag_on_post: 
+14. Upload e download de arquivos   :triangular_flag_on_post: \
     14.1. Conhecendo soluções para upload de arquivos em REST APIs :feet:\
     14.2. Implementando upload de arquivo com multipart/form-data \
     14.3. Validando o tamanho máximo do arquivo \
