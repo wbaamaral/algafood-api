@@ -1,4 +1,4 @@
-package br.com.wbaamaral.algafoodapi.infrastructure.repository.service;
+package br.com.wbaamaral.algafoodapi.infrastructure.repository.service.query;
 
 import java.util.ArrayList;
 import java.util.Date;

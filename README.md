@@ -305,7 +305,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   13.16. Tratando time offset na agregação de vendas diárias por data :feet:\
   13.17. Conhecendo o JasperSoft Studio :feet:\
   13.18. Criando um layout do relatório JasperReports de vendas diárias :feet:\
-  13.19. Estruturando endpoint e serviço de emissão de relatório em PDF \
+  13.19. Estruturando endpoint e serviço de emissão de relatório em PDF :feet:\
   13.20. Preenchendo um relatório JasperReports com JavaBeans e gerando bytes do PDF 
 
 14. Upload e download de arquivos    
