@@ -7,21 +7,21 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.wbaamaral.algafoodapi.api.model.PedidoResumoModel;
+import br.com.wbaamaral.algafoodapi.api.model.PedidoResumoModelJsonFilter;
 import br.com.wbaamaral.algafoodapi.domain.model.Pedido;
 
 @Component
-public class PedidoResumoModelAssembler {
+public class PedidoModelAssemblerJsonFilter {
 
    @Autowired
    private ModelMapper modelMapper;
 
-   public PedidoResumoModel toModel(Pedido pedido) {
+   public PedidoResumoModelJsonFilter toModel(Pedido pedido) {
 
-      return modelMapper.map(pedido, PedidoResumoModel.class);
+      return modelMapper.map(pedido, PedidoResumoModelJsonFilter.class);
    }
 
-   public List<PedidoResumoModel> toCollectionModel(List<Pedido> pedidos) {
+   public List<PedidoResumoModelJsonFilter> toCollectionModel(List<Pedido> pedidos) {
 
       // @formatter:off
 
@@ -31,7 +31,5 @@ public class PedidoResumoModelAssembler {
       
       // @formatter:on
    }
-   
-
 
 }

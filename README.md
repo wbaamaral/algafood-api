@@ -259,7 +259,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     11.20. Desafio: usando DTOs como representation model :feet: \
     11.21. Corrigindo bug de tratamento de exception de integridade de dados com flush do JPA :feet: 
 
-12. Modelagem avançada e implementação da API :triangular_flag_on_post:    
+12. Modelagem avançada e implementação da API :white_check_mark:    
   12.1. Modelando sub-recursos para relacionamentos :feet:\
   12.2. Granularidade de recursos: Chatty vs Chunky APIs :feet:\
   12.3. Modelando conceitos abstratos de negócio e ações não-CRUD como recursos :feet:\
@@ -286,27 +286,27 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.24. Refatorando o código de regras para transição de status de pedidos :feet:\
   12.25. Usando IDs vs UUIDs nas URIs de recursos :feet:
 
-13. Modelagem de projeções, pesquisas e relatórios     
-  13.1. Fazendo projeção de recursos com @JsonView do Jackson \
-  13.2. Limitando os campos retornados pela API com @JsonFilter do Jackson \
-  13.3. Limitando os campos retornados pela API com Squiggly \
-  13.4. Implementando pesquisas simples na API \
-  13.5. 13. Modelando pesquisas complexas na API \
-  13.6. Implementando pesquisas complexas na API \
-  13.7. Tratando BindException ao enviar parâmetros de URL inválidos \
-  13.8. Implementando paginação e ordenação em recursos de coleção da API \
-  13.9. Desafio: implementando paginação e ordenação de pedidos \
-  13.10. Implementando JsonSerializer para customizar representação de paginação \
-  13.11. Implementando um conversor de propriedades de ordenação \
-  13.12. Modelando endpoints de consultas com dados agregados (ideal para gráficos e dashboards) \
-  13.13. Discutindo sobre onde implementar as consultas com dados agregados \
-  13.14. Implementando consulta com dados agregados de vendas diárias \
-  13.15. Desafio: adicionando os filtros na consulta de vendas diárias \
-  13.16. Tratando time offset na agregação de vendas diárias por data \
-  13.17. Conhecendo o JasperSoft Studio \
-  13.18. Criando um layout do relatório JasperReports de vendas diárias \
-  13.19. Estruturando endpoint e serviço de emissão de relatório em PDF \
-  13.20. Preenchendo um relatório JasperReports com JavaBeans e gerando bytes do PDF 
+13. Modelagem de projeções, pesquisas e relatórios :triangular_flag_on_post:    
+  13.1. Fazendo projeção de recursos com @JsonView do Jackson :feet:\
+  13.2. Limitando os campos retornados pela API com @JsonFilter do Jackson :feet:\
+  13.3. Limitando os campos retornados pela API com Squiggly :feet:\
+  13.4. Implementando pesquisas simples na API :feet:\
+  13.5. Modelando pesquisas complexas na API :feet:\
+  13.6. Implementando pesquisas complexas na API :feet:\
+  13.7. Tratando BindException ao enviar parâmetros de URL inválidos :feet:\
+  13.8. Implementando paginação e ordenação em recursos de coleção da API :feet:\
+  13.9. Desafio: implementando paginação e ordenação de pedidos :feet:\
+  13.10. Implementando JsonSerializer para customizar representação de paginação :feet:\
+  13.11. Implementando um conversor de propriedades de ordenação :feet:\
+  13.12. Modelando endpoints de consultas com dados agregados (ideal para gráficos e dashboards) :feet:\
+  13.13. Discutindo sobre onde implementar as consultas com dados agregados :feet:\
+  13.14. Implementando consulta com dados agregados de vendas diárias :feet:\
+  13.15. Desafio: adicionando os filtros na consulta de vendas diárias :feet:\
+  13.16. Tratando time offset na agregação de vendas diárias por data :feet:\
+  13.17. Conhecendo o JasperSoft Studio :feet:\
+  13.18. Criando um layout do relatório JasperReports de vendas diárias :feet:\
+  13.19. Estruturando endpoint e serviço de emissão de relatório em PDF :feet:\
+  13.20. Preenchendo um relatório JasperReports com JavaBeans e gerando bytes do PDF :feet: 
 
 14. Upload e download de arquivos    
     14.1. Conhecendo soluções para upload de arquivos em REST APIs \
