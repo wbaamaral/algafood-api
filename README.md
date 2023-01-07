@@ -311,7 +311,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
 14. Upload e download de arquivos   :triangular_flag_on_post: \
     14.1. Conhecendo soluções para upload de arquivos em REST APIs :feet:\
     14.2. Implementando upload de arquivo com multipart/form-data :feet:\
-    14.3. Validando o tamanho máximo do arquivo \
+    14.3. Validando o tamanho máximo do arquivo :feet:\
     14.4. Desafio: Validando o content type do arquivo \
     14.5. Mapeando entidade FotoProduto e relacionamento um-para-um \
     14.6. Implementando serviço de cadastro de foto de produto \
