@@ -316,7 +316,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     14.5. Mapeando entidade FotoProduto e relacionamento um-para-um :feet:\
     14.6. Implementando serviço de cadastro de foto de produto :feet:\
     14.7. Excluindo e substituindo cadastro de foto de produto :feet:\
-    14.8. Implementando o serviço de armazenagem de fotos no disco local \
+    14.8. Implementando o serviço de armazenagem de fotos no disco local :feet:\
     14.9. Integrando o serviço de catálogo de fotos com o serviço de armazenagem \
     14.10. Implementando a remoção e substituição de arquivos de fotos no serviço de armazenagem \
     14.11. Desafio: Implementando recuperação de foto no serviço de armazenagem \

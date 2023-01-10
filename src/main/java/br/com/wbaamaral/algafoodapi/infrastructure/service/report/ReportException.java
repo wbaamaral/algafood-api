@@ -1,4 +1,4 @@
-package br.com.wbaamaral.algafoodapi.infrastructure.repository.service.report;
+package br.com.wbaamaral.algafoodapi.infrastructure.service.report;
 
 public class ReportException extends RuntimeException {
 
