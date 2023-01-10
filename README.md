@@ -313,7 +313,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     14.2. Implementando upload de arquivo com multipart/form-data :feet:\
     14.3. Validando o tamanho máximo do arquivo :feet:\
     14.4. Desafio: Validando o content type do arquivo :feet:\
-    14.5. Mapeando entidade FotoProduto e relacionamento um-para-um \
+    14.5. Mapeando entidade FotoProduto e relacionamento um-para-um :feet:\
     14.6. Implementando serviço de cadastro de foto de produto \
     14.7. Excluindo e substituindo cadastro de foto de produto \
     14.8. Implementando o serviço de armazenagem de fotos no disco local \
