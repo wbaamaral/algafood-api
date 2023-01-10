@@ -314,7 +314,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     14.3. Validando o tamanho máximo do arquivo :feet:\
     14.4. Desafio: Validando o content type do arquivo :feet:\
     14.5. Mapeando entidade FotoProduto e relacionamento um-para-um :feet:\
-    14.6. Implementando serviço de cadastro de foto de produto \
+    14.6. Implementando serviço de cadastro de foto de produto :feet:\
     14.7. Excluindo e substituindo cadastro de foto de produto \
     14.8. Implementando o serviço de armazenagem de fotos no disco local \
     14.9. Integrando o serviço de catálogo de fotos com o serviço de armazenagem \
