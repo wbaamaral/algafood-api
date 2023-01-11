@@ -1,5 +1,7 @@
 package br.com.wbaamaral.algafoodapi.api.controller;
 
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +35,12 @@ public class RestauranteProdutoFotoController {
 
 	@PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public FotoProdutoModel atualizarFoto(@Valid @PathVariable Long restauranteId, @Valid @PathVariable Long produtoId,
-			@Valid FotoProdutoInput fotoProdutoInput) {
+			@Valid FotoProdutoInput fotoProdutoInput) throws IOException {
 
-		var fotoSalva = catalogoFotoProduto.salvar(atribuirFoto(fotoProdutoInput, restauranteId, produtoId));
+		var inputStream = fotoProdutoInput.getArquivo().getInputStream();
+
+		var fotoSalva = catalogoFotoProduto.salvar(atribuirFoto(fotoProdutoInput, restauranteId, produtoId),
+				inputStream);
 
 		return fotoProdutoModelAssembler.toModel(fotoSalva);
 	}
