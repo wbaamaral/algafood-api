@@ -321,7 +321,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     14.10. Implementando a remoção e substituição de arquivos de fotos no serviço de armazenagem :feet:\
     14.11. Desafio: Implementando recuperação de foto no serviço de armazenagem :feet:\
     14.12. Desafio: Implementando endpoint de consulta de foto de produto :feet:\
-    14.13. Servindo arquivos de fotos pela API \
+    14.13. Servindo arquivos de fotos pela API :feet:\
     14.14. Checando media type ao servir arquivos de fotos \
     14.15. Desafio: implementando endpoint de exclusão de foto de produto \
     14.16. Corrigindo exception handler de media type não aceita \
