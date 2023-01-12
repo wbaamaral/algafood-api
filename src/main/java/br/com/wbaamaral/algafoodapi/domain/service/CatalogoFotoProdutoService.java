@@ -22,6 +22,17 @@ public class CatalogoFotoProdutoService {
 	private FotoStorageService fotoStorage;
 
 	@Transactional
+	public void excluir(Long restauranteId, Long produtoId) {
+		FotoProduto foto = buscarOuFalhar(restauranteId, produtoId);
+		var nomeArquivo = foto.getNomeArquivo();
+
+		produtoRepository.delete(foto);
+		produtoRepository.flush();
+
+		fotoStorage.remover(nomeArquivo);
+	}
+
+	@Transactional
 	public FotoProduto salvar(FotoProduto foto, InputStream dadosArquivo) {
 		String novoNome;
 		FotoProduto fotoSalva;
