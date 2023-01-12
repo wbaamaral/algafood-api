@@ -9,7 +9,8 @@ import lombok.Getter;
 public interface FotoStorageService {
 
 	void armazenar(NovaFoto novaFoto);
-
+	void remover(String nomeArquivo);
+	
 	@Builder
 	@Getter
 	class NovaFoto {
@@ -36,5 +37,12 @@ public interface FotoStorageService {
 
 		return extensao.toLowerCase();
 	}
-	
+
+	default void substituir(String nomeArquivoAntigo, NovaFoto novaFoto) {
+		this.armazenar(novaFoto);
+		
+		if (nomeArquivoAntigo != null) {
+			this.remover(nomeArquivoAntigo);
+		}
+	}
 }

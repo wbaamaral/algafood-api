@@ -24,12 +24,14 @@ public class CatalogoFotoProdutoService {
 	public FotoProduto salvar(FotoProduto foto, InputStream dadosArquivo) {
 		String novoNome;
 		FotoProduto fotoSalva;
+		String nomeArquivoExistente = null;
 
 		Optional<FotoProduto> fotoExistente = produtoRepository.findFotoById(foto.getIdRestaurante(),
 				foto.getIdProduto());
 
 		if (fotoExistente.isPresent()) {
 			// excluir foto
+			nomeArquivoExistente = fotoExistente.get().getNomeArquivo();
 			produtoRepository.delete(fotoExistente.get());
 		}
 		novoNome = fotoStorage.getNovoNome(foto.getNomeArquivo());
@@ -45,7 +47,7 @@ public class CatalogoFotoProdutoService {
 				.build();
 		// @formatter:on
 
-		fotoStorage.armazenar(novaFoto);
+		fotoStorage.substituir(nomeArquivoExistente, novaFoto);
 
 		return fotoSalva;
 	}
