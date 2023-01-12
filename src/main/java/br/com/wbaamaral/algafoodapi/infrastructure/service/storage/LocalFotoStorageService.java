@@ -1,20 +1,21 @@
 package br.com.wbaamaral.algafoodapi.infrastructure.service.storage;
 
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 
 import br.com.wbaamaral.algafoodapi.domain.service.FotoStorageService;
 
-@Service
 public class LocalFotoStorageService implements FotoStorageService {
 
 	@Value("${algafood.storage.local.diretorio-fotos}")
 	private Path diretorioFotos;
+
+	private Path getArquivoPath(String nomeArquivo) {
+		return diretorioFotos.resolve(Path.of(nomeArquivo));
+	}
 
 	// https://dicasdejava.com.br/java-como-obter-a-extensao-de-um-arquivo/
 	@Override
@@ -34,13 +35,10 @@ public class LocalFotoStorageService implements FotoStorageService {
 			Path arquivoPath = getArquivoPath(novaFoto.getNomeAquivo());
 
 			FileCopyUtils.copy(novaFoto.getInputStream(), Files.newOutputStream(arquivoPath));
+
 		} catch (Exception e) {
 			throw new StorageException("Não foi possível armazenar arquivo.", e);
 		}
-	}
-
-	private Path getArquivoPath(String nomeArquivo) {
-		return diretorioFotos.resolve(Path.of(nomeArquivo));
 	}
 
 	@Override
@@ -56,15 +54,18 @@ public class LocalFotoStorageService implements FotoStorageService {
 	}
 
 	@Override
-	public InputStream recuperar(String nomeArquivo) {
+	public FotoRecuperada recuperar(String nomeArquivo) {
 		try {
 			Path arquivoPath = getArquivoPath(nomeArquivo);
 
-			return Files.newInputStream(arquivoPath);
-			
+			FotoRecuperada fotoRecuperada = FotoRecuperada.builder().inputStream(Files.newInputStream(arquivoPath))
+					.build();
+
+			return fotoRecuperada;
+
 		} catch (Exception e) {
 			throw new StorageException("Não foi possível recuperar o arquivo.", e);
-		}	
+		}
 	}
 
 }

@@ -9,17 +9,10 @@ import lombok.Getter;
 public interface FotoStorageService {
 
 	void armazenar(NovaFoto novaFoto);
+
 	void remover(String nomeArquivo);
-	InputStream recuperar(String nomeArquivo);
-	
-	@Builder
-	@Getter
-	class NovaFoto {
 
-		private String nomeAquivo;
-		private InputStream inputStream;
-
-	}
+	FotoRecuperada recuperar(String nomeArquivo);
 
 	default String getNovoNome(String nomeArquivo) {
 		var novoNome = UUID.randomUUID().toString();
@@ -33,7 +26,7 @@ public interface FotoStorageService {
 
 		var extensao = "";
 		if (file.contains(".")) {
-			extensao = file.substring(file.lastIndexOf(".") );
+			extensao = file.substring(file.lastIndexOf("."));
 		}
 
 		return extensao.toLowerCase();
@@ -41,9 +34,37 @@ public interface FotoStorageService {
 
 	default void substituir(String nomeArquivoAntigo, NovaFoto novaFoto) {
 		this.armazenar(novaFoto);
-		
+
 		if (nomeArquivoAntigo != null) {
 			this.remover(nomeArquivoAntigo);
 		}
 	}
+
+	@Builder
+	@Getter
+	class NovaFoto {
+
+		private String nomeAquivo;
+		private InputStream inputStream;
+		private String contentType;
+
+	}
+
+	@Builder
+	@Getter
+	class FotoRecuperada {
+
+		private InputStream inputStream;
+		private String url;
+
+		public boolean temUrl() {
+			return url != null;
+		}
+
+		public boolean temInputStream() {
+			return inputStream != null;
+		}
+
+	}
+
 }

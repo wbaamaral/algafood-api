@@ -325,16 +325,16 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     14.14. Checando media type ao servir arquivos de fotos :feet:\
     14.15. Desafio: implementando endpoint de exclusão de foto de produto :feet:\
     14.16. Corrigindo exception handler de media type não aceita :feet:\
-    14.17. Amazon S3: conhecendo o serviço de storage da AWS \
-    14.18. Criando usuário com permissões para adicionar objetos na Amazon S3 \
-    14.19. Criando chaves de acesso para a API da AWS \
-    14.20. Criando bean de propriedades de configuração dos serviços de storage \
-    14.21. Adicionando o SDK Java da Amazon S3 no projeto e criando classe do serviço de storage \
-    14.22. Definindo bean do client da Amazon S3 e configurando credenciais \
-    14.23. Implementando a inclusão de objetos no bucket da Amazon S3 \
-    14.24. Desafio: Implementando a exclusão de objetos do bucket da Amazon S3 \
-    14.25. Implementando a recuperação de foto no serviço de storage do S3 \
-    14.26. Selecionando a implementação do serviço de storage de fotos 
+    14.17. Amazon S3: conhecendo o serviço de storage da AWS :feet:\
+    14.18. Criando usuário com permissões para adicionar objetos na Amazon S3 :feet:\
+    14.19. Criando chaves de acesso para a API da AWS :feet:\
+    14.20. Criando bean de propriedades de configuração dos serviços de storage :feet:\
+    14.21. Adicionando o SDK Java da Amazon S3 no projeto e criando classe do serviço de storage :feet:\
+    14.22. Definindo bean do client da Amazon S3 e configurando credenciais :feet:\
+    14.23. Implementando a inclusão de objetos no bucket da Amazon S3 :feet:\
+    14.24. Desafio: Implementando a exclusão de objetos do bucket da Amazon S3 :feet:\
+    14.25. Implementando a recuperação de foto no serviço de storage do S3 :feet:\
+    14.26. Selecionando a implementação do serviço de storage de fotos :feet: \ 
 
 15. E-mails transacionais e Domain Events    
     15.1. Conhecendo soluções para envio de e-mails transacionais \
