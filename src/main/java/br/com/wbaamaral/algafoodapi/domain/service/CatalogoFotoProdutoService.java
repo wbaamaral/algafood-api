@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.wbaamaral.algafoodapi.domain.exception.FotoProdutoNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.model.FotoProduto;
 import br.com.wbaamaral.algafoodapi.domain.repository.ProdutoRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.FotoStorageService.NovaFoto;
@@ -36,7 +37,7 @@ public class CatalogoFotoProdutoService {
 		}
 		novoNome = fotoStorage.getNovoNome(foto.getNomeArquivo());
 		foto.setNomeArquivo(novoNome);
-		
+
 		fotoSalva = produtoRepository.save(foto);
 		produtoRepository.flush();
 
@@ -52,4 +53,8 @@ public class CatalogoFotoProdutoService {
 		return fotoSalva;
 	}
 
+	public FotoProduto buscarOuFalhar(Long restauranteId, Long produtoId) {
+		return produtoRepository.findFotoById(restauranteId, produtoId)
+				.orElseThrow(() -> new FotoProdutoNaoEncontradaException(restauranteId, produtoId));
+	}
 }
