@@ -286,7 +286,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   12.24. Refatorando o código de regras para transição de status de pedidos :feet:\
   12.25. Usando IDs vs UUIDs nas URIs de recursos :feet:
 
-13. Modelagem de projeções, pesquisas e relatórios :triangular_flag_on_post:    
+13. Modelagem de projeções, pesquisas e relatórios :white_check_mark: \
   13.1. Fazendo projeção de recursos com @JsonView do Jackson :feet:\
   13.2. Limitando os campos retornados pela API com @JsonFilter do Jackson :feet:\
   13.3. Limitando os campos retornados pela API com Squiggly :feet:\
@@ -308,33 +308,33 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   13.19. Estruturando endpoint e serviço de emissão de relatório em PDF :feet:\
   13.20. Preenchendo um relatório JasperReports com JavaBeans e gerando bytes do PDF :feet: 
 
-14. Upload e download de arquivos    
-    14.1. Conhecendo soluções para upload de arquivos em REST APIs \
-    14.2. Implementando upload de arquivo com multipart/form-data \
-    14.3. Validando o tamanho máximo do arquivo \
-    14.4. Desafio: Validando o content type do arquivo \
-    14.5. Mapeando entidade FotoProduto e relacionamento um-para-um \
-    14.6. Implementando serviço de cadastro de foto de produto \
-    14.7. Excluindo e substituindo cadastro de foto de produto \
-    14.8. Implementando o serviço de armazenagem de fotos no disco local \
-    14.9. Integrando o serviço de catálogo de fotos com o serviço de armazenagem \
-    14.10. Implementando a remoção e substituição de arquivos de fotos no serviço de armazenagem \
-    14.11. Desafio: Implementando recuperação de foto no serviço de armazenagem \
-    14.12. Desafio: Implementando endpoint de consulta de foto de produto \
-    14.13. Servindo arquivos de fotos pela API \
-    14.14. Checando media type ao servir arquivos de fotos \
-    14.15. Desafio: implementando endpoint de exclusão de foto de produto \
-    14.16. Corrigindo exception handler de media type não aceita \
-    14.17. Amazon S3: conhecendo o serviço de storage da AWS \
-    14.18. Criando usuário com permissões para adicionar objetos na Amazon S3 \
-    14.19. Criando chaves de acesso para a API da AWS \
-    14.20. Criando bean de propriedades de configuração dos serviços de storage \
-    14.21. Adicionando o SDK Java da Amazon S3 no projeto e criando classe do serviço de storage \
-    14.22. Definindo bean do client da Amazon S3 e configurando credenciais \
-    14.23. Implementando a inclusão de objetos no bucket da Amazon S3 \
-    14.24. Desafio: Implementando a exclusão de objetos do bucket da Amazon S3 \
-    14.25. Implementando a recuperação de foto no serviço de storage do S3 \
-    14.26. Selecionando a implementação do serviço de storage de fotos 
+14. Upload e download de arquivos   :triangular_flag_on_post: \
+    14.1. Conhecendo soluções para upload de arquivos em REST APIs :feet:\
+    14.2. Implementando upload de arquivo com multipart/form-data :feet:\
+    14.3. Validando o tamanho máximo do arquivo :feet:\
+    14.4. Desafio: Validando o content type do arquivo :feet:\
+    14.5. Mapeando entidade FotoProduto e relacionamento um-para-um :feet:\
+    14.6. Implementando serviço de cadastro de foto de produto :feet:\
+    14.7. Excluindo e substituindo cadastro de foto de produto :feet:\
+    14.8. Implementando o serviço de armazenagem de fotos no disco local :feet:\
+    14.9. Integrando o serviço de catálogo de fotos com o serviço de armazenagem :feet:\
+    14.10. Implementando a remoção e substituição de arquivos de fotos no serviço de armazenagem :feet:\
+    14.11. Desafio: Implementando recuperação de foto no serviço de armazenagem :feet:\
+    14.12. Desafio: Implementando endpoint de consulta de foto de produto :feet:\
+    14.13. Servindo arquivos de fotos pela API :feet:\
+    14.14. Checando media type ao servir arquivos de fotos :feet:\
+    14.15. Desafio: implementando endpoint de exclusão de foto de produto :feet:\
+    14.16. Corrigindo exception handler de media type não aceita :feet:\
+    14.17. Amazon S3: conhecendo o serviço de storage da AWS :feet:\
+    14.18. Criando usuário com permissões para adicionar objetos na Amazon S3 :feet:\
+    14.19. Criando chaves de acesso para a API da AWS :feet:\
+    14.20. Criando bean de propriedades de configuração dos serviços de storage :feet:\
+    14.21. Adicionando o SDK Java da Amazon S3 no projeto e criando classe do serviço de storage :feet:\
+    14.22. Definindo bean do client da Amazon S3 e configurando credenciais :feet:\
+    14.23. Implementando a inclusão de objetos no bucket da Amazon S3 :feet:\
+    14.24. Desafio: Implementando a exclusão de objetos do bucket da Amazon S3 :feet:\
+    14.25. Implementando a recuperação de foto no serviço de storage do S3 :feet:\
+    14.26. Selecionando a implementação do serviço de storage de fotos :feet: \ 
 
 15. E-mails transacionais e Domain Events    
     15.1. Conhecendo soluções para envio de e-mails transacionais \
