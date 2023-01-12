@@ -308,7 +308,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
   13.19. Estruturando endpoint e serviço de emissão de relatório em PDF :feet:\
   13.20. Preenchendo um relatório JasperReports com JavaBeans e gerando bytes do PDF :feet: 
 
-14. Upload e download de arquivos   :triangular_flag_on_post: \
+14. Upload e download de arquivos :white_check_mark:  \
     14.1. Conhecendo soluções para upload de arquivos em REST APIs :feet:\
     14.2. Implementando upload de arquivo com multipart/form-data :feet:\
     14.3. Validando o tamanho máximo do arquivo :feet:\
@@ -334,9 +334,9 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     14.23. Implementando a inclusão de objetos no bucket da Amazon S3 :feet:\
     14.24. Desafio: Implementando a exclusão de objetos do bucket da Amazon S3 :feet:\
     14.25. Implementando a recuperação de foto no serviço de storage do S3 :feet:\
-    14.26. Selecionando a implementação do serviço de storage de fotos :feet: \ 
+    14.26. Selecionando a implementação do serviço de storage de fotos :feet:  
 
-15. E-mails transacionais e Domain Events    
+15. E-mails transacionais e Domain Events  :triangular_flag_on_post:   
     15.1. Conhecendo soluções para envio de e-mails transacionais \
     15.2. Configurando o projeto para envio de e-mails usando servidor SMTP \
     15.3. Implementando o serviço de infraestrutura de envio de e-mails com Spring \
