@@ -339,7 +339,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
 15. E-mails transacionais e Domain Events  :triangular_flag_on_post:   
     15.1. Conhecendo soluções para envio de e-mails transacionais :feet:\
     15.2. Configurando o projeto para envio de e-mails usando servidor SMTP :feet:\
-    15.3. Implementando o serviço de infraestrutura de envio de e-mails com Spring \
+    15.3. Implementando o serviço de infraestrutura de envio de e-mails com Spring :feet:\
     15.4. Usando o serviço de envio de e-mails na confirmação de pedidos \
     15.5. Processando template do corpo de e-mails com Apache FreeMarker \
     15.6. Melhorando o texto do e-mail com FTL (FreeMarker Template Language) \
