@@ -24,11 +24,11 @@ public class FluxoPedidoService {
 		pedido.confirmar();
 		
 		var mensagem = Mensagem.builder()
-		      .assunto(pedido.getRestaurante().getNome() +  " - Pedido confirmado")
-		      .corpo("O pedido de código <strong>" 
-		            + pedido.getCodigo() + "</strong> foi confirmado!")
-		      .destinatario(pedido.getCliente().getEmail())
-		      .build();
+				.assunto(pedido.getRestaurante().getNome() + " - Pedido confirmado")
+				.corpo("pedido-confirmado.html")
+				.variavel("pedido", pedido)
+				.destinatario(pedido.getCliente().getEmail())
+				.build();
 		
 		envioEmail.enviar(mensagem);
 	}

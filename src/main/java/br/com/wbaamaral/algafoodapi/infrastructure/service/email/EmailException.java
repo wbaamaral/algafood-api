@@ -1,4 +1,5 @@
 package br.com.wbaamaral.algafoodapi.infrastructure.service.email;
+
 public class EmailException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;

@@ -340,8 +340,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     15.1. Conhecendo soluções para envio de e-mails transacionais :feet:\
     15.2. Configurando o projeto para envio de e-mails usando servidor SMTP :feet:\
     15.3. Implementando o serviço de infraestrutura de envio de e-mails com Spring :feet:\
-    15.4. Usando o serviço de envio de e-mails na confirmação de pedidos \
-    15.5. Processando template do corpo de e-mails com Apache FreeMarker \
+    15.4. Usando o serviço de envio de e-mails na confirmação de pedidos :feet:\
+    15.5. Processando template do corpo de e-mails com Apache FreeMarker :feet:\
     15.6. Melhorando o texto do e-mail com FTL (FreeMarker Template Language) \
     15.7. Formatando valores monetários com FTL \
     15.8. Desafio: implementando serviço de envio de e-mail fake \
