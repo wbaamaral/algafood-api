@@ -344,7 +344,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     15.5. Processando template do corpo de e-mails com Apache FreeMarker :feet:\
     15.6. Melhorando o texto do e-mail com FTL (FreeMarker Template Language) :feet:\
     15.7. Formatando valores monetários com FTL :feet:\
-    15.8. Desafio: implementando serviço de envio de e-mail fake \
+    15.8. Desafio: implementando serviço de envio de e-mail fake :feet:\
     15.9. Desafio: Implementando serviço de envio de e-mail sandbox \
     15.10. Conhecendo o padrão Domain Events do DDD \
     15.11. Publicando Domain Events a partir do Aggregate Root \

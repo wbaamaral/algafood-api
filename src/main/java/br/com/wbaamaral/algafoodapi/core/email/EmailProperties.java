@@ -9,13 +9,22 @@ import org.springframework.validation.annotation.Validated;
 import lombok.Getter;
 import lombok.Setter;
 
+@Validated
 @Getter
 @Setter
 @Component
-@Validated
 @ConfigurationProperties("algafood.email")
 public class EmailProperties {
 
-   @NotNull
-   private String remetente;
+	// Atribuimos FAKE como padrão
+	// Isso evita o problema de enviar e-mails de verdade caso você esqueça
+	// de definir a propriedade
+	private Implementacao impl = Implementacao.FAKE;
+
+	@NotNull
+	private String remetente;
+
+	public enum Implementacao {
+		SMTP, FAKE
+	}
 }
