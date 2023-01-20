@@ -16,6 +16,7 @@ import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.SmartValidator;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -45,6 +46,7 @@ import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
 import br.com.wbaamaral.algafoodapi.domain.repository.RestauranteRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroRestauranteService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/restaurantes")
 public class RestauranteController {

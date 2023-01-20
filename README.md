@@ -353,10 +353,10 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     15.14. Desafio: enviando e-mails no cancelamento de pedidos :feet: 
 
 16. CORS e consumo da API com JavaScript e Java :triangular_flag_on_post:    
-    16.1. Implementando uma chamada na REST API com JavaScript \
-    16.2. Testando a requisição na API com JavaScript e entendendo a Same Origin Policy \
-    16.3. Entendendo o funcionamento básico de CORS e habilitando na API \
-    16.4. Habilitando CORS em controladores e métodos com @CrossOrigin \
+    16.1. Implementando uma chamada na REST API com JavaScript :feet:\
+    16.2. Testando a requisição na API com JavaScript e entendendo a Same Origin Policy :feet:\
+    16.3. Entendendo o funcionamento básico de CORS e habilitando na API :feet:\
+    16.4. Habilitando CORS em controladores e métodos com @CrossOrigin :feet:\
     16.5. Entendendo o funcionamento de preflight do CORS \
     16.6. Habilitando CORS globalmente no projeto da API \
     16.7. Desafio: implementando uma requisição GET com JavaScript \
