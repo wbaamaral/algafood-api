@@ -6,9 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.wbaamaral.algafoodapi.domain.model.Pedido;
+import br.com.wbaamaral.algafoodapi.domain.repository.PedidoRepository;
+import br.com.wbaamaral.algafoodapi.domain.service.EnvioEmailService.Mensagem;
 
 @Service
 public class FluxoPedidoService {
+
+	@Autowired
+	private PedidoRepository pedidoRepository;
 
 	@Autowired
 	private EmissaoPedidoService emissaoPedido;
@@ -18,6 +23,9 @@ public class FluxoPedidoService {
 		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
 
 		pedido.confirmar();
+
+		pedidoRepository.save(pedido);
+
 	}
 
 	@Transactional
@@ -25,7 +33,10 @@ public class FluxoPedidoService {
 		Pedido pedido = emissaoPedido.buscarOuFalhar(codigoPedido);
 
 		pedido.cancelar();
-		;
+		
+		pedidoRepository.save(pedido);
+		pedidoRepository.flush();
+		
 
 	}
 
