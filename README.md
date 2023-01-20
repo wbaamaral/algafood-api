@@ -336,7 +336,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     14.25. Implementando a recuperação de foto no serviço de storage do S3 :feet:\
     14.26. Selecionando a implementação do serviço de storage de fotos :feet:  
 
-15. E-mails transacionais e Domain Events  :triangular_flag_on_post:   
+15. E-mails transacionais e Domain Events :white_check_mark:     
     15.1. Conhecendo soluções para envio de e-mails transacionais :feet:\
     15.2. Configurando o projeto para envio de e-mails usando servidor SMTP :feet:\
     15.3. Implementando o serviço de infraestrutura de envio de e-mails com Spring :feet:\
@@ -350,9 +350,9 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     15.11. Publicando Domain Events a partir do Aggregate Root :feet:\
     15.12. Observando e reagindo a Domain Events :feet:\
     15.13. Reagindo a Domain Events em fases específicas da transação :feet:\
-    15.14. Desafio: enviando e-mails no cancelamento de pedidos 
+    15.14. Desafio: enviando e-mails no cancelamento de pedidos :feet: 
 
-16. CORS e consumo da API com JavaScript e Java    
+16. CORS e consumo da API com JavaScript e Java :triangular_flag_on_post:    
     16.1. Implementando uma chamada na REST API com JavaScript \
     16.2. Testando a requisição na API com JavaScript e entendendo a Same Origin Policy \
     16.3. Entendendo o funcionamento básico de CORS e habilitando na API \
