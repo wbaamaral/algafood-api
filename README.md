@@ -348,7 +348,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     15.9. Desafio: Implementando serviço de envio de e-mail sandbox :feet:\
     15.10. Conhecendo o padrão Domain Events do DDD :feet:\
     15.11. Publicando Domain Events a partir do Aggregate Root :feet:\
-    15.12. Observando e reagindo a Domain Events \
+    15.12. Observando e reagindo a Domain Events :feet:\
     15.13. Reagindo a Domain Events em fases específicas da transação \
     15.14. Desafio: enviando e-mails no cancelamento de pedidos 
 

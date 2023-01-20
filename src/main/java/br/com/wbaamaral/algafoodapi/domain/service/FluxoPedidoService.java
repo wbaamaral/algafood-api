@@ -12,9 +12,6 @@ import br.com.wbaamaral.algafoodapi.domain.service.EnvioEmailService.Mensagem;
 @Service
 public class FluxoPedidoService {
 
-//   @Autowired
-//   private EnvioEmailService envioEmail;
-
 	@Autowired
 	private PedidoRepository pedidoRepository;
 
@@ -29,14 +26,6 @@ public class FluxoPedidoService {
 
 		pedidoRepository.save(pedido);
 
-//		var mensagem = Mensagem.builder()
-//				.assunto(pedido.getRestaurante().getNome() + " - Pedido confirmado")
-//				.corpo("pedido-confirmado.html")
-//				.variavel("pedido", pedido)
-//				.destinatario(pedido.getCliente().getEmail())
-//				.build();
-
-//		envioEmail.enviar(mensagem);
 	}
 
 	@Transactional
