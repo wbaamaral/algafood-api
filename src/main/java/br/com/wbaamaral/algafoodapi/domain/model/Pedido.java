@@ -21,23 +21,25 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
+import br.com.wbaamaral.algafoodapi.domain.event.PedidoConfirmadoEvent;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @Entity
-public class Pedido {
+public class Pedido extends AbstractAggregateRoot<Pedido> {
 
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String codigo;
-	
+
 	private BigDecimal subtotal;
 	private BigDecimal taxaFrete;
 	private BigDecimal valorTotal;
@@ -88,6 +90,8 @@ public class Pedido {
 
 		setStatus(StatusPedido.CONFIRMADO);
 		setDataConfirmacao(OffsetDateTime.now());
+
+		registerEvent(new PedidoConfirmadoEvent(this));
 	}
 
 	public void cancelar() {
@@ -107,12 +111,12 @@ public class Pedido {
 			throw new NegocioException(String.format("Status do pedido %s não pode ser alterado de %s para %s",
 					getCodigo(), getStatus().getDescricao(), novoStatus.getDescricao()));
 		}
-		
+
 		this.status = novoStatus;
 	}
 
-	  @PrePersist
-	   private void gerarCodigo() {
-	      setCodigo(UUID.randomUUID().toString());
-	   }
+	@PrePersist
+	private void gerarCodigo() {
+		setCodigo(UUID.randomUUID().toString());
+	}
 }
