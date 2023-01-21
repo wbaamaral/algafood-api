@@ -1,8 +1,6 @@
 package br.com.wbaamaral.algafoodapi.domain.listener;
 
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
 import br.com.wbaamaral.algafoodapi.domain.event.PedidoConfirmadoEvent;

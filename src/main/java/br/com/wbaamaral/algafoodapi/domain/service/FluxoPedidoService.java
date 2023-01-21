@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.wbaamaral.algafoodapi.domain.model.Pedido;
 import br.com.wbaamaral.algafoodapi.domain.repository.PedidoRepository;
-import br.com.wbaamaral.algafoodapi.domain.service.EnvioEmailService.Mensagem;
 
 @Service
 public class FluxoPedidoService {

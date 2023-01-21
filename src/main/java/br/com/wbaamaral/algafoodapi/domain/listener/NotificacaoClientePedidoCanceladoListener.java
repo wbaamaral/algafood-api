@@ -2,11 +2,9 @@ package br.com.wbaamaral.algafoodapi.domain.listener;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
 import br.com.wbaamaral.algafoodapi.domain.event.PedidoCanceladoEvent;
-import br.com.wbaamaral.algafoodapi.domain.event.PedidoConfirmadoEvent;
 import br.com.wbaamaral.algafoodapi.domain.model.Pedido;
 import br.com.wbaamaral.algafoodapi.domain.service.EnvioEmailService;
 import br.com.wbaamaral.algafoodapi.domain.service.EnvioEmailService.Mensagem;
