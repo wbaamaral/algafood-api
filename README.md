@@ -357,8 +357,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     16.2. Testando a requisição na API com JavaScript e entendendo a Same Origin Policy :feet:\
     16.3. Entendendo o funcionamento básico de CORS e habilitando na API :feet:\
     16.4. Habilitando CORS em controladores e métodos com @CrossOrigin :feet:\
-    16.5. Entendendo o funcionamento de preflight do CORS \
-    16.6. Habilitando CORS globalmente no projeto da API \
+    16.5. Entendendo o funcionamento de preflight do CORS :feet:\
+    16.6. Habilitando CORS globalmente no projeto da API :feet:\
     16.7. Desafio: implementando uma requisição GET com JavaScript \
     16.8. Implementando um formulário de cadastro e fazendo requisição POST com JavaScript \
     16.9. Desafio: implementando uma requisição DELETE com JavaScript \

@@ -46,7 +46,6 @@ import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
 import br.com.wbaamaral.algafoodapi.domain.repository.RestauranteRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroRestauranteService;
 
-@CrossOrigin
 @RestController
 @RequestMapping(value = "/restaurantes")
 public class RestauranteController {
