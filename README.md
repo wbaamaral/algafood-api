@@ -360,7 +360,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     16.5. Entendendo o funcionamento de preflight do CORS :feet:\
     16.6. Habilitando CORS globalmente no projeto da API :feet:\
     16.7. Desafio: implementando uma requisição GET com JavaScript :feet:\
-    16.8. Implementando um formulário de cadastro e fazendo requisição POST com JavaScript \
+    16.8. Implementando um formulário de cadastro e fazendo requisição POST com JavaScript :feet:\
     16.9. Desafio: implementando uma requisição DELETE com JavaScript \
     16.10. Implementando um client da REST API com Java e Spring (RestTemplate) \
     16.11. Tratando respostas com código de erro no client Java \
