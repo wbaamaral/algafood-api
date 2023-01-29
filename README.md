@@ -352,7 +352,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     15.13. Reagindo a Domain Events em fases específicas da transação :feet:\
     15.14. Desafio: enviando e-mails no cancelamento de pedidos :feet: 
 
-16. CORS e consumo da API com JavaScript e Java :triangular_flag_on_post:    
+16. CORS e consumo da API com JavaScript e Java :white_check_mark:     
     16.1. Implementando uma chamada na REST API com JavaScript :feet:\
     16.2. Testando a requisição na API com JavaScript e entendendo a Same Origin Policy :feet:\
     16.3. Entendendo o funcionamento básico de CORS e habilitando na API :feet:\
@@ -366,9 +366,9 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     16.11. Tratando respostas com código de erro no client Java :feet:\
     16.12. Desafio: Implementando uma requisição POST no client Java:feet: 
 
-17. Cache de HTTP    
-    17.1. Introdução ao Cache de HTTP \
-    17.2. Habilitando o cache com o cabeçalho Cache-Control e a diretiva max-age \
+17. Cache de HTTP :triangular_flag_on_post:    
+    17.1. Introdução ao Cache de HTTP :feet: \
+    17.2. Habilitando o cache com o cabeçalho Cache-Control e a diretiva max-age :feet: \
     17.3. Desafio: adicionando o cabeçalho Cache-Control na resposta \
     17.4. Entendendo a validação de representações em cache com ETags \
     17.5. Implementando requisições condicionais com Shallow ETags \
