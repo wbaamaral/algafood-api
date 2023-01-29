@@ -372,7 +372,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     17.3. Desafio: adicionando o cabeçalho Cache-Control na resposta :feet:\
     17.4. Entendendo a validação de representações em cache com ETags :feet:\
     17.5. Implementando requisições condicionais com Shallow ETags :feet:\
-    17.6. Adicionando outras diretivas de Cache-Control na resposta HTTP \
+    17.6. Adicionando outras diretivas de Cache-Control na resposta HTTP :feet:\
     17.7. Usando a diretiva no-cache no cabeçalho Cache-Control da requisição \
     17.8. Entendendo e preparando a implementação de Deep ETags \
     17.9. Implementando requisições condicionais com Deep ETags \

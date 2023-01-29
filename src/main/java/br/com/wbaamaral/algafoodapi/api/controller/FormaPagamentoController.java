@@ -51,7 +51,7 @@ public class FormaPagamentoController {
 		List<FormaPagamentoModel> formasPagamentoModel =  formaPagamentoModelAssembler.toCollectionModel(formasDePagamento);
 		
 		return ResponseEntity.ok()
-				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
+				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS).cachePublic())
 				.body(formasPagamentoModel);
 		
 	}
@@ -63,7 +63,7 @@ public class FormaPagamentoController {
 		FormaPagamentoModel formaPagamentoModel =  formaPagamentoModelAssembler.toModel(formaPagamento);
 		
 		return ResponseEntity.ok()
-				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
+				.cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS).cachePublic())
 				.body(formaPagamentoModel);
 	}
 
