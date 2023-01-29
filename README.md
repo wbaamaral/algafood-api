@@ -370,7 +370,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     17.1. Introdução ao Cache de HTTP :feet: \
     17.2. Habilitando o cache com o cabeçalho Cache-Control e a diretiva max-age :feet: \
     17.3. Desafio: adicionando o cabeçalho Cache-Control na resposta :feet:\
-    17.4. Entendendo a validação de representações em cache com ETags \
+    17.4. Entendendo a validação de representações em cache com ETags :feet:\
     17.5. Implementando requisições condicionais com Shallow ETags \
     17.6. Adicionando outras diretivas de Cache-Control na resposta HTTP \
     17.7. Usando a diretiva no-cache no cabeçalho Cache-Control da requisição \
