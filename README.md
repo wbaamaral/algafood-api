@@ -366,7 +366,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     16.11. Tratando respostas com código de erro no client Java :feet:\
     16.12. Desafio: Implementando uma requisição POST no client Java:feet: 
 
-17. Cache de HTTP :triangular_flag_on_post:    
+17. Cache de HTTP :white_check_mark:     
     17.1. Introdução ao Cache de HTTP :feet: \
     17.2. Habilitando o cache com o cabeçalho Cache-Control e a diretiva max-age :feet: \
     17.3. Desafio: adicionando o cabeçalho Cache-Control na resposta :feet:\
@@ -378,7 +378,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     17.9. Implementando requisições condicionais com Deep ETags :feet:\
     17.10. Desafio: implementando requisições condicionais com Deep ETags :feet: 
 
-18.  Documentação da API com OpenAPI, Swagger UI e SpringFox    
+18.  Documentação da API com OpenAPI, Swagger UI e SpringFox :triangular_flag_on_post:    
     18.1. Introdução à documentação de REST APIs \
     18.2. Conhecendo a OpenAPI (antes conhecida como Swagger) \
     18.3. Gerando a definição OpenAPI em JSON com SpringFox \
