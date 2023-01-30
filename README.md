@@ -384,7 +384,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     18.3. Gerando a definição OpenAPI em JSON com SpringFox :feet:\
     18.4. Gerando a documentação da API em HTML com Swagger UI e SpringFox :feet:\
     18.5. Selecionando os endpoints da API para gerar a documentação :feet:\
-    18.6. Descrevendo informações da API na documentação \
+    18.6. Descrevendo informações da API na documentação :feet:\
     18.7. Descrevendo tags na documentação e associando com controllers \
     18.8. Descrevendo as operações de endpoints na documentação \
     18.9. Descrevendo parâmetros de entrada na documentação \
