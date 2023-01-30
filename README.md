@@ -375,7 +375,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     17.6. Adicionando outras diretivas de Cache-Control na resposta HTTP :feet:\
     17.7. Usando a diretiva no-cache no cabeçalho Cache-Control da requisição :feet:\
     17.8. Entendendo e preparando a implementação de Deep ETags :feet:\
-    17.9. Implementando requisições condicionais com Deep ETags \
+    17.9. Implementando requisições condicionais com Deep ETags :feet:\
     17.10. Desafio: implementando requisições condicionais com Deep ETags 
 
 18.  Documentação da API com OpenAPI, Swagger UI e SpringFox    
