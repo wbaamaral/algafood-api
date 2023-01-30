@@ -9,7 +9,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,13 +26,14 @@ import br.com.wbaamaral.algafoodapi.api.assembler.FormaPagamentoInputDisassemble
 import br.com.wbaamaral.algafoodapi.api.assembler.FormaPagamentoModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.FormaPagamentoModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.FormaPagamentoInput;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.FormaPagamentoControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.model.FormaPagamento;
 import br.com.wbaamaral.algafoodapi.domain.repository.FormaPagamentoRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroFormaPagamentoService;
 
 @RestController
-@RequestMapping(path = "/formas-pagamento",produces = MediaType.APPLICATION_JSON_VALUE)
-public class FormaPagamentoController {
+@RequestMapping(path = "/formas-pagamento")
+public class FormaPagamentoController implements FormaPagamentoControllerOpenApi {
 
 	@Autowired
 	private FormaPagamentoRepository formaPagamentoRepository;

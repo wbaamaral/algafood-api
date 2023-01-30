@@ -402,7 +402,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     18.21. Corrigindo documentação com substituição de Page :feet:\
     18.22. Desafio: descrevendo documentação de endpoints de cozinhas :feet:\
     18.23. Ignorando tipos de parâmetros de operações na documentação :feet:\
-    18.24. Desafio: descrevendo documentação de endpoints de formas de pagamento \
+    18.24. Desafio: descrevendo documentação de endpoints de formas de pagamento :feet:\
     18.25. Descrevendo parâmetros globais em operações \
     18.26. Descrevendo parâmetros implícitos em operações \
     18.27. Desafio: descrevendo documentação de endpoints de pedidos \
