@@ -8,6 +8,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
+import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
@@ -22,7 +23,8 @@ public class SpringFoxConfig {
 				.paths(PathSelectors.any())
 //              .paths(PathSelectors.ant("/restaurantes/*"))                
 				.build()
-				.apiInfo(apiInfo());
+				.apiInfo(apiInfo())
+				.tags(new Tag("Cidades", "Gerencia as cidades"));
 	}
 	
 	private ApiInfo apiInfo() {
@@ -33,6 +35,7 @@ public class SpringFoxConfig {
 				.version("1.0")
 				.contact(getContact())
 				.build();
+		
 	}
 
 	private Contact getContact() {
@@ -42,4 +45,5 @@ public class SpringFoxConfig {
 
 		return contact;
 	}
+	
 }
