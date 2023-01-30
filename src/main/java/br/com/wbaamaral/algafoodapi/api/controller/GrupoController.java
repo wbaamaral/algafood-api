@@ -20,13 +20,14 @@ import br.com.wbaamaral.algafoodapi.api.assembler.GrupoInputDisassembler;
 import br.com.wbaamaral.algafoodapi.api.assembler.GrupoModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.GrupoModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.GrupoInput;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.GrupoControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.model.Grupo;
 import br.com.wbaamaral.algafoodapi.domain.repository.GrupoRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroGrupoService;
 
 @RestController
 @RequestMapping("/grupos")
-public class GrupoController {
+public class GrupoController implements GrupoControllerOpenApi  {
 
 	@Autowired
 	private GrupoRepository repository;

@@ -386,21 +386,21 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     18.5. Selecionando os endpoints da API para gerar a documentação :feet:\
     18.6. Descrevendo informações da API na documentação :feet:\
     18.7. Descrevendo tags na documentação e associando com controllers :feet:\
-    18.8. Descrevendo as operações de endpoints na documentação \
-    18.9. Descrevendo parâmetros de entrada na documentação \
-    18.10. Descrevendo modelos de representações e suas propriedades \
-    18.11. Descrevendo restrições de validação de propriedades do modelo \
-    18.12. Descrevendo códigos de status de respostas de forma global \
-    18.13. Desafio: descrevendo códigos de status de respostas de forma global \
-    18.14. Descrevendo o modelo de representação de problema \
-    18.15. Referenciando modelo de representação de problema com códigos de status de erro \
-    18.16. Descrevendo códigos de status de respostas em endpoints específicos \
-    18.17. Desacoplando anotações do Swagger dos controladores \
-    18.18. Desafio: descrevendo documentação de endpoints de grupos \
-    18.19. Descrevendo media type da resposta nos endpoints \
-    18.20. Corrigindo documentação com substituição de Pageable \
-    18.21. Corrigindo documentação com substituição de Page \
-    18.22. Desafio: descrevendo documentação de endpoints de cozinhas \
+    18.8. Descrevendo as operações de endpoints na documentação :feet:\
+    18.9. Descrevendo parâmetros de entrada na documentação :feet:\
+    18.10. Descrevendo modelos de representações e suas propriedades :feet:\
+    18.11. Descrevendo restrições de validação de propriedades do modelo :feet:\
+    18.12. Descrevendo códigos de status de respostas de forma global :feet:\
+    18.13. Desafio: descrevendo códigos de status de respostas de forma global :feet:\
+    18.14. Descrevendo o modelo de representação de problema :feet:\
+    18.15. Referenciando modelo de representação de problema com códigos de status de erro :feet:\
+    18.16. Descrevendo códigos de status de respostas em endpoints específicos :feet:\
+    18.17. Desacoplando anotações do Swagger dos controladores :feet:\
+    18.18. Desafio: descrevendo documentação de endpoints de grupos :feet:\
+    18.19. Descrevendo media type da resposta nos endpoints :feet:\
+    18.20. Corrigindo documentação com substituição de Pageable :feet:\
+    18.21. Corrigindo documentação com substituição de Page :feet:\
+    18.22. Desafio: descrevendo documentação de endpoints de cozinhas :feet:\
     18.23. Ignorando tipos de parâmetros de operações na documentação \
     18.24. Desafio: descrevendo documentação de endpoints de formas de pagamento \
     18.25. Descrevendo parâmetros globais em operações \

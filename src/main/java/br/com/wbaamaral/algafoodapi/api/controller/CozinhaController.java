@@ -27,6 +27,7 @@ import br.com.wbaamaral.algafoodapi.api.assembler.CozinhaInputDisassembler;
 import br.com.wbaamaral.algafoodapi.api.assembler.CozinhaModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.CozinhaModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.CozinhaInput;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.CozinhaControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cozinha;
@@ -35,7 +36,7 @@ import br.com.wbaamaral.algafoodapi.domain.service.CadastroCozinhaService;
 
 @RestController
 @RequestMapping(value = "/cozinhas")
-public class CozinhaController {
+public class CozinhaController implements CozinhaControllerOpenApi {
 
    @Autowired
    private CozinhaRepository cozinhaRepository;
@@ -107,7 +108,7 @@ public class CozinhaController {
       }
    }
 
-   @DeleteMapping("/{cozinhaId}")
+   @DeleteMapping(value = "/{cozinhaId}", produces = {})
    @ResponseStatus(code = HttpStatus.NO_CONTENT)
    @Transactional
    public void remover(@PathVariable Long cozinhaId) {
