@@ -23,6 +23,7 @@
 		<jasperreports.version>6.20.0</jasperreports.version>
 		<!-- Versão  Amazon S3 -->
 		<aws-java-sdk-s3.version>1.12.336</aws-java-sdk-s3.version>
+		<springfox.version>3.0.0</springfox.version>
 	</properties>
 	<dependencies>
 		<!-- Starters -->
@@ -122,6 +123,14 @@
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>${aws-java-sdk-s3.version}</version>
 		</dependency>
+		
+		<!-- Springfox -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>

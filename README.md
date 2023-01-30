@@ -379,9 +379,9 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     17.10. Desafio: implementando requisições condicionais com Deep ETags :feet: 
 
 18.  Documentação da API com OpenAPI, Swagger UI e SpringFox :triangular_flag_on_post:    
-    18.1. Introdução à documentação de REST APIs \
-    18.2. Conhecendo a OpenAPI (antes conhecida como Swagger) \
-    18.3. Gerando a definição OpenAPI em JSON com SpringFox \
+    18.1. Introdução à documentação de REST APIs :feet:\
+    18.2. Conhecendo a OpenAPI (antes conhecida como Swagger) :feet:\
+    18.3. Gerando a definição OpenAPI em JSON com SpringFox :feet:\
     18.4. Gerando a documentação da API em HTML com Swagger UI e SpringFox \
     18.5. Selecionando os endpoints da API para gerar a documentação \
     18.6. Descrevendo informações da API na documentação \
