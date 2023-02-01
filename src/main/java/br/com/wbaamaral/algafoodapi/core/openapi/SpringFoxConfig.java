@@ -55,15 +55,15 @@ public class SpringFoxConfig {
          .globalResponses(HttpMethod.POST, globalPostPutResponseMessages())
          .globalResponses(HttpMethod.PUT, globalPostPutResponseMessages())
          .globalResponses(HttpMethod.DELETE, globalDeleteResponseMessages())
-         .globalRequestParameters(Collections.singletonList(
-                 new RequestParameterBuilder()
-                         .name("campos")
-                         .description("Nomes das propriedades para filtrar na resposta, separados por vírgula")
-                         .in(ParameterType.QUERY)
-                         .required(false)
-                         .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
-                         .build())
-         )
+//         .globalRequestParameters(Collections.singletonList(
+//                 new RequestParameterBuilder()
+//                         .name("campos")
+//                         .description("Nomes das propriedades para filtrar na resposta, separados por vírgula")
+//                         .in(ParameterType.QUERY)
+//                         .required(false)
+//                         .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
+//                         .build())
+//         )
          .ignoredParameterTypes(ServletWebRequest.class)
          .additionalModels(typeResolver.resolve(Problem.class))
          
@@ -75,6 +75,7 @@ public class SpringFoxConfig {
          .tags(new Tag("Cidades", "Gerencia as cidades"),
                new Tag("Grupos", "Gerencia os grupos de usuários"),
                new Tag("Cozinhas", "Gerencia as cozinhas"),
+               new Tag("Pedidos", "Gerencia os pedidos"),
                new Tag("Formas de pagamento", "Gerencia as formas de pagamento"));
    }
 
