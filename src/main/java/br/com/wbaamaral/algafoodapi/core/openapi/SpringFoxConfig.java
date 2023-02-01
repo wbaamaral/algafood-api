@@ -19,6 +19,8 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import br.com.wbaamaral.algafoodapi.api.exceptionhandler.Problem;
 import br.com.wbaamaral.algafoodapi.api.model.CozinhaModel;
+import br.com.wbaamaral.algafoodapi.api.model.PedidoResumoModel;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.PedidoControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.api.openapi.model.CozinhasModelOpenApi;
 import br.com.wbaamaral.algafoodapi.api.openapi.model.PageableModelOpenApi;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -45,6 +47,17 @@ public class SpringFoxConfig {
    Docket apiDocket() {
       var typeResolver = new TypeResolver();
       
+//    Incluir parâmetro implicito global
+//    .globalRequestParameters(Collections.singletonList(
+//            new RequestParameterBuilder()
+//                    .name("campos")
+//                    .description("Nomes das propriedades para filtrar na resposta, separados por vírgula")
+//                    .in(ParameterType.QUERY)
+//                    .required(false)
+//                    .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
+//                    .build())
+//    )
+      
       return new Docket(DocumentationType.OAS_30)
             .select()
             .apis(RequestHandlerSelectors.basePackage("br.com.wbaamaral.algafoodapi"))
@@ -55,22 +68,14 @@ public class SpringFoxConfig {
          .globalResponses(HttpMethod.POST, globalPostPutResponseMessages())
          .globalResponses(HttpMethod.PUT, globalPostPutResponseMessages())
          .globalResponses(HttpMethod.DELETE, globalDeleteResponseMessages())
-//         .globalRequestParameters(Collections.singletonList(
-//                 new RequestParameterBuilder()
-//                         .name("campos")
-//                         .description("Nomes das propriedades para filtrar na resposta, separados por vírgula")
-//                         .in(ParameterType.QUERY)
-//                         .required(false)
-//                         .query(q -> q.model(m -> m.scalarModel(ScalarType.STRING)))
-//                         .build())
-//         )
          .ignoredParameterTypes(ServletWebRequest.class)
-         .additionalModels(typeResolver.resolve(Problem.class))
-         
          .directModelSubstitute(Pageable.class, PageableModelOpenApi.class)
+         .additionalModels(typeResolver.resolve(Problem.class))
          .alternateTypeRules(AlternateTypeRules.newRule(
                typeResolver.resolve(Page.class, CozinhaModel.class),
                CozinhasModelOpenApi.class))
+         .alternateTypeRules(AlternateTypeRules.newRule(typeResolver.resolve(Page.class, PedidoResumoModel.class),
+               PedidoControllerOpenApi.class))
          .apiInfo(apiInfo())
          .tags(new Tag("Cidades", "Gerencia as cidades"),
                new Tag("Grupos", "Gerencia os grupos de usuários"),
