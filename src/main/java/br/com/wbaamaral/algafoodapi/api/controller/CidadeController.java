@@ -21,7 +21,7 @@ import br.com.wbaamaral.algafoodapi.api.assembler.CidadeInputDisassembler;
 import br.com.wbaamaral.algafoodapi.api.assembler.CidadeModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.CidadeModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.CidadeInput;
-import br.com.wbaamaral.algafoodapi.api.openapi.model.OpenApiDocCidadeController;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.CidadeControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.exception.EstadoNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EstadoNaoEncontradoException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
@@ -33,7 +33,7 @@ import io.swagger.annotations.Api;
 @Api(tags = "Cidades")
 @RestController
 @RequestMapping(path = "/cidades")
-public class CidadeController implements OpenApiDocCidadeController {
+public class CidadeController implements CidadeControllerOpenApi {
 
    @Autowired
    private CidadeRepository cidadeRepository;

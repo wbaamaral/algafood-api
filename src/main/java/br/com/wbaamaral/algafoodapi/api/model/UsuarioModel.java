@@ -1,5 +1,6 @@
 package br.com.wbaamaral.algafoodapi.api.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,12 @@ import lombok.Setter;
 @Getter
 public class UsuarioModel {
 
-    private Long id;
-    private String nome;
-    private String email;            
-}             
+	@ApiModelProperty(example = "1")
+	private Long id;
+
+	@ApiModelProperty(example = "Josué da Silva")
+	private String nome;
+
+	@ApiModelProperty(example = "josue@email.com.br")
+	private String email;
+}

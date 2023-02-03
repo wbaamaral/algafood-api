@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.wbaamaral.algafoodapi.api.assembler.PedidoInputDisassembler;
 import br.com.wbaamaral.algafoodapi.api.assembler.PedidoModelAssembler;
-import br.com.wbaamaral.algafoodapi.api.assembler.PedidoModelAssemblerJsonFilter;
 import br.com.wbaamaral.algafoodapi.api.assembler.PedidoResumoModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.PedidoModel;
 import br.com.wbaamaral.algafoodapi.api.model.PedidoResumoModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.PedidoInput;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.PedidoControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.core.data.PageableTranslator;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
@@ -39,7 +39,7 @@ import br.com.wbaamaral.algafoodapi.infrastructure.repository.spec.PedidoSpecs;
 
 @RestController
 @RequestMapping(value = "/pedidos")
-public class PedidoController {
+public class PedidoController implements PedidoControllerOpenApi {
 
    @Autowired
    private PedidoRepository pedidoRepository;

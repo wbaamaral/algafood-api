@@ -1,7 +1,6 @@
 package br.com.wbaamaral.algafoodapi.core.openapi;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -20,20 +19,17 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import br.com.wbaamaral.algafoodapi.api.exceptionhandler.Problem;
 import br.com.wbaamaral.algafoodapi.api.model.CozinhaModel;
 import br.com.wbaamaral.algafoodapi.api.model.PedidoResumoModel;
-import br.com.wbaamaral.algafoodapi.api.openapi.controller.PedidoControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.api.openapi.model.CozinhasModelOpenApi;
 import br.com.wbaamaral.algafoodapi.api.openapi.model.PageableModelOpenApi;
+import br.com.wbaamaral.algafoodapi.api.openapi.model.PedidosResumoModelOpenApi;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RepresentationBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.builders.RequestParameterBuilder;
 import springfox.documentation.builders.ResponseBuilder;
 import springfox.documentation.schema.AlternateTypeRules;
-import springfox.documentation.schema.ScalarType;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
-import springfox.documentation.service.ParameterType;
 import springfox.documentation.service.Response;
 import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
@@ -68,14 +64,15 @@ public class SpringFoxConfig {
          .globalResponses(HttpMethod.POST, globalPostPutResponseMessages())
          .globalResponses(HttpMethod.PUT, globalPostPutResponseMessages())
          .globalResponses(HttpMethod.DELETE, globalDeleteResponseMessages())
+         .additionalModels(typeResolver.resolve(Problem.class))
          .ignoredParameterTypes(ServletWebRequest.class)
          .directModelSubstitute(Pageable.class, PageableModelOpenApi.class)
-         .additionalModels(typeResolver.resolve(Problem.class))
          .alternateTypeRules(AlternateTypeRules.newRule(
                typeResolver.resolve(Page.class, CozinhaModel.class),
                CozinhasModelOpenApi.class))
-         .alternateTypeRules(AlternateTypeRules.newRule(typeResolver.resolve(Page.class, PedidoResumoModel.class),
-               PedidoControllerOpenApi.class))
+         .alternateTypeRules(AlternateTypeRules.newRule(
+                 typeResolver.resolve(Page.class, PedidoResumoModel.class),
+                 PedidosResumoModelOpenApi.class))
          .apiInfo(apiInfo())
          .tags(new Tag("Cidades", "Gerencia as cidades"),
                new Tag("Grupos", "Gerencia os grupos de usuários"),

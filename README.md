@@ -404,8 +404,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     18.23. Ignorando tipos de parâmetros de operações na documentação :feet:\
     18.24. Desafio: descrevendo documentação de endpoints de formas de pagamento :feet:\
     18.25. Descrevendo parâmetros globais em operações :feet:\
-    18.26. Descrevendo parâmetros implícitos em operações \
-    18.27. Desafio: descrevendo documentação de endpoints de pedidos \
+    18.26. Descrevendo parâmetros implícitos em operações :feet:\
+    18.27. Desafio: descrevendo documentação de endpoints de pedidos :feet:\
     18.28. Descrevendo parâmetros de projeções em endpoints de consultas \
     18.29. Desafio: descrevendo documentação de endpoints de restaurantes \
     18.30. Desafio: descrevendo documentação de endpoints de estados \
