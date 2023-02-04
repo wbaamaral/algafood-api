@@ -412,7 +412,7 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     18.31. Desafio: descrevendo documentação de endpoints de fluxo de pedidos :feet:\
     18.32. Desafio: descrevendo documentação de endpoints de associação de restaurantes com formas de pagamento :feet:\
     18.33. Desafio: descrevendo documentação de endpoints de associação de restaurantes com usuários :feet:\
-    18.34. Desafio: descrevendo documentação de endpoints de produtos \
+    18.34. Desafio: descrevendo documentação de endpoints de produtos :feet:\
     18.35. Desafio: descrevendo documentação de endpoints de fotos de produtos \
     18.36. Corrigindo documentação no Swagger UI para upload de arquivos \
     18.37. Desafio: descrevendo documentação de endpoints de associação de permissões com grupos \
