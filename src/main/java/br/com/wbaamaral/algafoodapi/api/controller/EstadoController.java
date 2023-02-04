@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import br.com.wbaamaral.algafoodapi.api.assembler.EstadoInputDisassembler;
 import br.com.wbaamaral.algafoodapi.api.assembler.EstadoModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.EstadoModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.EstadoInput;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.EstadoControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import br.com.wbaamaral.algafoodapi.domain.model.Estado;
@@ -30,7 +32,7 @@ import br.com.wbaamaral.algafoodapi.domain.service.CadastroEstadoService;
 
 @RestController
 @RequestMapping("/estados")
-public class EstadoController {
+public class EstadoController implements EstadoControllerOpenApi{
 
 	@Autowired
 	private EstadoRepository estadoRepository;
@@ -44,19 +46,19 @@ public class EstadoController {
 	@Autowired
 	private EstadoInputDisassembler estadoInputDisassembler;
 
-	@GetMapping
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<EstadoModel> listar() {
 		return estadoModelAssembler.toCollectionModel(estadoRepository.findAll());
 	}
 
-	@GetMapping("/{estadoId}")
+	@GetMapping(path = "/{estadoId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public EstadoModel buscar(@PathVariable Long estadoId) {
 		Estado estado = cadastroEstado.buscarOuFalhar(estadoId);
 
 		return estadoModelAssembler.toModel(estado);
 	}
 
-	@PostMapping
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	@Transactional
 	public EstadoModel adicionar(@RequestBody @Valid EstadoInput estadoInput) {
@@ -72,7 +74,7 @@ public class EstadoController {
 		return estadoModelAssembler.toModel(estado);
 	}
 
-	@PutMapping("/{estadoId}")
+	@PutMapping(path = "/{estadoId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	public EstadoModel atualizar(@PathVariable Long estadoId, @RequestBody @Valid EstadoInput estadoInput) {
 		try {
