@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.wbaamaral.algafoodapi.api.assembler.UsuarioModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.UsuarioModel;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.RestauranteUsuarioResponsavelControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroRestauranteService;
 
 @RestController
 @RequestMapping(value = "/restaurantes/{restauranteId}/responsaveis")
-public class RestauranteUsuarioResponsavelController {
+public class RestauranteUsuarioResponsavelController  implements RestauranteUsuarioResponsavelControllerOpenApi {
 
     @Autowired
     private CadastroRestauranteService cadastroRestaurante;
@@ -27,7 +29,7 @@ public class RestauranteUsuarioResponsavelController {
     @Autowired
     private UsuarioModelAssembler usuarioModelAssembler;
     
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UsuarioModel> listar(@PathVariable Long restauranteId) {
         Restaurante restaurante = cadastroRestaurante.buscarOuFalhar(restauranteId);
         
