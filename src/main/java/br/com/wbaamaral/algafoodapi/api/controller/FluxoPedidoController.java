@@ -8,33 +8,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.FluxoPedidoControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.service.FluxoPedidoService;
 
 @RestController
 @RequestMapping(value = "/pedidos/{codigoPedido}")
-public class FluxoPedidoController {
+public class FluxoPedidoController implements FluxoPedidoControllerOpenApi {
 
-   @Autowired
-   private FluxoPedidoService fluxoPedido;
+	@Autowired
+	private FluxoPedidoService fluxoPedido;
 
-   @PutMapping("/confirmacao")
-   @ResponseStatus(HttpStatus.NO_CONTENT)
-   public void confirmar(@PathVariable String codigoPedido) {
+	@PutMapping("/confirmacao")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void confirmar(@PathVariable String codigoPedido) {
 
-      fluxoPedido.confirmar(codigoPedido);
-   }
+		fluxoPedido.confirmar(codigoPedido);
+	}
 
-   @PutMapping("/cancelamento")
-   @ResponseStatus(HttpStatus.NO_CONTENT)
-   public void cancelar(@PathVariable String codigoPedido) {
+	@PutMapping("/cancelamento")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void cancelar(@PathVariable String codigoPedido) {
 
-      fluxoPedido.cancelar(codigoPedido);
-   }
+		fluxoPedido.cancelar(codigoPedido);
+	}
 
-   @PutMapping("/entrega")
-   @ResponseStatus(HttpStatus.NO_CONTENT)
-   public void entregar(@PathVariable String codigoPedido) {
+	@PutMapping("/entrega")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void entregar(@PathVariable String codigoPedido) {
 
-      fluxoPedido.entregar(codigoPedido);
-   }
+		fluxoPedido.entregar(codigoPedido);
+	}
 }
