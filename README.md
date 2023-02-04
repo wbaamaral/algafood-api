@@ -406,8 +406,8 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     18.25. Descrevendo parâmetros globais em operações :feet:\
     18.26. Descrevendo parâmetros implícitos em operações :feet:\
     18.27. Desafio: descrevendo documentação de endpoints de pedidos :feet:\
-    18.28. Descrevendo parâmetros de projeções em endpoints de consultas \
-    18.29. Desafio: descrevendo documentação de endpoints de restaurantes \
+    18.28. Descrevendo parâmetros de projeções em endpoints de consultas :feet:\
+    18.29. Desafio: descrevendo documentação de endpoints de restaurantes :feet:\
     18.30. Desafio: descrevendo documentação de endpoints de estados \
     18.31. Desafio: descrevendo documentação de endpoints de fluxo de pedidos \
     18.32. Desafio: descrevendo documentação de endpoints de associação de restaurantes com formas de pagamento \

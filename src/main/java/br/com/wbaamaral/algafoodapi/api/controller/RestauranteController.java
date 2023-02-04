@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,7 @@ import br.com.wbaamaral.algafoodapi.api.assembler.RestauranteModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.RestauranteModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.RestauranteInput;
 import br.com.wbaamaral.algafoodapi.api.model.view.RestauranteView;
-import br.com.wbaamaral.algafoodapi.api.openapi.model.RestauranteBasicoModelOpenApi;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.RestauranteControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.exception.CidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.CozinhaNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
@@ -31,14 +32,10 @@ import br.com.wbaamaral.algafoodapi.domain.exception.RestauranteNaoEncontradoExc
 import br.com.wbaamaral.algafoodapi.domain.model.Restaurante;
 import br.com.wbaamaral.algafoodapi.domain.repository.RestauranteRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroRestauranteService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/restaurantes")
-public class RestauranteController {
-
+@RequestMapping(path = "/restaurantes")
+public class RestauranteController  implements RestauranteControllerOpenApi{
 
 	@Autowired
 	private RestauranteRepository restauranteRepository;
@@ -52,32 +49,26 @@ public class RestauranteController {
 	@Autowired
 	private RestauranteInputDisassembler restauranteInputDisassembler;
 
-	@ApiOperation(value = "Lista restaurantes", response = RestauranteBasicoModelOpenApi.class)
-	@ApiImplicitParams({
-			@ApiImplicitParam(value = "Nome da projeção de pedidos", allowableValues = "apenas-nome",
-					name = "projecao", paramType = "query", type = "string")
-	})
 	@JsonView(RestauranteView.Resumo.class)
-	@GetMapping
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<RestauranteModel> listar() {
 		return restauranteModelAssembler.toCollectionModel(restauranteRepository.findAll());
 	}
 
-	@ApiOperation(value = "Lista restaurantes", hidden = true)
 	@JsonView(RestauranteView.ApenasNome.class)
-	@GetMapping(params = "projecao=apenas-nome")
+	@GetMapping(params = "projecao=apenas-nome", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<RestauranteModel> listarApenasNomes() {
 		return listar();
 	}
 	
-	@GetMapping("/{restauranteId}")
+	@GetMapping(value = "/{restauranteId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public RestauranteModel buscar(@PathVariable Long restauranteId) {
 		Restaurante restaurante = cadastroRestaurante.buscarOuFalhar(restauranteId);
 		
 		return restauranteModelAssembler.toModel(restaurante);
 	}
 	
-	@PostMapping
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public RestauranteModel adicionar(@RequestBody @Valid RestauranteInput restauranteInput) {
 		try {
