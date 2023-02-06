@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import br.com.wbaamaral.algafoodapi.api.assembler.FotoProdutoModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.FotoProdutoModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.FotoProdutoInput;
+import br.com.wbaamaral.algafoodapi.api.openapi.controller.RestauranteProdutoFotoControllerOpenApi;
 import br.com.wbaamaral.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.model.FotoProduto;
 import br.com.wbaamaral.algafoodapi.domain.model.Produto;
@@ -34,8 +35,8 @@ import br.com.wbaamaral.algafoodapi.domain.service.FotoStorageService;
 import br.com.wbaamaral.algafoodapi.domain.service.FotoStorageService.FotoRecuperada;
 
 @RestController
-@RequestMapping("/restaurantes/{restauranteId}/produtos/{produtoId}/foto")
-public class RestauranteProdutoFotoController {
+@RequestMapping(value = "/restaurantes/{restauranteId}/produtos/{produtoId}/foto")
+public class RestauranteProdutoFotoController implements RestauranteProdutoFotoControllerOpenApi {
 
 	@Autowired
 	private CadastroProdutoService cadastroProduto;
@@ -49,14 +50,14 @@ public class RestauranteProdutoFotoController {
 	@Autowired
 	private FotoStorageService fotoStorage;
 
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping
 	public FotoProdutoModel buscar(@PathVariable Long restauranteId, @PathVariable Long produtoId) {
 		FotoProduto fotoProduto = catalogoFotoProduto.buscarOuFalhar(restauranteId, produtoId);
 
 		return fotoProdutoModelAssembler.toModel(fotoProduto);
 	}
 
-	@GetMapping
+	@GetMapping(produces = MediaType.ALL_VALUE)
 	public ResponseEntity<InputStreamResource> servir(@PathVariable Long restauranteId, @PathVariable Long produtoId,
 			@RequestHeader(name = "accept") String acceptHeader) throws HttpMediaTypeNotAcceptableException {
 		try {
