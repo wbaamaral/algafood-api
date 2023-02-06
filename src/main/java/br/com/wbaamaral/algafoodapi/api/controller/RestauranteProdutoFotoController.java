@@ -50,14 +50,16 @@ public class RestauranteProdutoFotoController implements RestauranteProdutoFotoC
 	@Autowired
 	private FotoStorageService fotoStorage;
 
-	@GetMapping
+	@Override
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public FotoProdutoModel buscar(@PathVariable Long restauranteId, @PathVariable Long produtoId) {
 		FotoProduto fotoProduto = catalogoFotoProduto.buscarOuFalhar(restauranteId, produtoId);
 
 		return fotoProdutoModelAssembler.toModel(fotoProduto);
 	}
 
-	@GetMapping(produces = MediaType.ALL_VALUE)
+	@Override
+	@GetMapping(produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE, MediaType.ALL_VALUE})
 	public ResponseEntity<InputStreamResource> servir(@PathVariable Long restauranteId, @PathVariable Long produtoId,
 			@RequestHeader(name = "accept") String acceptHeader) throws HttpMediaTypeNotAcceptableException {
 		try {

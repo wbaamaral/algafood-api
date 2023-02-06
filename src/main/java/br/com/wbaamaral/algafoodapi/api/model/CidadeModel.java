@@ -1,5 +1,6 @@
 package br.com.wbaamaral.algafoodapi.api.model;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,8 +8,12 @@ import lombok.Setter;
 @Getter
 public class CidadeModel {
 
-	private Long id;
-	private String nome;
-	private EstadoModel estado;
+   @ApiModelProperty(example = "1")
+   private Long id;
+
+   @ApiModelProperty(example = "Uberlândia")
+   private String nome;
+
+   private EstadoModel estado;
 
 }

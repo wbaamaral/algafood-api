@@ -22,15 +22,12 @@ import br.com.wbaamaral.algafoodapi.api.assembler.CidadeModelAssembler;
 import br.com.wbaamaral.algafoodapi.api.model.CidadeModel;
 import br.com.wbaamaral.algafoodapi.api.model.input.CidadeInput;
 import br.com.wbaamaral.algafoodapi.api.openapi.controller.CidadeControllerOpenApi;
-import br.com.wbaamaral.algafoodapi.domain.exception.EstadoNaoEncontradaException;
 import br.com.wbaamaral.algafoodapi.domain.exception.EstadoNaoEncontradoException;
 import br.com.wbaamaral.algafoodapi.domain.exception.NegocioException;
 import br.com.wbaamaral.algafoodapi.domain.model.Cidade;
 import br.com.wbaamaral.algafoodapi.domain.repository.CidadeRepository;
 import br.com.wbaamaral.algafoodapi.domain.service.CadastroCidadeService;
-import io.swagger.annotations.Api;
 
-@Api(tags = "Cidades")
 @RestController
 @RequestMapping(path = "/cidades")
 public class CidadeController implements CidadeControllerOpenApi {
@@ -47,6 +44,7 @@ public class CidadeController implements CidadeControllerOpenApi {
    @Autowired
    private CidadeInputDisassembler cidadeInputDisassembler;
 
+   @Override
    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
    public List<CidadeModel> listar() {
 
@@ -55,7 +53,8 @@ public class CidadeController implements CidadeControllerOpenApi {
       return cidadeModelAssembler.toCollectionModel(todasCidades);
    }
 
-   @GetMapping(path =  "/{cidadeId}", produces = MediaType.APPLICATION_JSON_VALUE)
+   @Override
+   @GetMapping(path = "/{cidadeId}", produces = MediaType.APPLICATION_JSON_VALUE)
    public CidadeModel buscar(@PathVariable Long cidadeId) {
 
       Cidade cidade = cadastroCidade.buscarOuFalhar(cidadeId);
@@ -63,8 +62,9 @@ public class CidadeController implements CidadeControllerOpenApi {
       return cidadeModelAssembler.toModel(cidade);
    }
 
+   @Override
    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-   @ResponseStatus(code = HttpStatus.CREATED)
+   @ResponseStatus(HttpStatus.CREATED)
    public CidadeModel adicionar(@RequestBody @Valid CidadeInput cidadeInput) {
 
       try {
@@ -74,13 +74,12 @@ public class CidadeController implements CidadeControllerOpenApi {
 
          return cidadeModelAssembler.toModel(cidade);
       } catch (EstadoNaoEncontradoException e) {
-         
          throw new NegocioException(e.getMessage(), e);
       }
-
    }
 
-   @PutMapping( path = "/{cidadeId}", produces = MediaType.APPLICATION_JSON_VALUE )
+   @Override
+   @PutMapping(path = "/{cidadeId}", produces = MediaType.APPLICATION_JSON_VALUE)
    public CidadeModel atualizar(@PathVariable Long cidadeId, @RequestBody @Valid CidadeInput cidadeInput) {
 
       try {
@@ -91,14 +90,13 @@ public class CidadeController implements CidadeControllerOpenApi {
          cidadeAtual = cadastroCidade.salvar(cidadeAtual);
 
          return cidadeModelAssembler.toModel(cidadeAtual);
-
-      } catch (EstadoNaoEncontradaException e) {
-
-         throw new NegocioException(e.getMessage());
+      } catch (EstadoNaoEncontradoException e) {
+         throw new NegocioException(e.getMessage(), e);
       }
    }
 
-   @DeleteMapping(path = "/{cidadeId}", produces = {})
+   @Override
+   @DeleteMapping("/{cidadeId}")
    @ResponseStatus(HttpStatus.NO_CONTENT)
    public void remover(@PathVariable Long cidadeId) {
 
