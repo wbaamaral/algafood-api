@@ -81,6 +81,7 @@ public class SpringFoxConfig {
                new Tag("Produtos", "Gerencia os produtos de restaurantes"),
                new Tag("Restaurantes", "Gerencia os restaurantes"),
                new Tag("Estados", "Gerencia os Estados"),
+               new Tag("Estatísticas", "Estatísticas da AlgaFood"),
                new Tag("Formas de pagamento", "Gerencia as formas de pagamento"));
    }
 
