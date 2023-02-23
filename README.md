@@ -414,11 +414,11 @@ Estudo de apis rest, Wélyqrson Bastos Amaral.
     18.33. Desafio: descrevendo documentação de endpoints de associação de restaurantes com usuários :feet:\
     18.34. Desafio: descrevendo documentação de endpoints de produtos :feet:\
     18.35. Desafio: descrevendo documentação de endpoints de fotos de produtos :feet:\
-    18.36. Corrigindo documentação no Swagger UI para upload de arquivos \
-    18.37. Desafio: descrevendo documentação de endpoints de associação de permissões com grupos \
-    18.38. Desafio: descrevendo documentação de endpoints de usuários \
-    18.39. Desafio: descrevendo documentação de endpoints de associação de grupos com usuários \
-    18.40. Desafio: descrevendo documentação de endpoint de estatísticas 
+    18.36. Corrigindo documentação no Swagger UI para upload de arquivos :feet:\
+    18.37. Desafio: descrevendo documentação de endpoints de associação de permissões com grupos :feet:\
+    18.38. Desafio: descrevendo documentação de endpoints de usuários :feet:\
+    18.39. Desafio: descrevendo documentação de endpoints de associação de grupos com usuários :feet:\
+    18.40. Desafio: descrevendo documentação de endpoint de estatísticas :feet:
 
 19.  Discoverability e HATEOAS: A Glória do REST    
     19.1. Introdução à Discoverability e HATEOAS \
